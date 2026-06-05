@@ -1,13 +1,14 @@
+import { Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 
 import { BannerPill } from "#/components/marketing/banner-pill.tsx";
 import { ComparisonTable } from "#/components/marketing/comparison-table.tsx";
 import { FaqAccordion } from "#/components/marketing/faq-accordion.tsx";
 import { LogoStrip } from "#/components/marketing/logo-strip.tsx";
-import { MarketingButton } from "#/components/marketing/marketing-button.tsx";
 import { MarketingCard } from "#/components/marketing/marketing-card.tsx";
 import { MeshGradient } from "#/components/marketing/mesh-gradient.tsx";
 import { SectionBand } from "#/components/marketing/section-band.tsx";
+import { Button } from "#/components/ui/button.tsx";
 import { siteConfig } from "#/config/site.ts";
 import {
 	comparisonRows,
@@ -18,6 +19,38 @@ import {
 	securityFeatures,
 } from "#/content/home.ts";
 import { cn } from "#/lib/utils.ts";
+
+const proofStats = [
+	["15 min", "typical connector setup"],
+	["150+", "languages supported"],
+	["AES-256", "encrypted in transit and at rest"],
+	["Real time", "answers while the signal is still fresh"],
+] as const;
+
+const signalRows = [
+	{
+		label: "Churn risk",
+		value: "Onboarding friction",
+		heat: "82%",
+	},
+	{
+		label: "Revenue signal",
+		value: "Renewal intent rising",
+		heat: "64%",
+	},
+	{
+		label: "Compliance",
+		value: "Policy language drift",
+		heat: "19%",
+	},
+] as const;
+
+const commandLines = [
+	"Cluster 18,402 conversations",
+	"Detect emerging product friction",
+	"Rank actions by revenue exposure",
+	"Route answer to CX leadership",
+] as const;
 
 export function HomePage() {
 	const [lineIndex, setLineIndex] = useState(0);
@@ -35,33 +68,63 @@ export function HomePage() {
 
 	return (
 		<>
-			<section className="relative overflow-hidden bg-canvas pt-8 pb-20 md:pb-28 lg:pb-[var(--spacing-section)]">
+			<section className="marketing-hero">
 				<MeshGradient />
+				<div
+					className="signal-grid marketing-hero-atmosphere opacity-70"
+					aria-hidden
+				/>
 				<div className="marketing-container relative z-10">
-					<div className="mx-auto max-w-4xl text-center rise-in">
-						<BannerPill className="mb-6">
-							Real-time AI Insights for Top Brands
-						</BannerPill>
-						<p className="text-display-lg md:text-display-xl mb-4">
-							Your customers are telling you
-						</p>
-						<p
-							className="text-display-lg md:text-display-xl mb-8 min-h-[1.2em] text-link transition-opacity duration-500"
-							key={lineIndex}
-						>
-							{heroRotatingLines[lineIndex]}.
-						</p>
-						<p className="text-body-lg mx-auto mb-4 max-w-2xl text-body">
-							The Answer Layer: the easiest way to unlock the voices of your
-							customers.
-						</p>
-						<div className="flex flex-wrap items-center justify-center gap-3">
-							<MarketingButton to="/contact">
-								See The Answer Layer in Action
-							</MarketingButton>
-							<MarketingButton variant="secondary" to="/theanswerlayer">
-								Learn more
-							</MarketingButton>
+					<div className="grid items-center gap-8 rise-in md:gap-14 lg:grid-cols-[0.95fr_1.05fr]">
+						<div>
+							<BannerPill className="mb-6 max-w-full sm:mb-8">
+								Real-time AI insights for enterprise CX teams
+							</BannerPill>
+							<h1 className="mb-6 max-w-4xl text-[2.5rem] font-semibold leading-[0.95] tracking-[-0.06em] text-ink sm:text-[3rem] sm:leading-[0.92] sm:tracking-[-0.08em] md:text-[56px] md:tracking-[-3.4px] lg:text-[84px] lg:tracking-[-5.6px]">
+								Your customers are already telling you{" "}
+								<span
+									className="relative inline-block text-link"
+									key={lineIndex}
+								>
+									{heroRotatingLines[lineIndex]}.
+									<span className="absolute inset-x-0 bottom-1 -z-10 h-3 rounded-full bg-link-bg-soft" />
+								</span>
+							</h1>
+							<p className="text-body-lg mb-8 max-w-xl text-body">
+								The Answer Layer turns messy conversations into governed,
+								board-ready intelligence while the signal is still fresh.
+							</p>
+							<div className="mb-10 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+								<Button asChild size="lg" className="w-full sm:w-auto">
+									<Link to="/contact">See it in action</Link>
+								</Button>
+								<Button
+									asChild
+									variant="outline"
+									size="lg"
+									className="w-full sm:w-auto"
+								>
+									<Link to="/theanswerlayer">Learn more</Link>
+								</Button>
+							</div>
+							<div className="grid max-w-xl grid-cols-2 gap-px overflow-hidden rounded-[var(--rounded-lg)] bg-hairline elev-4 sm:grid-cols-4">
+								{proofStats.map(([value, label]) => (
+									<div
+										key={value}
+										className="bg-canvas/90 p-3 backdrop-blur sm:p-4"
+									>
+										<p className="text-display-sm text-[1.125rem] sm:text-[1.25rem]">
+											{value}
+										</p>
+										<p className="mt-1.5 text-caption text-body sm:mt-2">
+											{label}
+										</p>
+									</div>
+								))}
+							</div>
+						</div>
+						<div>
+							<HeroSignalBoard />
 						</div>
 					</div>
 				</div>
@@ -69,199 +132,217 @@ export function HomePage() {
 
 			<SectionBand variant="soft" className="py-12 md:py-16">
 				<LogoStrip />
+				<SignalTicker />
 			</SectionBand>
 
 			<SectionBand>
-				<div className="mx-auto mb-12 max-w-3xl text-center">
-					<h2 className="text-display-lg mb-4">
-						Understand what really matters in your business
-					</h2>
+				<div className="mb-12 grid items-end gap-6 lg:grid-cols-[0.9fr_1fr]">
+					<div>
+						<p className="font-mono-caption mb-4 text-body">Insight system</p>
+						<h2 className="text-display-lg">
+							Understand what really matters in your business.
+						</h2>
+					</div>
+					<p className="text-body-lg text-body">
+						Move from scattered reporting to a governed layer that understands
+						customer language, product friction, revenue risk, and next-best
+						actions.
+					</p>
 				</div>
 				<div className="grid gap-6 md:grid-cols-3">
-					{insightFeatures.map((feature) => (
+					{insightFeatures.map((feature, index) => (
 						<MarketingCard
 							key={feature.title}
 							variant={feature.highlight ? "large" : "marketing"}
-							className={cn(feature.highlight && "md:col-span-1")}
+							className={cn(
+								"min-h-64",
+								feature.highlight &&
+									"bg-ink text-white md:-mt-8 md:min-h-80 md:p-8",
+							)}
 						>
+							<p
+								className={cn(
+									"font-mono-caption mb-8",
+									feature.highlight ? "text-white/70" : "text-body",
+								)}
+							>
+								0{index + 1}
+							</p>
 							<h3 className="text-display-sm mb-3">{feature.title}</h3>
-							{!feature.highlight ? (
-								<p className="text-body-md text-body">{feature.description}</p>
-							) : null}
+							<p
+								className={cn(
+									"text-body-md",
+									feature.highlight ? "text-white/80" : "text-body",
+								)}
+							>
+								{feature.description}
+							</p>
 						</MarketingCard>
 					))}
 				</div>
-				<p className="text-body-lg mx-auto mt-8 max-w-2xl text-center text-body">
-					{insightFeatures[1].description}
-				</p>
-				<p className="text-body-md mx-auto mt-4 max-w-2xl text-center text-body">
-					{insightFeatures[2].description}
-				</p>
-				<p className="text-display-sm mt-10 text-center font-medium">
+				<p className="text-display-sm mx-auto mt-12 max-w-2xl text-center">
 					We turn &ldquo;what happened&rdquo; into &ldquo;what&apos;s
-					next&rdquo;
+					next.&rdquo;
 				</p>
 			</SectionBand>
 
 			<SectionBand variant="soft">
-				<div className="mx-auto mb-10 max-w-3xl text-center">
-					<h2 className="text-display-lg mb-4">
-						From contact center to C-suite, everyone gets what they need
-					</h2>
-					<p className="text-body-lg text-body">
-						Find out exactly what customers are saying — about your products,
-						service, competitors, policies and support.
-					</p>
-					<p className="text-body-md mt-2 text-body">
-						One truth, easily accessible company-wide.
-					</p>
-				</div>
-				<div className="mb-8 flex flex-wrap justify-center gap-2">
-					{personaTabs.map((tab) => (
-						<button
-							key={tab.id}
-							type="button"
-							onClick={() => setActivePersona(tab.id)}
-							className={cn(
-								"rounded-[64px] border px-4 py-2 text-body-sm transition-colors",
-								activePersona === tab.id
-									? "border-ink bg-ink text-white"
-									: "border-hairline bg-canvas text-ink hover:bg-canvas-soft",
-							)}
-						>
-							{tab.label}
-						</button>
-					))}
-				</div>
-				<MarketingCard variant="large" className="mx-auto max-w-3xl">
-					<p className="font-mono-caption mb-4 text-mute">
-						{persona.salutation}
-					</p>
-					<p className="text-body-lg text-body">{persona.body}</p>
-					<div className="mt-8">
-						<MarketingButton to="/contact" size="md">
-							Book a Demo
-						</MarketingButton>
-					</div>
-				</MarketingCard>
-			</SectionBand>
-
-			<SectionBand>
-				<div className="grid items-center gap-12 lg:grid-cols-2">
-					<div>
-						<p className="font-mono-caption mb-4 text-mute">
-							Talk with your data
-						</p>
+				<div className="grid gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:items-start">
+					<div className="lg:sticky lg:top-28">
+						<p className="font-mono-caption mb-4 text-body">Company-wide</p>
 						<h2 className="text-display-lg mb-4">
-							If you can talk or type, you&apos;re in
+							From contact center to C-suite, everyone gets what they need.
 						</h2>
-						<p className="text-body-lg mb-6 text-body">
-							Where insights find you, conversations replace dashboards, and
-							clarity arrives at the speed of thought.
+						<p className="text-body-lg text-body">
+							One truth for products, service, competitors, policies, support,
+							risk, and revenue.
 						</p>
-						<div className="space-y-6">
-							<div>
-								<h3 className="text-display-sm mb-2">
-									Ask your data a question
-								</h3>
-								<p className="text-body-md text-body">
-									Your questions could be about anything, for example: Agent
-									Performance, Product, Compliance, Governance, Risk, Fraud...
-								</p>
-							</div>
-							<div>
-								<h3 className="text-display-sm mb-2">Get answers instantly</h3>
-								<p className="text-body-md text-body">
-									Work smarter and easier. Ask to visualize data your colleagues
-									need, or ask for guidance on how to use your data to achieve
-									the right results for your business.
-								</p>
+					</div>
+					<MarketingCard variant="large" className="p-4 md:p-6">
+						<div className="mb-6 flex flex-wrap gap-2">
+							{personaTabs.map((tab) => (
+								<button
+									key={tab.id}
+									type="button"
+									onClick={() => setActivePersona(tab.id)}
+									className={cn(
+										"rounded-[var(--rounded-pill-sm)] border px-4 py-2 text-body-sm-strong transition-colors focus-visible:outline-none focus-visible:ring-[3px] focus-visible:ring-ring/30",
+										activePersona === tab.id
+											? "border-ink bg-ink text-white"
+											: "border-hairline bg-canvas text-ink hover:bg-canvas-soft",
+									)}
+								>
+									{tab.label}
+								</button>
+							))}
+						</div>
+						<div className="rounded-[var(--rounded-md)] bg-canvas-soft p-6 shadow-[var(--shadow-inset)] md:p-8">
+							<p className="font-mono-caption mb-4 text-body">
+								{persona.salutation}
+							</p>
+							<p className="text-body-lg text-body">{persona.body}</p>
+							<div className="mt-8">
+								<Button asChild>
+									<Link to="/contact">Book a Demo</Link>
+								</Button>
 							</div>
 						</div>
-					</div>
-					<MarketingCard variant="soft" className="bg-ink p-8 text-white">
-						<p className="font-mono-caption mb-4 text-white/60">Example</p>
-						<p className="text-body-lg">
-							&ldquo;What product issues are leading to the highest risk of
-							churn today?&rdquo;
-						</p>
 					</MarketingCard>
 				</div>
 			</SectionBand>
 
-			<SectionBand variant="soft">
-				<div className="mx-auto max-w-3xl text-center">
-					<h2 className="text-display-lg mb-4">
-						Stop being a human pivot table and reclaim time for high-impact work
-					</h2>
-					<p className="text-body-lg mb-2 text-body">
-						We help your leaders shift from tedious data work to focus on
-						higher-value initiatives.
-					</p>
-					<p className="text-body-md mb-8 text-body">
-						Data isn&apos;t the goal. Good decisions are.
-					</p>
-					<MarketingButton to="/contact">Book a Demo</MarketingButton>
+			<SectionBand>
+				<div className="grid items-center gap-12 lg:grid-cols-[0.9fr_1.1fr]">
+					<div>
+						<p className="font-mono-caption mb-4 text-body">
+							Talk with your data
+						</p>
+						<h2 className="text-display-lg mb-4">
+							If you can talk or type, you&apos;re in.
+						</h2>
+						<p className="text-body-lg mb-8 text-body">
+							Where insights find you, conversations replace dashboards, and
+							clarity arrives at the speed of thought.
+						</p>
+						<div className="grid gap-4 sm:grid-cols-2">
+							<MarketingCard variant="soft">
+								<h3 className="text-display-sm mb-2">
+									Ask your data a question
+								</h3>
+								<p className="text-body-md text-body">
+									Product, compliance, governance, risk, fraud, agent
+									performance, and more.
+								</p>
+							</MarketingCard>
+							<MarketingCard variant="soft">
+								<h3 className="text-display-sm mb-2">Get answers instantly</h3>
+								<p className="text-body-md text-body">
+									Visualize what colleagues need and guide teams toward the
+									right business result.
+								</p>
+							</MarketingCard>
+						</div>
+					</div>
+					<CustomerVoiceMap />
 				</div>
 			</SectionBand>
 
-			<SectionBand>
-				<div className="mx-auto max-w-3xl text-center">
-					<p className="font-mono-caption mb-4 text-mute">
-						It&apos;s complicated is for relationships, not your data
-					</p>
-					<h2 className="text-display-lg mb-4">
-						If your data strategy involves Excel, we need to talk
-					</h2>
-					<p className="text-body-lg mb-8 text-body">
-						No more slow-to-load spreadsheets. You&apos;re welcome.
-					</p>
-					<MarketingButton to="/contact">Book a Demo</MarketingButton>
+			<SectionBand variant="soft">
+				<div className="grid gap-px overflow-hidden rounded-[var(--rounded-lg)] bg-hairline elev-4 lg:grid-cols-2">
+					<div className="bg-canvas p-8 md:p-10">
+						<p className="font-mono-caption mb-4 text-body">
+							Decision velocity
+						</p>
+						<h2 className="text-display-lg mb-4">
+							Stop being a human pivot table.
+						</h2>
+						<p className="text-body-lg text-body">
+							We help leaders move from tedious data work to higher-value
+							initiatives. Data isn&apos;t the goal. Good decisions are.
+						</p>
+					</div>
+					<div className="bg-canvas p-8 md:p-10">
+						<p className="font-mono-caption mb-4 text-body">
+							Operational clarity
+						</p>
+						<h2 className="text-display-lg mb-4">
+							If your data strategy involves Excel, we need to talk.
+						</h2>
+						<p className="text-body-lg mb-8 text-body">
+							No more slow-to-load spreadsheets. You&apos;re welcome.
+						</p>
+						<Button asChild size="lg">
+							<Link to="/contact">Book a Demo</Link>
+						</Button>
+					</div>
 				</div>
 			</SectionBand>
 
 			<SectionBand variant="dark">
-				<div className="mx-auto mb-12 max-w-3xl text-center">
-					<p className="font-mono-caption mb-4 text-white/60">
-						Privacy &amp; Security
-					</p>
-					<h2 className="text-display-lg mb-4">
-						We believe your data is, well, your data
-					</h2>
+				<div className="mb-12 grid gap-6 lg:grid-cols-[0.8fr_1fr] lg:items-end">
+					<div>
+						<p className="font-mono-caption mb-4 text-white/70">
+							Privacy &amp; Security
+						</p>
+						<h2 className="text-display-lg">
+							We believe your data is, well, your data.
+						</h2>
+					</div>
 					<p className="text-body-lg text-white/80">
 						Enterprise-grade data privacy and security meets consumer-grade user
 						experience.
 					</p>
 				</div>
-				<div className="mb-10 grid gap-6 md:grid-cols-3">
+				<div className="mb-10 grid gap-px overflow-hidden rounded-[var(--rounded-lg)] bg-white/10 md:grid-cols-3">
 					{securityFeatures.map((item) => (
-						<div
-							key={item.title}
-							className="rounded-lg border border-white/10 bg-white/5 p-6"
-						>
+						<div key={item.title} className="bg-white/[0.04] p-6">
 							<h3 className="text-display-sm mb-2">{item.title}</h3>
 							<p className="text-body-sm text-white/70">{item.description}</p>
 						</div>
 					))}
 				</div>
 				<div className="text-center">
-					<MarketingButton
-						variant="secondary"
-						href={siteConfig.trustCenterUrl}
-						external
-					>
-						View our Trust Center
-					</MarketingButton>
+					<Button asChild variant="outline" size="lg">
+						<a
+							href={siteConfig.trustCenterUrl}
+							target="_blank"
+							rel="noopener noreferrer"
+						>
+							View our Trust Center
+						</a>
+					</Button>
 				</div>
 			</SectionBand>
 
 			<SectionBand>
 				<div className="mx-auto mb-12 max-w-3xl text-center">
-					<p className="font-mono-caption mb-4 text-mute">Compare solutions</p>
-					<h2 className="text-display-lg mb-4">Compare solutions</h2>
+					<p className="font-mono-caption mb-4 text-body">Compare solutions</p>
+					<h2 className="text-display-lg mb-4">
+						The Answer Layer is built for words and numbers.
+					</h2>
 					<p className="text-body-lg text-body">
-						Move past average handle time, and start understanding the voices of
-						your customers across every channel and language in real-time
+						Move past average handle time and understand customers across every
+						channel and language in real time.
 					</p>
 				</div>
 				<ComparisonTable rows={comparisonRows} />
@@ -269,21 +350,220 @@ export function HomePage() {
 
 			<SectionBand variant="soft">
 				<div className="mx-auto max-w-3xl">
-					<p className="font-mono-caption mb-4 text-center text-mute">FAQs</p>
+					<p className="font-mono-caption mb-4 text-center text-body">FAQs</p>
 					<h2 className="text-display-lg mb-4 text-center">
-						Frequently asked questions
+						Frequently asked questions.
 					</h2>
 					<p className="text-body-md mb-8 text-center text-body">
 						Connect with us if you have any additional questions.
 					</p>
 					<FaqAccordion items={faqItems} />
 					<div className="mt-8 text-center">
-						<MarketingButton to="/contact" size="md">
-							Get in touch
-						</MarketingButton>
+						<Button asChild>
+							<Link to="/contact">Get in touch</Link>
+						</Button>
 					</div>
 				</div>
 			</SectionBand>
 		</>
+	);
+}
+
+function HeroSignalBoard() {
+	return (
+		<div className="relative mx-auto w-full max-w-[560px] lg:translate-y-8">
+			<div className="signal-noise absolute inset-4 rounded-[24px] blur-3xl sm:inset-6 sm:rounded-[32px]" />
+			<div className="signal-grid absolute inset-0 opacity-80" />
+			<div className="relative overflow-hidden rounded-[28px] bg-ink p-3 text-white elev-5">
+				<div className="absolute inset-0 opacity-40 [background:radial-gradient(circle_at_20%_0%,var(--cyan)_0,transparent_28%),radial-gradient(circle_at_80%_20%,var(--highlight-pink)_0,transparent_22%)]" />
+				<div className="relative rounded-[20px] border border-white/10 bg-white/[0.035] p-4 md:p-5">
+					<div className="mb-5 flex items-center justify-between border-b border-white/10 pb-4">
+						<div>
+							<p className="font-mono-caption text-white/60">Answer OS</p>
+							<p className="text-body-sm text-white/80">
+								Live customer intelligence
+							</p>
+						</div>
+						<div className="rounded-full border border-white/10 bg-white/10 px-3 py-1 font-mono text-[12px] text-white/70">
+							online
+						</div>
+					</div>
+
+					<div className="grid gap-3">
+						{signalRows.map((row) => (
+							<div
+								key={row.label}
+								className="grid grid-cols-[1fr_auto] gap-4 rounded-[var(--rounded-md)] border border-white/10 bg-black/20 p-4"
+							>
+								<div>
+									<p className="font-mono text-[12px] text-white/50">
+										{row.label}
+									</p>
+									<p className="mt-1 text-body-md-strong text-white">
+										{row.value}
+									</p>
+								</div>
+								<div className="flex items-center gap-3">
+									<div className="h-12 w-1.5 overflow-hidden rounded-full bg-white/10">
+										<div
+											className="rounded-full bg-cyan"
+											style={{ height: row.heat }}
+										/>
+									</div>
+									<p className="font-mono text-[12px] text-white/70">
+										{row.heat}
+									</p>
+								</div>
+							</div>
+						))}
+					</div>
+
+					<div className="relative mt-4 overflow-hidden rounded-[var(--rounded-md)] border border-white/10 bg-black/30 p-4">
+						<div className="signal-scan absolute inset-y-0 w-24 bg-gradient-to-r from-transparent via-white/10 to-transparent" />
+						<p className="font-mono-caption mb-3 text-white/50">
+							Live workflow
+						</p>
+						<div className="space-y-2">
+							{commandLines.map((line, index) => (
+								<p key={line} className="font-mono text-[12px] text-white/70">
+									<span className="text-cyan">0{index + 1}</span> / {line}
+								</p>
+							))}
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div className="float-slow absolute -top-5 -right-2 hidden rounded-[var(--rounded-lg)] bg-canvas p-4 elev-4 md:block">
+				<p className="font-mono-caption text-body">Opportunity</p>
+				<p className="mt-2 text-display-sm">$1.8M</p>
+			</div>
+			<div className="float-slower absolute -bottom-6 -left-4 hidden rounded-[var(--rounded-lg)] bg-canvas p-4 elev-4 md:block">
+				<p className="font-mono-caption text-body">Emerging theme</p>
+				<p className="mt-2 text-body-sm-strong">billing confusion</p>
+			</div>
+		</div>
+	);
+}
+
+function SignalTicker() {
+	const items = [
+		"refund pressure rising in EMEA",
+		"checkout confusion clustered by product line",
+		"renewal intent up 18% after guided setup",
+		"translation quality holding across 150+ languages",
+		"policy drift detected before escalation",
+	] as const;
+	const tickerItems = [
+		...items.map((item) => ({ id: `first-${item}`, item })),
+		...items.map((item) => ({ id: `second-${item}`, item })),
+	];
+
+	return (
+		<div className="mx-auto mt-12 max-w-6xl overflow-hidden rounded-[var(--rounded-lg)] border border-hairline bg-canvas shadow-[var(--shadow-inset)]">
+			<div className="flex items-center border-b border-hairline px-4 py-3">
+				<p className="font-mono-caption shrink-0 text-body">Signal stream</p>
+				<div className="ml-4 h-px flex-1 bg-hairline" />
+			</div>
+			<div className="overflow-hidden py-4">
+				<div className="ticker-track flex w-max gap-3 px-4">
+					{tickerItems.map(({ id, item }) => (
+						<div
+							key={id}
+							className="rounded-full border border-hairline bg-canvas-soft px-4 py-2 text-body-sm text-body"
+						>
+							<span className="mr-2 font-mono text-[11px] text-link">
+								{String(items.indexOf(item) + 1).padStart(2, "0")}
+							</span>
+							{item}
+						</div>
+					))}
+				</div>
+			</div>
+		</div>
+	);
+}
+
+function CustomerVoiceMap() {
+	const nodes = [
+		{
+			label: "refunds",
+			className: "left-[8%] top-[20%]",
+			size: "size-28",
+		},
+		{
+			label: "setup",
+			className: "left-[38%] top-[8%]",
+			size: "size-36",
+		},
+		{
+			label: "billing",
+			className: "right-[10%] top-[24%]",
+			size: "size-24",
+		},
+		{
+			label: "APAC",
+			className: "bottom-[18%] left-[22%]",
+			size: "size-24",
+		},
+		{
+			label: "churn",
+			className: "bottom-[10%] right-[18%]",
+			size: "size-32",
+		},
+	] as const;
+
+	return (
+		<div className="relative min-h-[360px] overflow-hidden rounded-[20px] bg-ink p-3 text-white elev-5 sm:min-h-[440px] sm:rounded-[28px] sm:p-4 md:min-h-[520px]">
+			<div className="signal-noise absolute inset-0 opacity-70" />
+			<div className="absolute inset-0 bg-[linear-gradient(120deg,transparent,rgba(255,255,255,0.08),transparent)]" />
+			<div className="relative flex min-h-[320px] flex-col rounded-[16px] border border-white/10 bg-black/20 p-4 sm:min-h-[400px] sm:rounded-[20px] sm:p-5 md:min-h-[488px]">
+				<div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between sm:gap-4">
+					<div>
+						<p className="font-mono-caption mb-2 text-white/60">Voice map</p>
+						<p className="max-w-sm text-body-md-strong sm:text-display-sm">
+							&ldquo;What product issues are leading to the highest risk of
+							churn today?&rdquo;
+						</p>
+					</div>
+					<div className="w-fit shrink-0 rounded-full border border-white/10 bg-white/10 px-3 py-1 font-mono text-[12px] text-white/70">
+						18,402 calls
+					</div>
+				</div>
+
+				<div className="relative mt-6 min-h-[200px] flex-1 sm:absolute sm:inset-x-5 sm:bottom-5 sm:top-36 sm:mt-0 sm:min-h-0">
+					<div className="absolute left-1/2 top-1/2 size-44 -translate-x-1/2 -translate-y-1/2 rounded-full border border-cyan/40 bg-cyan/10 blur-[1px]" />
+					<div className="absolute left-1/2 top-1/2 size-64 -translate-x-1/2 -translate-y-1/2 rounded-full border border-white/10" />
+					<div className="absolute left-1/2 top-1/2 size-96 -translate-x-1/2 -translate-y-1/2 rounded-full border border-white/5" />
+					{nodes.map((node) => (
+						<div
+							key={node.label}
+							className={cn(
+								"float-slow absolute grid place-items-center rounded-full border border-white/10 bg-white/10 text-center backdrop-blur",
+								node.className,
+								node.size,
+							)}
+						>
+							<span className="font-mono text-[12px] text-white/80">
+								{node.label}
+							</span>
+						</div>
+					))}
+				</div>
+
+				<div className="relative z-10 mt-4 grid gap-px overflow-hidden rounded-[var(--rounded-md)] bg-white/10 sm:absolute sm:inset-x-5 sm:bottom-5 sm:mt-0 sm:grid-cols-3">
+					{[
+						["Top driver", "onboarding friction"],
+						["Related", "refunds + billing"],
+						["Action", "guided setup experiment"],
+					].map(([label, value]) => (
+						<div key={label} className="bg-black/30 p-4">
+							<p className="font-mono text-[11px] text-white/50">{label}</p>
+							<p className="mt-1 text-body-sm-strong text-white">{value}</p>
+						</div>
+					))}
+				</div>
+			</div>
+		</div>
 	);
 }

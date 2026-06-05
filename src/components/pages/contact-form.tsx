@@ -3,7 +3,7 @@ import { useNavigate } from "@tanstack/react-router";
 import posthog from "posthog-js";
 import { z } from "zod";
 
-import { MarketingButton } from "#/components/marketing/marketing-button.tsx";
+import { Button } from "#/components/ui/button.tsx";
 import { Checkbox } from "#/components/ui/checkbox.tsx";
 import { Input } from "#/components/ui/input.tsx";
 import { Label } from "#/components/ui/label.tsx";
@@ -126,15 +126,20 @@ export function ContactForm() {
 						<legend className="text-body-sm-strong mb-3 block">
 							What are you interested in?
 						</legend>
-						<div className="flex flex-col gap-3">
+						<div className="grid gap-3 sm:grid-cols-2">
 							{interestOptions.map((option) => {
 								const checked = field.state.value.includes(option);
+								const id = `interest-${option
+									.toLowerCase()
+									.replace(/[^a-z0-9]+/g, "-")}`;
 								return (
 									<label
 										key={option}
-										className="flex cursor-pointer items-center gap-3 text-body-sm"
+										htmlFor={id}
+										className="flex min-h-12 cursor-pointer items-center gap-3 rounded-[var(--rounded-sm)] border border-hairline bg-canvas px-3 text-body-sm shadow-[var(--shadow-inset)] transition-colors hover:bg-canvas-soft"
 									>
 										<Checkbox
+											id={id}
 											checked={checked}
 											onCheckedChange={(v) => {
 												if (v) {
@@ -171,9 +176,9 @@ export function ContactForm() {
 
 			<form.Subscribe selector={(s) => [s.canSubmit, s.isSubmitting]}>
 				{([canSubmit, isSubmitting]) => (
-					<MarketingButton type="submit" disabled={!canSubmit || isSubmitting}>
+					<Button type="submit" size="lg" disabled={!canSubmit || isSubmitting}>
 						{isSubmitting ? "Sending…" : "Get in touch"}
-					</MarketingButton>
+					</Button>
 				)}
 			</form.Subscribe>
 		</form>
@@ -206,5 +211,5 @@ function FieldError({
 		.map((e) => (typeof e === "string" ? e : e?.message))
 		.filter(Boolean)[0];
 	if (!message) return null;
-	return <p className="text-caption text-error">{message}</p>;
+	return <p className="text-caption text-error-deep">{message}</p>;
 }

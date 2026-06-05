@@ -1,7 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 
-import { MarketingButton } from "#/components/marketing/marketing-button.tsx";
 import { SectionBand } from "#/components/marketing/section-band.tsx";
+import { Button } from "#/components/ui/button.tsx";
 import { createPageMeta } from "#/lib/seo.ts";
 
 export const Route = createFileRoute("/success")({
@@ -17,21 +17,20 @@ export const Route = createFileRoute("/success")({
 
 function SuccessPage() {
 	return (
-		<SectionBand className="pt-24">
+		<SectionBand className="pt-[var(--spacing-5xl)]">
 			<div className="mx-auto max-w-xl text-center">
-				<p className="font-mono-caption mb-4 text-mute">Success</p>
+				<p className="font-mono-caption mb-4 text-body">Success</p>
 				<h1 className="text-display-lg mb-4">Thank you for reaching out.</h1>
 				<p className="text-body-lg mb-8 text-body">
 					We received your message and will get back to you shortly.
 				</p>
 				<div className="flex flex-wrap justify-center gap-3">
-					<MarketingButton to="/">Back to home</MarketingButton>
-					<Link
-						to="/theanswerlayer"
-						className="inline-flex h-12 items-center rounded-[100px] border border-hairline px-6 text-base font-medium text-ink hover:bg-canvas-soft"
-					>
-						Explore The Answer Layer
-					</Link>
+					<Button asChild size="lg">
+						<Link to="/">Back to home</Link>
+					</Button>
+					<Button asChild variant="outline" size="lg">
+						<Link to="/theanswerlayer">Explore The Answer Layer</Link>
+					</Button>
 				</div>
 			</div>
 		</SectionBand>

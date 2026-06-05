@@ -18,11 +18,11 @@ export const Route = createFileRoute("/contact")({
 
 function ContactPage() {
 	return (
-		<SectionBand className="pt-12">
-			<div className="grid gap-12 lg:grid-cols-2 lg:gap-16">
-				<div>
-					<p className="font-mono-caption mb-4 text-mute">Contact</p>
-					<h1 className="text-display-lg mb-4">
+		<SectionBand className="pt-[var(--spacing-5xl)]">
+			<div className="grid gap-12 lg:grid-cols-[0.85fr_1fr] lg:gap-16">
+				<div className="lg:pt-8">
+					<p className="font-mono-caption mb-4 text-body">Contact</p>
+					<h1 className="text-display-xl mb-6">
 						The Answer Layer. Now for CX Leaders.
 					</h1>
 					<p className="text-body-lg mb-6 text-body">
@@ -32,10 +32,10 @@ function ContactPage() {
 						Tell us about your team and we will follow up to schedule a
 						conversation.
 					</p>
-					<blockquote className="border-l-2 border-hairline pl-4 text-body-md text-body italic">
+					<blockquote className="rounded-[var(--rounded-lg)] bg-canvas-soft p-6 text-body-md text-body shadow-[var(--shadow-inset)]">
 						&ldquo;Very cool platform and demo. Are you sure this isn&apos;t our
 						real data?&rdquo;
-						<footer className="mt-3 text-body-sm not-italic">
+						<footer className="mt-4 text-body-sm-strong">
 							— Andres Jordão, CEO at Barkyn
 						</footer>
 					</blockquote>

@@ -1,5 +1,6 @@
-import { MarketingButton } from "#/components/marketing/marketing-button.tsx";
+import { Link } from "@tanstack/react-router";
 import { SectionBand } from "#/components/marketing/section-band.tsx";
+import { Button } from "#/components/ui/button.tsx";
 
 type CtaBandProps = {
 	title?: string;
@@ -16,10 +17,12 @@ export function CtaBand({
 }: CtaBandProps) {
 	return (
 		<SectionBand variant="soft" className="border-t border-hairline">
-			<div className="mx-auto max-w-2xl text-center">
-				<p className="font-mono-caption mb-4 text-mute">{subtitle}</p>
-				<h2 className="text-display-lg mb-8">{title}</h2>
-				<MarketingButton to={primaryHref}>{primaryLabel}</MarketingButton>
+			<div className="rounded-[var(--rounded-lg)] bg-canvas p-8 text-center elev-4 md:p-12">
+				<p className="font-mono-caption mb-4 text-body">{subtitle}</p>
+				<h2 className="text-display-lg mx-auto mb-8 max-w-2xl">{title}</h2>
+				<Button asChild size="lg">
+					<Link to={primaryHref}>{primaryLabel}</Link>
+				</Button>
 			</div>
 		</SectionBand>
 	);

@@ -1,10 +1,27 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400&display=swap');
 @import 'tailwindcss';
 @plugin '@tailwindcss/typography';
 
 @import 'tw-animate-css';
 
 @custom-variant dark (&:is(.dark *));
+
+@font-face {
+  font-family: 'Geist';
+  src: url('../node_modules/geist/dist/fonts/geist-sans/Geist-Variable.woff2')
+    format('woff2');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Geist Mono';
+  src: url('../node_modules/geist/dist/fonts/geist-mono/GeistMono-Variable.woff2')
+    format('woff2');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
 
 :root {
   /* DESIGN.md color tokens */
@@ -20,16 +37,29 @@
   --link: #0070f3;
   --link-deep: #0761d1;
   --link-bg-soft: #d3e5ff;
+  --success: #0070f3;
   --error: #ee0000;
+  --error-soft: #f7d4d6;
+  --error-deep: #c50000;
+  --warning: #f5a623;
+  --warning-soft: #ffefcf;
+  --warning-deep: #ab570a;
   --violet: #7928ca;
+  --violet-soft: #d8ccf1;
+  --violet-deep: #4c2889;
   --cyan: #50e3c2;
+  --cyan-soft: #aaffec;
+  --cyan-deep: #29bc9b;
   --highlight-pink: #ff0080;
+  --highlight-magenta: #eb367f;
   --gradient-develop-start: #007cf0;
   --gradient-develop-end: #00dfd8;
   --gradient-preview-start: #7928ca;
   --gradient-preview-end: #ff0080;
   --gradient-ship-start: #ff4d4d;
   --gradient-ship-end: #f9cb28;
+  --selection-bg: #171717;
+  --selection-fg: #f2f2f2;
 
   --spacing-xxs: 4px;
   --spacing-xs: 8px;
@@ -56,6 +86,7 @@
   --shadow-elev-2: 0 1px 1px rgba(0, 0, 0, 0.02), 0 2px 2px rgba(0, 0, 0, 0.04), var(--shadow-inset);
   --shadow-elev-3: 0 2px 2px rgba(0, 0, 0, 0.04), 0 8px 8px -8px rgba(0, 0, 0, 0.04), var(--shadow-inset);
   --shadow-elev-4: 0 2px 2px rgba(0, 0, 0, 0.04), 0 8px 16px -4px rgba(0, 0, 0, 0.04), var(--shadow-inset);
+  --shadow-elev-5: 0 1px 1px rgba(0, 0, 0, 0.02), 0 8px 16px -4px rgba(0, 0, 0, 0.04), 0 24px 32px -8px rgba(0, 0, 0, 0.06), var(--shadow-inset);
 
   /* shadcn bridge */
   --background: var(--canvas-soft);
@@ -69,8 +100,8 @@
   --secondary: var(--canvas-soft-2);
   --secondary-foreground: var(--ink);
   --muted: var(--canvas-soft-2);
-  --muted-foreground: var(--body);
-  --accent: var(--canvas-soft);
+  --muted-foreground: var(--mute);
+  --accent: var(--canvas);
   --accent-foreground: var(--ink);
   --destructive: var(--error);
   --destructive-foreground: var(--on-primary);
@@ -94,8 +125,8 @@
 }
 
 @theme inline {
-  --font-sans: 'Inter', ui-sans-serif, system-ui, sans-serif;
-  --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+  --font-sans: 'Geist', ui-sans-serif, system-ui, sans-serif;
+  --font-mono: 'Geist Mono', ui-monospace, monospace;
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);
@@ -125,8 +156,27 @@
   --color-mute: var(--mute);
   --color-canvas: var(--canvas);
   --color-canvas-soft: var(--canvas-soft);
+  --color-canvas-soft-2: var(--canvas-soft-2);
   --color-link: var(--link);
+  --color-link-deep: var(--link-deep);
+  --color-link-bg-soft: var(--link-bg-soft);
+  --color-success: var(--success);
+  --color-error: var(--error);
+  --color-error-soft: var(--error-soft);
+  --color-error-deep: var(--error-deep);
+  --color-warning: var(--warning);
+  --color-warning-soft: var(--warning-soft);
+  --color-warning-deep: var(--warning-deep);
+  --color-violet: var(--violet);
+  --color-violet-soft: var(--violet-soft);
+  --color-violet-deep: var(--violet-deep);
+  --color-cyan: var(--cyan);
+  --color-cyan-soft: var(--cyan-soft);
+  --color-cyan-deep: var(--cyan-deep);
+  --color-highlight-pink: var(--highlight-pink);
+  --color-highlight-magenta: var(--highlight-magenta);
   --color-hairline: var(--hairline);
+  --color-hairline-strong: var(--hairline-strong);
   --radius-sm: var(--rounded-sm);
   --radius-md: var(--rounded-md);
   --radius-lg: var(--rounded-lg);
@@ -147,6 +197,10 @@ body,
   min-height: 100%;
 }
 
+html {
+  overflow-x: clip;
+}
+
 body {
   margin: 0;
   color: var(--ink);
@@ -157,16 +211,16 @@ body {
 }
 
 ::selection {
-  background: var(--ink);
-  color: #f2f2f2;
+  background: var(--selection-bg);
+  color: var(--selection-fg);
 }
 
-a {
+a:not([data-slot='button']) {
   color: var(--link);
   text-underline-offset: 2px;
 }
 
-a:hover {
+a:not([data-slot='button']):hover {
   color: var(--link-deep);
 }
 
@@ -211,9 +265,22 @@ a:hover {
   line-height: 24px;
 }
 
+.text-body-md-strong {
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 24px;
+}
+
 .text-body-sm {
   font-size: 14px;
   font-weight: 400;
+  line-height: 20px;
+  letter-spacing: -0.28px;
+}
+
+.text-body-sm-strong {
+  font-size: 14px;
+  font-weight: 500;
   line-height: 20px;
   letter-spacing: -0.28px;
 }
@@ -245,13 +312,120 @@ a:hover {
   box-shadow: var(--shadow-elev-4);
 }
 
+.elev-5 {
+  box-shadow: var(--shadow-elev-5);
+}
+
 .marketing-container {
-  width: min(1400px, calc(100% - 2 * var(--spacing-lg)));
+  width: min(1400px, calc(100% - 2 * var(--spacing-md)));
   margin-inline: auto;
+}
+
+@media (min-width: 768px) {
+  .marketing-container {
+    width: min(1400px, calc(100% - 2 * var(--spacing-lg)));
+  }
+}
+
+/* Hero sections: room for fixed header; tighter rhythm on small screens */
+.marketing-hero {
+  position: relative;
+  overflow: hidden;
+  background-color: var(--canvas);
+  padding-top: calc(4rem + var(--spacing-3xl));
+  padding-bottom: var(--spacing-4xl);
+}
+
+@media (min-width: 768px) {
+  .marketing-hero {
+    padding-top: var(--spacing-5xl);
+    padding-bottom: var(--spacing-5xl);
+  }
+}
+
+@media (min-width: 1024px) {
+  .marketing-hero {
+    padding-bottom: var(--spacing-section);
+  }
+}
+
+/* Atmosphere (mesh + grid) — capped height on mobile so slice does not over-zoom */
+.marketing-hero-atmosphere {
+  position: absolute;
+  inset-inline: 0;
+  top: 0;
+  height: min(680px, 72vh);
+  pointer-events: none;
+}
+
+@media (min-width: 768px) {
+  .marketing-hero-atmosphere {
+    inset: 0;
+    height: auto;
+  }
 }
 
 .rise-in {
   animation: rise-in 700ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.signal-grid {
+  background-image:
+    linear-gradient(var(--hairline) 1px, transparent 1px),
+    linear-gradient(90deg, var(--hairline) 1px, transparent 1px);
+  background-size: 44px 44px;
+  mask-image: radial-gradient(circle at 50% 20%, black 0%, transparent 68%);
+}
+
+.signal-noise {
+  background-image:
+    radial-gradient(circle at 24% 18%, rgba(80, 227, 194, 0.18), transparent 24%),
+    radial-gradient(circle at 82% 12%, rgba(255, 0, 128, 0.14), transparent 22%),
+    radial-gradient(circle at 72% 78%, rgba(249, 203, 40, 0.16), transparent 28%);
+}
+
+.signal-scan {
+  animation: signal-scan 7s linear infinite;
+}
+
+.float-slow {
+  animation: float-slow 8s ease-in-out infinite;
+}
+
+.float-slower {
+  animation: float-slow 11s ease-in-out infinite reverse;
+}
+
+.ticker-track {
+  animation: ticker-track 24s linear infinite;
+}
+
+@keyframes signal-scan {
+  from {
+    transform: translateX(-35%);
+  }
+  to {
+    transform: translateX(135%);
+  }
+}
+
+@keyframes float-slow {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-12px);
+  }
+}
+
+@keyframes ticker-track {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
 }
 
 @keyframes rise-in {
@@ -266,7 +440,11 @@ a:hover {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .rise-in {
+  .rise-in,
+  .signal-scan,
+  .float-slow,
+  .float-slower,
+  .ticker-track {
     animation: none;
   }
 }

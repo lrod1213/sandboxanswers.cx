@@ -11,7 +11,7 @@ export function BannerPill({ children, className }: BannerPillProps) {
 	return (
 		<span
 			className={cn(
-				"inline-flex items-center rounded-full bg-canvas-soft px-3 py-1 text-body-sm text-body",
+				"inline-flex max-w-full items-center rounded-full border border-hairline bg-canvas px-3 py-1 text-center text-body-sm text-body leading-snug shadow-[var(--shadow-inset)] sm:text-left sm:text-body-sm-strong",
 				className,
 			)}
 		>

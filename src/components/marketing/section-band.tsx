@@ -16,7 +16,7 @@ const variantClasses: Record<SectionBandVariant, string> = {
 	default: "bg-canvas text-ink",
 	soft: "bg-canvas-soft text-ink",
 	dark: "bg-ink text-white",
-	hero: "bg-canvas text-ink",
+	hero: "relative overflow-hidden bg-canvas text-ink",
 };
 
 export function SectionBand({
@@ -30,7 +30,8 @@ export function SectionBand({
 		<section
 			id={id}
 			className={cn(
-				"py-16 md:py-24 lg:py-[var(--spacing-5xl)]",
+				"py-[var(--spacing-3xl)] md:py-[var(--spacing-4xl)] lg:py-[var(--spacing-5xl)]",
+				variant === "hero" && "lg:py-[var(--spacing-section)]",
 				variantClasses[variant],
 				className,
 			)}

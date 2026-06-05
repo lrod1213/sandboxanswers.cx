@@ -30,14 +30,19 @@ const columns = [
 
 export function ComparisonTable({ rows, className }: ComparisonTableProps) {
 	return (
-		<div className={cn("overflow-x-auto", className)}>
-			<div className="grid min-w-[720px] grid-cols-4 gap-px rounded-lg border border-hairline bg-hairline">
-				<div className="bg-canvas-soft p-4" />
+		<div
+			className={cn(
+				"overflow-x-auto rounded-[var(--rounded-lg)] elev-4",
+				className,
+			)}
+		>
+			<div className="grid min-w-[760px] grid-cols-4 gap-px bg-hairline">
+				<div className="bg-canvas-soft p-5" />
 				{columns.map((col) => (
 					<div
 						key={col.key}
 						className={cn(
-							"p-4",
+							"p-5",
 							col.featured ? "bg-ink text-white" : "bg-canvas",
 						)}
 					>
@@ -76,7 +81,7 @@ function ComparisonRowCells({ row }: { row: ComparisonRow }) {
 	if (isSectionHeader) {
 		return (
 			<>
-				<div className="bg-canvas-soft px-4 py-3 font-mono-caption text-mute">
+				<div className="bg-canvas-soft px-5 py-4 font-mono-caption text-body">
 					{row.category}
 				</div>
 				<div className="col-span-3 bg-canvas-soft" />
@@ -86,16 +91,16 @@ function ComparisonRowCells({ row }: { row: ComparisonRow }) {
 
 	return (
 		<>
-			<div className="bg-canvas-soft px-4 py-3 text-body-sm font-medium text-ink">
+			<div className="bg-canvas-soft px-5 py-4 text-body-sm-strong text-ink">
 				{row.category}
 			</div>
-			<div className="bg-ink/95 px-4 py-3 text-body-sm text-white">
+			<div className="bg-ink px-5 py-4 text-body-sm text-white">
 				{row.answerLayer}
 			</div>
-			<div className="bg-canvas px-4 py-3 text-body-sm text-body">
+			<div className="bg-canvas px-5 py-4 text-body-sm text-body">
 				{row.builtIn}
 			</div>
-			<div className="bg-canvas px-4 py-3 text-body-sm text-body">
+			<div className="bg-canvas px-5 py-4 text-body-sm text-body">
 				{row.traditional}
 			</div>
 		</>

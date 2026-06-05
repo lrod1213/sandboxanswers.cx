@@ -21,14 +21,14 @@ export function LogoStrip({
 	className,
 }: LogoStripProps) {
 	return (
-		<div className={cn("text-center", className)}>
-			<p className="font-mono-caption mb-8 text-mute">Customer logos</p>
-			<h3 className="text-display-sm mb-10">{title}</h3>
-			<ul className="flex flex-wrap items-center justify-center gap-x-10 gap-y-6">
+		<div className={cn("mx-auto max-w-5xl text-center", className)}>
+			<p className="font-mono-caption mb-4 text-body">Proof layer</p>
+			<h3 className="text-display-sm mb-8">{title}</h3>
+			<ul className="grid grid-cols-2 gap-px overflow-hidden rounded-[var(--rounded-lg)] bg-hairline shadow-[var(--shadow-inset)] sm:grid-cols-3 lg:grid-cols-6">
 				{brands.map((brand) => (
 					<li
 						key={brand}
-						className="text-body-sm font-medium tracking-wide text-body/80 uppercase"
+						className="flex min-h-20 items-center justify-center bg-canvas px-4 text-center text-body-sm-strong text-body"
 					>
 						{brand}
 					</li>
