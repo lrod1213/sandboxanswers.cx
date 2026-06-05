@@ -114,9 +114,11 @@ function AssistantStatusBadge({ active }: { active: boolean }) {
 }
 
 function TeamRosterPreview({
+	className,
 	enabled,
 	onToggle,
 }: {
+	className?: string;
 	enabled: Record<string, boolean>;
 	onToggle: (id: string, checked: boolean) => void;
 }) {
@@ -124,7 +126,7 @@ function TeamRosterPreview({
 	const activeCount = assistants.filter((a) => enabled[a.id]).length;
 
 	return (
-		<MarketingCard variant="large" className="overflow-hidden p-0">
+		<MarketingCard variant="large" className={cn("overflow-hidden p-0", className)}>
 			<div className="border-b border-hairline bg-canvas-soft px-5 py-4">
 				<p className="section-eyebrow">Your team · on duty</p>
 				<p className="text-display-sm mt-1">
@@ -221,6 +223,28 @@ function AssistantRosterCard({
 	);
 }
 
+function HeroRotatingOutcome({ activeIndex }: { activeIndex: number }) {
+	return (
+		<span className="relative grid text-link" aria-live="polite">
+			{heroRotatingOutcomes.map((outcome, index) => (
+				<span
+					key={outcome}
+					className={cn(
+						"relative col-start-1 row-start-1 transition-opacity duration-300",
+						index === activeIndex ? "opacity-100" : "opacity-0",
+					)}
+					aria-hidden={index !== activeIndex}
+				>
+					{outcome}.
+					{index === activeIndex ? (
+						<span className="absolute inset-x-0 bottom-1 -z-10 h-3 rounded-full bg-link-bg-soft" />
+					) : null}
+				</span>
+			))}
+		</span>
+	);
+}
+
 export function AiAssistantsTeamPage() {
 	const [outcomeIndex, setOutcomeIndex] = useState(0);
 	const [enabled, setEnabled] = useState<Record<string, boolean>>(() =>
@@ -249,67 +273,64 @@ export function AiAssistantsTeamPage() {
 					aria-hidden
 				/>
 				<div className="marketing-container relative z-10">
-					<div className="grid items-center gap-8 rise-in md:gap-14 lg:grid-cols-[0.95fr_1.05fr]">
-						<div>
-							<BannerPill className="mb-6 max-w-full sm:mb-8">
-								Experiment · Hire your AI team
-							</BannerPill>
-							<h1 className="mb-6 max-w-4xl text-[2.5rem] font-semibold leading-[0.95] tracking-[-0.06em] text-ink sm:text-[3rem] sm:leading-[0.92] sm:tracking-[-0.08em] md:text-[56px] md:tracking-[-3.4px] lg:text-[72px] lg:tracking-[-4px]">
+					<div className="rise-in">
+						<BannerPill className="mb-6 max-w-full sm:mb-8">
+							Experiment · Hire your AI team
+						</BannerPill>
+						<div className="grid gap-8 md:gap-14 lg:grid-cols-[0.95fr_1.05fr]">
+							<h1 className="max-w-4xl text-[2.5rem] font-semibold leading-[0.95] tracking-[-0.06em] text-ink sm:text-[3rem] sm:leading-[0.92] sm:tracking-[-0.08em] md:text-[56px] md:tracking-[-3.4px] lg:col-start-1 lg:row-start-1 lg:self-center lg:text-[72px] lg:tracking-[-4px]">
 								You stay strategic.
 								<br />
-								Your AI Assistants monitor the details to uncover{" "}
-								<span
-									className="relative inline-block text-link"
-									key={outcomeIndex}
-								>
-									{heroRotatingOutcomes[outcomeIndex]}.
-									<span className="absolute inset-x-0 bottom-1 -z-10 h-3 rounded-full bg-link-bg-soft" />
-								</span>
+								Your AI Assistants monitor the details 24/7:
+								<br />
+								<HeroRotatingOutcome activeIndex={outcomeIndex} />
 							</h1>
-							<p className="text-body-lg mb-8 max-w-xl text-body">
-								Get your own answers in seconds, while your assistants monitor
-								the details 24/7, briefing other human teams and building
-								presentations for leadership. No more surprises. No more
-								delegating menial grunt work. Your AI Agents are here to please
-								you. You&apos;re always in control.
-							</p>
-							<div className="mb-10 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
-								<Button asChild size="lg" className="w-full sm:w-auto">
-									<Link to="/contact">See it in action</Link>
-								</Button>
-								<Button
-									variant="outline"
-									size="lg"
-									className="w-full sm:w-auto"
-									onClick={() =>
-										scrollToElement("#team", { offset: 88, duration: 1100 })
-									}
-								>
-									Meet your team
-								</Button>
-							</div>
-							<div className="grid max-w-xl grid-cols-2 gap-px overflow-hidden rounded-[var(--rounded-lg)] bg-hairline elev-4 sm:grid-cols-4">
-								{proofStats.map(([value, label]) => (
-									<div
-										key={value}
-										className="bg-canvas/90 p-3 backdrop-blur sm:p-4"
+							<div className="flex flex-col gap-8 lg:col-start-1 lg:row-start-2 lg:max-w-xl">
+								<p className="text-body-lg text-body">
+									Get your own answers in seconds, while your assistants monitor
+									the details 24/7, briefing other human teams and building
+									presentations for leadership. No more surprises. No more
+									delegating menial grunt work. You&apos;re always in control.
+								</p>
+								<div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+									<Button asChild size="lg" className="w-full sm:w-auto">
+										<Link to="/contact">See it in action</Link>
+									</Button>
+									<Button
+										variant="outline"
+										size="lg"
+										className="w-full sm:w-auto"
+										onClick={() =>
+											scrollToElement("#team", { offset: 88, duration: 1100 })
+										}
 									>
-										<p className="text-display-sm text-[1.125rem] sm:text-[1.25rem]">
-											{value}
-										</p>
-										<p className="mt-1.5 text-caption text-body sm:mt-2">
-											{label}
-										</p>
-									</div>
-								))}
+										Meet your team
+									</Button>
+								</div>
+								<div className="grid grid-cols-2 gap-px overflow-hidden rounded-[var(--rounded-lg)] bg-hairline elev-4 sm:grid-cols-4">
+									{proofStats.map(([value, label]) => (
+										<div
+											key={value}
+											className="bg-canvas/90 p-3 backdrop-blur sm:p-4"
+										>
+											<p className="text-display-sm text-[1.125rem] sm:text-[1.25rem]">
+												{value}
+											</p>
+											<p className="mt-1.5 text-caption text-body sm:mt-2">
+												{label}
+											</p>
+										</div>
+									))}
+								</div>
 							</div>
+							<TeamRosterPreview
+								className="lg:col-start-2 lg:row-start-1 lg:self-center"
+								enabled={enabled}
+								onToggle={(id, checked) =>
+									setEnabled((prev) => ({ ...prev, [id]: checked }))
+								}
+							/>
 						</div>
-						<TeamRosterPreview
-							enabled={enabled}
-							onToggle={(id, checked) =>
-								setEnabled((prev) => ({ ...prev, [id]: checked }))
-							}
-						/>
 					</div>
 				</div>
 			</section>
