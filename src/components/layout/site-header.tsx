@@ -15,9 +15,9 @@ import {
 	integrationsLinks,
 	primaryCta,
 	resourcesLinks,
-	siteConfig,
 	solutionsLinks,
-} from "#/config/site.ts";
+} from "#/config/pages.ts";
+import { siteConfig } from "#/config/site.ts";
 import { cn } from "#/lib/utils.ts";
 
 function NavLinkItem({

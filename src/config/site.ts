@@ -11,23 +11,3 @@ export const siteConfig = {
 	statusUrl: "https://status.cxconnect.ai",
 	trustCenterUrl: "https://trust.cxconnect.ai",
 } as const;
-
-export type NavLink = {
-	label: string;
-	href: string;
-	external?: boolean;
-	disabled?: boolean;
-};
-
-export {
-	companyLinks,
-	contactInterestOptions,
-	footerColumns,
-	integrationsLinks,
-	legalLinks,
-	pages,
-	primaryCta,
-	resourcesLinks,
-	sitemapPaths,
-	solutionsLinks,
-} from "#/config/pages.ts";

@@ -1,6 +1,7 @@
 import { Link } from "@tanstack/react-router";
 
-import { footerColumns, siteConfig } from "#/config/site.ts";
+import { footerColumns } from "#/config/pages.ts";
+import { siteConfig } from "#/config/site.ts";
 
 function FooterLink({
 	href,

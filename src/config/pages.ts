@@ -1,5 +1,9 @@
-import { siteConfig } from "#/config/site.ts";
-import type { NavLink } from "#/config/site.ts";
+export type NavLink = {
+	label: string;
+	href: string;
+	external?: boolean;
+	disabled?: boolean;
+};
 
 export type PageNavGroup =
 	| "solutions"
@@ -19,6 +23,9 @@ export type PageDefinition = {
 	external?: boolean;
 	disabled?: boolean;
 };
+
+const DOCS_URL = "https://docs.cxconnect.ai";
+const STATUS_URL = "https://status.cxconnect.ai";
 
 export const pages = [
 	{
@@ -95,13 +102,13 @@ export const pages = [
 		disabled: true,
 	},
 	{
-		path: siteConfig.docsUrl,
+		path: DOCS_URL,
 		label: "Documentation",
 		navGroup: "resources",
 		external: true,
 	},
 	{
-		path: siteConfig.statusUrl,
+		path: STATUS_URL,
 		label: "System Status",
 		navGroup: "legal",
 		external: true,
