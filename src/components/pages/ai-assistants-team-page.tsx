@@ -119,8 +119,9 @@ export function AiAssistantsTeamPage() {
 								Experiment · Hire your AI team
 							</BannerPill>
 							<h1 className="mb-6 max-w-4xl text-[2.5rem] font-semibold leading-[0.95] tracking-[-0.06em] text-ink sm:text-[3rem] sm:leading-[0.92] sm:tracking-[-0.08em] md:text-[56px] md:tracking-[-3.4px] lg:text-[72px] lg:tracking-[-4px]">
-								Hire a team of AI assistants to do the work you{" "}
-								<span className="text-body">don&apos;t</span>—and find{" "}
+								You stay strategic.
+								<br />
+								Your AI Assistants monitor the details to uncover{" "}
 								<span
 									className="relative inline-block text-link"
 									key={outcomeIndex}
@@ -130,9 +131,10 @@ export function AiAssistantsTeamPage() {
 								</span>
 							</h1>
 							<p className="text-body-lg mb-8 max-w-xl text-body">
-								Get your own answers in seconds—or put specialists on watch
-								24/7 to brief your human teams and build presentations for
-								leadership. AI handles the tedious digging. You stay strategic.
+								Get your own answers in seconds, while your assistants monitor
+								the details 24/7, briefing other human teams and building
+								presentations for leadership. AI handles the tedious digging.
+								You stay strategic.
 							</p>
 							<div className="mb-10 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
 								<Button asChild size="lg" className="w-full sm:w-auto">
@@ -209,7 +211,7 @@ export function AiAssistantsTeamPage() {
 						</h2>
 					</div>
 					<p className="text-body-lg text-body">
-						Pick the roles you need—or run the full bench. Each assistant is
+						Pick the roles you need, or run the full bench. Each assistant is
 						built for a job your team already does manually, just slower and
 						more painfully.
 					</p>
@@ -246,7 +248,7 @@ export function AiAssistantsTeamPage() {
 				<div className="grid gap-12 lg:grid-cols-2 lg:items-center">
 					<div>
 						<p className="font-mono-caption mb-4 text-white/70">
-							For skeptical leaders
+							Ready to upskill?
 						</p>
 						<h2 className="text-display-lg mb-6 text-white">
 							AI isn&apos;t here to take your job. It&apos;s here to take the

@@ -18,14 +18,14 @@ export const workModes = [
 	{
 		title: "Ask once, get an answer",
 		description:
-			"Skip the late-night pivot tables. Ask a plain-language question and get a governed answer in seconds—sourced from the systems you already use.",
+			"Skip the late-night pivot tables. Ask a plain-language question and get a governed answer in seconds, sourced from the systems you already use.",
 		example: "“Which enterprise accounts mentioned billing friction this quarter?”",
 	},
 	{
 		title: "Hire the team to watch 24/7",
 		description:
-			"Your assistants monitor conversations, tickets, surveys, and operational data around the clock—then surface what matters before it becomes a fire drill.",
-		example: "“Churn risk rising in EMEA onboarding—summary ready for your standup.”",
+			"Your assistants monitor conversations, tickets, surveys, and operational data around the clock, then surface what matters before it becomes a fire drill.",
+		example: "“Churn risk rising in EMEA onboarding. Summary ready for your standup.”",
 	},
 ] as const;
 
@@ -35,7 +35,7 @@ export const assistants: AiAssistant[] = [
 		title: "Revenue Opportunity Scout",
 		role: "Growth & expansion",
 		summary:
-			"Finds upsell, cross-sell, and renewal intent buried in conversations and usage—without you mining five dashboards.",
+			"Finds upsell, cross-sell, and renewal intent buried in conversations and usage, without you mining five dashboards.",
 		gruntWork:
 			"Searching CRM notes, stitching usage exports, and building one-off renewal decks.",
 		icon: "trending-up",
@@ -65,7 +65,7 @@ export const assistants: AiAssistant[] = [
 		title: "Key Account Watch",
 		role: "Strategic accounts",
 		summary:
-			"Keeps a steady pulse on your largest customers—escalations, sentiment shifts, and executive-ready summaries.",
+			"Keeps a steady pulse on your largest customers: escalations, sentiment shifts, and executive-ready summaries.",
 		gruntWork:
 			"Weekly account reviews built from inbox searches and ad hoc leadership requests.",
 		icon: "building-2",
@@ -85,7 +85,7 @@ export const assistants: AiAssistant[] = [
 		title: "CX Quality Reviewer",
 		role: "Experience quality",
 		summary:
-			"Highlights experience breakdowns and coaching opportunities from real interactions—not random ticket pulls.",
+			"Highlights experience breakdowns and coaching opportunities from real interactions, not random ticket pulls.",
 		gruntWork:
 			"Listening to call samples and building subjective QA scorecards by hand.",
 		icon: "heart-handshake",
@@ -95,7 +95,7 @@ export const assistants: AiAssistant[] = [
 		title: "Bot Performance Coach",
 		role: "Automation quality",
 		summary:
-			"Shows when bots deflect well—and when they create new work for humans or customers.",
+			"Shows when bots deflect well, and when they create new work for humans or customers.",
 		gruntWork:
 			"Exporting bot logs and guessing which intents need retraining.",
 		icon: "bot",
@@ -124,7 +124,7 @@ export const strategicShiftItems = [
 	{
 		title: "Protect revenue",
 		description:
-			"Spend time on accounts and motions that move ARR—not on reconciling who said what in which system.",
+			"Spend time on accounts and motions that move ARR, not on reconciling who said what in which system.",
 	},
 	{
 		title: "Reduce churn",
@@ -134,19 +134,19 @@ export const strategicShiftItems = [
 	{
 		title: "Build better products",
 		description:
-			"Bring product teams a ranked, sourced view of customer pain—not a folder of screenshots.",
+			"Bring product teams a ranked, sourced view of customer pain, not a folder of screenshots.",
 	},
 	{
 		title: "Coach with confidence",
 		description:
-			"Lead humans with clear examples and trends—so AI feels like backup, not a replacement.",
+			"Lead humans with clear examples and trends, so AI feels like backup, not a replacement.",
 	},
 ] as const;
 
 export const reassurancePoints = [
 	{
-		title: "AI does the grunt work. You do the judgment.",
-		body: "Your assistants handle search, synthesis, and monitoring. You decide what to do with the insight—and who needs to hear it.",
+		title: "AI does the grunt work. You handle the judgement.",
+		body: "Your assistants handle search, synthesis, and monitoring. You decide what to do with the insight, and who needs to hear it.",
 	},
 	{
 		title: "Your job gets more strategic, not smaller.",
@@ -154,7 +154,7 @@ export const reassurancePoints = [
 	},
 	{
 		title: "Governed answers, not mystery boxes.",
-		body: "Every insight can be traced to your data and policies—so skeptical teams can validate before they present upstream.",
+		body: "Every insight can be traced to your data and policies, so skeptical teams can validate before they present upstream.",
 	},
 ] as const;
 
@@ -162,26 +162,26 @@ export const faqItems = [
 	{
 		question: "Will this replace my team?",
 		answer:
-			"No. The goal is to remove the repetitive work that burns people out—late-night reporting, manual sampling, and endless status hunts—so your team can focus on decisions only humans should make: prioritization, relationships, and strategy.",
+			"No. The goal is to remove the repetitive work that burns people out: late-night reporting, manual sampling, and endless status hunts. Your team can focus on decisions only humans should make: prioritization, relationships, and strategy.",
 	},
 	{
 		question: "We’re skeptical of AI. Where do we start?",
 		answer:
-			"Start with one assistant and one question you already ask every week. Compare the answer to what it takes today. Most teams begin with churn, revenue, or product feedback—then expand when they trust the sourcing.",
+			"Start with one assistant and one question you already ask every week. Compare the answer to what it takes today. Most teams begin with churn, revenue, or product feedback, then expand when they trust the sourcing.",
 	},
 	{
 		question: "How is this different from another chatbot?",
 		answer:
-			"These assistants are specialized roles connected to your operational data. They monitor continuously, produce leadership-ready summaries, and stay focused on CX outcomes—not generic conversation.",
+			"Not a chatbot at all. Your assistants are specialized roles connected to your operational data. They monitor your data continuously, produce leadership-ready summaries, and stay focused on outcomes. They stay harnessed in our system, and do not communicate with customers. You're always in control.",
 	},
 	{
 		question: "Can I get answers on demand and monitoring at the same time?",
 		answer:
-			"Yes. Ask ad hoc questions when you need a fast answer, and keep assistants running 24/7 to alert your team when patterns change—before your boss asks why no one saw it coming.",
+			"Yes. Ask ad hoc questions when you need a fast answer, and keep assistants running 24/7 to alert your team when patterns change, before your boss asks why no one saw it coming.",
 	},
 	{
 		question: "Who typically buys this?",
 		answer:
-			"CX, support, and operations leaders who are tired of being the human API between systems—and who need credible, sourced narratives for executives and cross-functional partners.",
+			"CX, support, and operations leaders who are tired of being the human API between systems, and who need credible, sourced narratives for executives and cross-functional partners.",
 	},
 ] as const;
