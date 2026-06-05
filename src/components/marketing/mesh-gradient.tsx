@@ -8,7 +8,7 @@ export function MeshGradient({ className }: MeshGradientProps) {
 	return (
 		<div
 			className={cn(
-				"marketing-hero-atmosphere bg-[radial-gradient(circle_at_50%_0%,rgba(255,255,255,0.85),rgba(255,255,255,0)_52%)]",
+				"marketing-hero-atmosphere bg-[radial-gradient(circle_at_50%_0%,var(--mesh-radial-center),transparent_52%)]",
 				className,
 			)}
 			aria-hidden
@@ -26,9 +26,17 @@ export function MeshGradient({ className }: MeshGradientProps) {
 						<feGaussianBlur stdDeviation="96" />
 					</filter>
 					<linearGradient id="mesh-fade" x1="600" x2="600" y1="0" y2="720">
-						<stop stopColor="white" />
-						<stop offset="0.68" stopColor="white" stopOpacity="0.8" />
-						<stop offset="1" stopColor="white" stopOpacity="0" />
+						<stop stopColor="var(--mesh-fade-color)" />
+						<stop
+							offset="0.68"
+							stopColor="var(--mesh-fade-color)"
+							stopOpacity="0.8"
+						/>
+						<stop
+							offset="1"
+							stopColor="var(--mesh-fade-color)"
+							stopOpacity="0"
+						/>
 					</linearGradient>
 					<mask id="mesh-mask">
 						<rect width="1200" height="720" fill="url(#mesh-fade)" />

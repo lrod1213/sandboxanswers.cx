@@ -14,6 +14,8 @@ import {
 import { PageViewTracker } from "#/components/analytics/page-view-tracker.tsx";
 import { MarketingLayout } from "#/components/layout/marketing-layout.tsx";
 import { OrganizationJsonLd } from "#/components/seo/organization-json-ld.tsx";
+import { ThemeProvider } from "#/components/theme/theme-provider.tsx";
+import { ThemeScript } from "#/components/theme/theme-script.tsx";
 import { createPageHead } from "#/lib/seo.ts";
 import PostHogProvider from "../integrations/posthog/provider";
 import appCss from "../styles.css?url";
@@ -54,30 +56,33 @@ function RootComponent() {
 
 function RootDocument({ children }: { children: React.ReactNode }) {
 	return (
-		<html lang="en">
+		<html lang="en" suppressHydrationWarning>
 			<head>
+				<ThemeScript />
 				<GtmHeadScript />
 				<OrganizationJsonLd />
 				<HeadContent />
 			</head>
 			<body>
 				<GtmNoScript />
-				<PostHogProvider>
-					<FirstTouchCapture />
-					<PageViewTracker />
-					{children}
-					<TanStackDevtools
-						config={{
-							position: "bottom-right",
-						}}
-						plugins={[
-							{
-								name: "Tanstack Router",
-								render: <TanStackRouterDevtoolsPanel />,
-							},
-						]}
-					/>
-				</PostHogProvider>
+				<ThemeProvider>
+					<PostHogProvider>
+						<FirstTouchCapture />
+						<PageViewTracker />
+						{children}
+						<TanStackDevtools
+							config={{
+								position: "bottom-right",
+							}}
+							plugins={[
+								{
+									name: "Tanstack Router",
+									render: <TanStackRouterDevtoolsPanel />,
+								},
+							]}
+						/>
+					</PostHogProvider>
+				</ThemeProvider>
 				<Scripts />
 			</body>
 		</html>

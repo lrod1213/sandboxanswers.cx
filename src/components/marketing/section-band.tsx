@@ -15,7 +15,7 @@ type SectionBandProps = {
 const variantClasses: Record<SectionBandVariant, string> = {
 	default: "bg-canvas text-ink",
 	soft: "bg-canvas-soft text-ink",
-	dark: "bg-ink text-white",
+	dark: "bg-[var(--surface-inverse)] text-[var(--on-inverse)]",
 	hero: "relative overflow-hidden bg-canvas text-ink",
 };
 

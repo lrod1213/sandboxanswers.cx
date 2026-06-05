@@ -135,6 +135,58 @@
   --sidebar-accent-foreground: var(--ink);
   --sidebar-border: var(--hairline);
   --sidebar-ring: var(--hairline-strong);
+
+  --surface-inverse: #171717;
+  --on-inverse: #ffffff;
+  --mesh-fade-color: #ffffff;
+  --mesh-radial-center: rgba(255, 255, 255, 0.85);
+}
+
+.dark {
+  color-scheme: dark;
+
+  --ink: #fafafa;
+  --body: #a3a3a3;
+  --mute: #737373;
+  --hairline: #262626;
+  --hairline-strong: #404040;
+  --canvas: #0a0a0a;
+  --canvas-soft: #121212;
+  --canvas-soft-2: #1a1a1a;
+
+  --link: #c084fc;
+  --link-deep: #d8b4fe;
+  --link-bg-soft: #1a1033;
+
+  --green-50: #042f2e;
+  --green-100: #064e45;
+  --green-200: #0f766e;
+  --success-soft: #042f2e;
+  --error-soft: #2a0a12;
+  --warning-soft: #2a1f08;
+  --violet-soft: #1a1033;
+  --cyan-soft: #064e45;
+
+  --cta-foreground: #171717;
+
+  --surface-inverse: #000000;
+  --on-inverse: #fafafa;
+  --mesh-fade-color: #0a0a0a;
+  --mesh-radial-center: rgba(10, 10, 10, 0.88);
+
+  --shadow-inset: 0 0 0 1px rgba(255, 255, 255, 0.08);
+  --shadow-elev-2:
+    0 1px 1px rgba(0, 0, 0, 0.24), 0 2px 2px rgba(0, 0, 0, 0.18),
+    var(--shadow-inset);
+  --shadow-elev-3:
+    0 2px 2px rgba(0, 0, 0, 0.22), 0 8px 8px -8px rgba(0, 0, 0, 0.28),
+    var(--shadow-inset);
+  --shadow-elev-4:
+    0 2px 2px rgba(0, 0, 0, 0.22), 0 8px 16px -4px rgba(0, 0, 0, 0.32),
+    var(--shadow-inset);
+  --shadow-elev-5:
+    0 1px 1px rgba(0, 0, 0, 0.2), 0 8px 16px -4px rgba(0, 0, 0, 0.34),
+    0 24px 32px -8px rgba(0, 0, 0, 0.42), var(--shadow-inset);
 }
 
 @theme inline {
@@ -417,6 +469,13 @@ a:not([data-slot='button']):hover {
     radial-gradient(circle at 24% 18%, rgba(94, 234, 212, 0.18), transparent 24%),
     radial-gradient(circle at 82% 12%, rgba(159, 49, 203, 0.14), transparent 22%),
     radial-gradient(circle at 72% 78%, rgba(255, 158, 11, 0.16), transparent 28%);
+}
+
+.dark .signal-noise {
+  background-image:
+    radial-gradient(circle at 24% 18%, rgba(94, 234, 212, 0.12), transparent 24%),
+    radial-gradient(circle at 82% 12%, rgba(159, 49, 203, 0.1), transparent 22%),
+    radial-gradient(circle at 72% 78%, rgba(255, 158, 11, 0.1), transparent 28%);
 }
 
 .signal-scan {

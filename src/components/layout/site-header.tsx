@@ -2,6 +2,7 @@ import { ClientOnly, Link } from "@tanstack/react-router";
 import { Menu } from "lucide-react";
 import { type ReactNode, useEffect, useState } from "react";
 
+import { ThemeToggle } from "#/components/theme/theme-toggle.tsx";
 import { Button } from "#/components/ui/button.tsx";
 import {
 	Sheet,
@@ -205,9 +206,12 @@ function MobileNav() {
 								onClick={() => setOpen(false)}
 							/>
 						))}
-					<Button asChild onClick={() => setOpen(false)}>
-						<Link to={primaryCta.href}>{primaryCta.label}</Link>
-					</Button>
+					<div className="flex items-center gap-3">
+						<ThemeToggle />
+						<Button asChild onClick={() => setOpen(false)}>
+							<Link to={primaryCta.href}>{primaryCta.label}</Link>
+						</Button>
+					</div>
 				</nav>
 			</SheetContent>
 		</Sheet>
@@ -260,6 +264,9 @@ export function SiteHeader() {
 				<DesktopNav />
 
 				<div className="hidden items-center gap-3 lg:flex">
+					<ClientOnly fallback={<div className="size-8 shrink-0" aria-hidden />}>
+						<ThemeToggle />
+					</ClientOnly>
 					<Button asChild size="sm">
 						<Link to={primaryCta.href}>{primaryCta.label}</Link>
 					</Button>
