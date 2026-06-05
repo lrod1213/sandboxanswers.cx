@@ -1,6 +1,8 @@
+import type { PageSeoContent } from "#/content/types.ts";
+
 export type ProductPageContent = {
 	slug: string;
-	seo: { title: string; description: string };
+	seo: PageSeoContent;
 	hero: {
 		eyebrow: string;
 		title: string;
@@ -8,6 +10,10 @@ export type ProductPageContent = {
 		primaryCta: string;
 		secondaryCta?: string;
 		secondaryHref?: string;
+	};
+	featureBand: {
+		title: string;
+		description: string;
 	};
 	features: { title: string; description: string }[];
 };
@@ -18,6 +24,7 @@ export const theAnswerLayer: ProductPageContent = {
 		title: "The Answer Layer",
 		description:
 			"The easiest way to unlock the voices of your customers. Real-time AI insights for CX leaders.",
+		path: "/theanswerlayer",
 	},
 	hero: {
 		eyebrow: "The Answer Layer",
@@ -26,6 +33,11 @@ export const theAnswerLayer: ProductPageContent = {
 		primaryCta: "See it in action",
 		secondaryCta: "Learn more",
 		secondaryHref: "/data-connectors",
+	},
+	featureBand: {
+		title: "Designed around the work.",
+		description:
+			"Each product surface carries the same answer-layer foundation: fast setup, governed context, and consumer-grade clarity.",
 	},
 	features: [
 		{
@@ -52,12 +64,18 @@ export const translations: ProductPageContent = {
 		title: "Real-time Translations",
 		description:
 			"Deliver native-language customer and agent experiences in 150+ languages in real time.",
+		path: "/translations",
 	},
 	hero: {
 		eyebrow: "Real-time Translations",
 		title: "Every language. Every channel. In real time.",
 		lead: "Help your teams serve customers in their native language without slowing down operations or ballooning costs.",
 		primaryCta: "Book a Demo",
+	},
+	featureBand: {
+		title: "Designed around the work.",
+		description:
+			"Each product surface carries the same answer-layer foundation: fast setup, governed context, and consumer-grade clarity.",
 	},
 	features: [
 		{
@@ -84,12 +102,18 @@ export const languages: ProductPageContent = {
 		title: "Languages",
 		description:
 			"Support customers and agents in 150+ languages with cxconnect.ai multilingual capabilities.",
+		path: "/languages",
 	},
 	hero: {
 		eyebrow: "Languages",
 		title: "Speak your customers' language—literally.",
 		lead: "cxconnect.ai helps global brands deliver support that feels local, whether you operate in five languages or five hundred.",
 		primaryCta: "Get in touch",
+	},
+	featureBand: {
+		title: "Designed around the work.",
+		description:
+			"Each product surface carries the same answer-layer foundation: fast setup, governed context, and consumer-grade clarity.",
 	},
 	features: [
 		{
@@ -109,3 +133,5 @@ export const languages: ProductPageContent = {
 		},
 	],
 };
+
+export const products = [theAnswerLayer, translations, languages] as const;

@@ -1,52 +1,49 @@
 import { useForm } from "@tanstack/react-form";
 import { useNavigate } from "@tanstack/react-router";
 import posthog from "posthog-js";
-import { z } from "zod";
+import { useState } from "react";
 
+import { contactInterestOptions } from "#/config/pages.ts";
 import { Button } from "#/components/ui/button.tsx";
 import { Checkbox } from "#/components/ui/checkbox.tsx";
 import { Input } from "#/components/ui/input.tsx";
 import { Label } from "#/components/ui/label.tsx";
 import { Textarea } from "#/components/ui/textarea.tsx";
-
-const interestOptions = [
-	"The Answer Layer",
-	"Real-time Translations",
-	"Data Connectors",
-	"General inquiry",
-] as const;
-
-const contactSchema = z.object({
-	name: z.string().min(1, "Name is required"),
-	email: z.email("Enter a valid work email"),
-	company: z.string().min(1, "Company is required"),
-	role: z.string().min(1, "Role is required"),
-	message: z.string().optional(),
-	interests: z.array(z.string()).min(1, "Select at least one interest"),
-});
-
-type ContactValues = z.infer<typeof contactSchema>;
-
-const defaultValues: ContactValues = {
-	name: "",
-	email: "",
-	company: "",
-	role: "",
-	message: "",
-	interests: [],
-};
+import {
+	contactSchema,
+	defaultContactValues,
+} from "#/lib/contact-schema.ts";
+import { getCalAttributionConfig } from "#/lib/attribution.ts";
 
 export function ContactForm() {
 	const navigate = useNavigate();
+	const [submitError, setSubmitError] = useState<string | null>(null);
 
 	const form = useForm({
-		defaultValues,
+		defaultValues: defaultContactValues,
 		validators: {
 			onSubmit: contactSchema,
 		},
 		onSubmit: async ({ value }) => {
-			// TODO: POST to server route → Attio when credentials are available.
-			console.info("[contact]", value);
+			setSubmitError(null);
+
+			const response = await fetch("/api/contact", {
+				method: "POST",
+				headers: { "Content-Type": "application/json" },
+				body: JSON.stringify({
+					...value,
+					attribution: getCalAttributionConfig(),
+				}),
+			});
+
+			if (!response.ok) {
+				const data = (await response.json().catch(() => null)) as {
+					error?: string;
+				} | null;
+				setSubmitError(data?.error ?? "Something went wrong. Please try again.");
+				return;
+			}
+
 			posthog.capture("contact_form_submitted", {
 				company: value.company,
 				interests: value.interests,
@@ -128,7 +125,7 @@ export function ContactForm() {
 							What are you interested in?
 						</legend>
 						<div className="grid gap-3 sm:grid-cols-2">
-							{interestOptions.map((option) => {
+							{contactInterestOptions.map((option) => {
 								const checked = field.state.value.includes(option);
 								const id = `interest-${option
 									.toLowerCase()
@@ -174,6 +171,10 @@ export function ContactForm() {
 					</FieldGroup>
 				)}
 			</form.Field>
+
+			{submitError ? (
+				<p className="text-caption text-error-deep">{submitError}</p>
+			) : null}
 
 			<form.Subscribe selector={(s) => [s.canSubmit, s.isSubmitting]}>
 				{([canSubmit, isSubmitting]) => (

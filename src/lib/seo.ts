@@ -1,4 +1,5 @@
 import { siteConfig } from "#/config/site.ts";
+import type { PageSeoContent } from "#/content/types.ts";
 
 export type PageSeo = {
 	title?: string;
@@ -55,4 +56,13 @@ export function createPageHead(options: PageSeo) {
 		meta: createPageMeta(options),
 		links: [{ rel: "canonical", href: url }],
 	};
+}
+
+export function createPageHeadFromContent(seo: PageSeoContent) {
+	return createPageHead({
+		title: seo.title,
+		description: seo.description,
+		path: seo.path,
+		noIndex: seo.noIndex,
+	});
 }

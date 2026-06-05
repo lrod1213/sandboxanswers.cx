@@ -12,6 +12,8 @@
   },
   "scripts": {
     "dev": "vite dev",
+    "generate:sitemap": "tsx scripts/generate-sitemap.ts",
+    "prebuild": "pnpm generate:sitemap",
     "build": "vite build",
     "preview": "vite preview",
     "test": "vitest run",
@@ -20,19 +22,13 @@
     "check": "biome check"
   },
   "dependencies": {
-    "@faker-js/faker": "^10.3.0",
     "@posthog/react": "^1.7.0",
     "@tailwindcss/vite": "^4.1.18",
-    "@tanstack/match-sorter-utils": "latest",
     "@tanstack/react-devtools": "latest",
     "@tanstack/react-form": "latest",
-    "@tanstack/react-query": "latest",
-    "@tanstack/react-query-devtools": "latest",
     "@tanstack/react-router": "latest",
     "@tanstack/react-router-devtools": "latest",
-    "@tanstack/react-router-ssr-query": "latest",
     "@tanstack/react-start": "latest",
-    "@tanstack/react-table": "latest",
     "@tanstack/router-plugin": "^1.132.0",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
@@ -59,6 +55,7 @@
     "@types/react-dom": "^19.2.0",
     "@vitejs/plugin-react": "^6.0.1",
     "jsdom": "^28.1.0",
+    "tsx": "^4.20.6",
     "typescript": "^6.0.2",
     "vite": "^8.0.0",
     "vitest": "^4.1.5"

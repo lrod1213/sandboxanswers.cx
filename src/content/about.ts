@@ -1,4 +1,12 @@
+import type { PageSeoContent } from "#/content/types.ts";
+
 export const aboutContent = {
+	seo: {
+		title: "About Us",
+		description:
+			"cxconnect.ai is reinventing how innovative brands manage their multilingual customer support operations.",
+		path: "/about",
+	} satisfies PageSeoContent,
 	hero: {
 		eyebrow: "About us",
 		title: "Where technology meets opportunity",

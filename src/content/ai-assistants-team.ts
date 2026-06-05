@@ -1,3 +1,14 @@
+import type { PageSeoContent } from "#/content/types.ts";
+
+export const hireYourTeamPageContent = {
+	seo: {
+		title: "Hire your AI team",
+		description:
+			"Hire AI assistants to handle tedious CX reporting and monitoring—so your team can focus on revenue, retention, and strategy.",
+		path: "/hire-your-team",
+	} satisfies PageSeoContent,
+} as const;
+
 export type AiAssistant = {
 	id: string;
 	title: string;

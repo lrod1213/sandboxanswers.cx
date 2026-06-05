@@ -1,4 +1,12 @@
+import type { LegalDocumentContent } from "#/content/types.ts";
+
 export const termsOfService = {
+	seo: {
+		title: "Terms of Service",
+		description:
+			"Terms of Service for cxconnect.ai services provided by ChatLingual, Inc.",
+		path: "/legal/terms-of-service",
+	},
 	title: "Terms of Service",
 	lastUpdated: "January 1, 2026",
 	sections: [
@@ -31,9 +39,15 @@ export const termsOfService = {
 			body: "Questions about these terms: contact us at https://cxconnect.ai/contact.",
 		},
 	],
-};
+} satisfies LegalDocumentContent;
 
 export const privacyPolicy = {
+	seo: {
+		title: "Privacy Policy",
+		description:
+			"How ChatLingual, Inc. dba cxconnect.ai collects, uses, and protects personal information.",
+		path: "/legal/privacy-policy",
+	},
 	title: "Privacy Policy",
 	lastUpdated: "January 1, 2026",
 	sections: [
@@ -66,4 +80,6 @@ export const privacyPolicy = {
 			body: "Privacy inquiries: https://cxconnect.ai/contact.",
 		},
 	],
-};
+} satisfies LegalDocumentContent;
+
+export const legalDocuments = [termsOfService, privacyPolicy] as const;

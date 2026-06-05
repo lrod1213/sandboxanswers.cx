@@ -21,6 +21,7 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as DataConnectorsIndexRouteImport } from './routes/data-connectors/index'
 import { Route as LegalTermsOfServiceRouteImport } from './routes/legal/terms-of-service'
 import { Route as LegalPrivacyPolicyRouteImport } from './routes/legal/privacy-policy'
+import { Route as ApiContactRouteImport } from './routes/api/contact'
 
 const TranslationsRoute = TranslationsRouteImport.update({
   id: '/translations',
@@ -82,6 +83,11 @@ const LegalPrivacyPolicyRoute = LegalPrivacyPolicyRouteImport.update({
   path: '/legal/privacy-policy',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ApiContactRoute = ApiContactRouteImport.update({
+  id: '/api/contact',
+  path: '/api/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -93,6 +99,7 @@ export interface FileRoutesByFullPath {
   '/success': typeof SuccessRoute
   '/theanswerlayer': typeof TheanswerlayerRoute
   '/translations': typeof TranslationsRoute
+  '/api/contact': typeof ApiContactRoute
   '/legal/privacy-policy': typeof LegalPrivacyPolicyRoute
   '/legal/terms-of-service': typeof LegalTermsOfServiceRoute
   '/data-connectors/': typeof DataConnectorsIndexRoute
@@ -107,6 +114,7 @@ export interface FileRoutesByTo {
   '/success': typeof SuccessRoute
   '/theanswerlayer': typeof TheanswerlayerRoute
   '/translations': typeof TranslationsRoute
+  '/api/contact': typeof ApiContactRoute
   '/legal/privacy-policy': typeof LegalPrivacyPolicyRoute
   '/legal/terms-of-service': typeof LegalTermsOfServiceRoute
   '/data-connectors': typeof DataConnectorsIndexRoute
@@ -122,6 +130,7 @@ export interface FileRoutesById {
   '/success': typeof SuccessRoute
   '/theanswerlayer': typeof TheanswerlayerRoute
   '/translations': typeof TranslationsRoute
+  '/api/contact': typeof ApiContactRoute
   '/legal/privacy-policy': typeof LegalPrivacyPolicyRoute
   '/legal/terms-of-service': typeof LegalTermsOfServiceRoute
   '/data-connectors/': typeof DataConnectorsIndexRoute
@@ -138,6 +147,7 @@ export interface FileRouteTypes {
     | '/success'
     | '/theanswerlayer'
     | '/translations'
+    | '/api/contact'
     | '/legal/privacy-policy'
     | '/legal/terms-of-service'
     | '/data-connectors/'
@@ -152,6 +162,7 @@ export interface FileRouteTypes {
     | '/success'
     | '/theanswerlayer'
     | '/translations'
+    | '/api/contact'
     | '/legal/privacy-policy'
     | '/legal/terms-of-service'
     | '/data-connectors'
@@ -166,6 +177,7 @@ export interface FileRouteTypes {
     | '/success'
     | '/theanswerlayer'
     | '/translations'
+    | '/api/contact'
     | '/legal/privacy-policy'
     | '/legal/terms-of-service'
     | '/data-connectors/'
@@ -181,6 +193,7 @@ export interface RootRouteChildren {
   SuccessRoute: typeof SuccessRoute
   TheanswerlayerRoute: typeof TheanswerlayerRoute
   TranslationsRoute: typeof TranslationsRoute
+  ApiContactRoute: typeof ApiContactRoute
   LegalPrivacyPolicyRoute: typeof LegalPrivacyPolicyRoute
   LegalTermsOfServiceRoute: typeof LegalTermsOfServiceRoute
   DataConnectorsIndexRoute: typeof DataConnectorsIndexRoute
@@ -272,6 +285,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LegalPrivacyPolicyRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/api/contact': {
+      id: '/api/contact'
+      path: '/api/contact'
+      fullPath: '/api/contact'
+      preLoaderRoute: typeof ApiContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -285,6 +305,7 @@ const rootRouteChildren: RootRouteChildren = {
   SuccessRoute: SuccessRoute,
   TheanswerlayerRoute: TheanswerlayerRoute,
   TranslationsRoute: TranslationsRoute,
+  ApiContactRoute: ApiContactRoute,
   LegalPrivacyPolicyRoute: LegalPrivacyPolicyRoute,
   LegalTermsOfServiceRoute: LegalTermsOfServiceRoute,
   DataConnectorsIndexRoute: DataConnectorsIndexRoute,

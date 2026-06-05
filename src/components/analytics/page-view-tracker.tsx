@@ -2,7 +2,7 @@ import { useRouterState } from "@tanstack/react-router";
 import posthog from "posthog-js";
 import { useEffect } from "react";
 
-import { isGtmEnabled } from "#/config/analytics.ts";
+import { isGtmEnabled, isPostHogEnabled } from "#/config/analytics.ts";
 
 export function PageViewTracker() {
 	const pathname = useRouterState({
@@ -10,7 +10,7 @@ export function PageViewTracker() {
 	});
 
 	useEffect(() => {
-		if (import.meta.env.VITE_POSTHOG_KEY) {
+		if (isPostHogEnabled()) {
 			posthog.capture("$pageview", { path: pathname });
 		}
 

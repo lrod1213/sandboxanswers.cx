@@ -69,7 +69,14 @@ First-touch UTM parameters are stored in `localStorage` and passed into the Cal 
 
 ## Contact form → Attio
 
-The contact form UI is wired for a future server-side Attio integration. Submissions currently log locally and fire a PostHog event until `ATTIO_API_TOKEN` is connected.
+The contact form posts to `POST /api/contact` with first-touch attribution attached. Submissions are validated server-side; when `ATTIO_API_TOKEN` is set, the handler is ready for CRM wiring (currently logs until mapping is finalized).
+
+## Architecture
+
+- **Page registry:** `src/config/pages.ts` drives nav, footer, sitemap paths, and contact-form interests.
+- **Content modules:** Marketing copy and SEO live in `src/content/*`; routes stay thin.
+- **Page components:** Layout lives in `src/components/pages/*`.
+- **Sitemap:** Regenerated on build via `pnpm generate:sitemap`.
 
 ## SEO
 

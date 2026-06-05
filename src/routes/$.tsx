@@ -1,36 +1,10 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { createFileRoute } from "@tanstack/react-router";
 
-import { SectionBand } from "#/components/marketing/section-band.tsx";
-import { Button } from "#/components/ui/button.tsx";
-import { createPageHead } from "#/lib/seo.ts";
+import { NotFoundPage } from "#/components/pages/not-found-page.tsx";
+import { notFoundPageContent } from "#/content/contact.ts";
+import { createPageHeadFromContent } from "#/lib/seo.ts";
 
 export const Route = createFileRoute("/$")({
-	head: () =>
-		createPageHead({
-			title: "Page not found",
-			path: "",
-		}),
+	head: () => createPageHeadFromContent(notFoundPageContent.seo),
 	component: NotFoundPage,
 });
-
-function NotFoundPage() {
-	return (
-		<SectionBand className="pt-[var(--spacing-5xl)]">
-			<div className="mx-auto max-w-xl text-center">
-				<p className="section-eyebrow mb-4">404</p>
-				<h1 className="text-display-lg mb-4">Page not found.</h1>
-				<p className="text-body-lg mb-8 text-body">
-					The page you are looking for does not exist or has moved.
-				</p>
-				<Button asChild size="lg">
-					<Link to="/">Go home</Link>
-				</Button>
-				<p className="mt-6 text-body-sm">
-					<Link to="/contact" className="text-link hover:underline">
-						Contact us
-					</Link>
-				</p>
-			</div>
-		</SectionBand>
-	);
-}

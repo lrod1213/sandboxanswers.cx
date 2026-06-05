@@ -6,7 +6,7 @@ import { ComparisonTable } from "#/components/marketing/comparison-table.tsx";
 import { FaqAccordion } from "#/components/marketing/faq-accordion.tsx";
 import { LogoStrip } from "#/components/marketing/logo-strip.tsx";
 import { MarketingCard } from "#/components/marketing/marketing-card.tsx";
-import { MeshGradient } from "#/components/marketing/mesh-gradient.tsx";
+import { MarketingHero } from "#/components/marketing/marketing-hero.tsx";
 import { SectionBand } from "#/components/marketing/section-band.tsx";
 import { Button } from "#/components/ui/button.tsx";
 import { siteConfig } from "#/config/site.ts";
@@ -14,43 +14,12 @@ import {
 	comparisonRows,
 	faqItems,
 	heroRotatingLines,
+	homePageContent,
 	insightFeatures,
 	personaTabs,
 	securityFeatures,
 } from "#/content/home.ts";
 import { cn } from "#/lib/utils.ts";
-
-const proofStats = [
-	["15 min", "typical connector setup"],
-	["150+", "languages supported"],
-	["AES-256", "encrypted in transit and at rest"],
-	["Real time", "answers while the signal is still fresh"],
-] as const;
-
-const signalRows = [
-	{
-		label: "Churn risk",
-		value: "Onboarding friction",
-		heat: "82%",
-	},
-	{
-		label: "Revenue signal",
-		value: "Renewal intent rising",
-		heat: "64%",
-	},
-	{
-		label: "Compliance",
-		value: "Policy language drift",
-		heat: "19%",
-	},
-] as const;
-
-const commandLines = [
-	"Cluster 18,402 conversations",
-	"Detect emerging product friction",
-	"Rank actions by revenue exposure",
-	"Route answer to CX leadership",
-] as const;
 
 export function HomePage() {
 	const [lineIndex, setLineIndex] = useState(0);
@@ -68,67 +37,66 @@ export function HomePage() {
 
 	return (
 		<>
-			<section className="marketing-hero">
-				<MeshGradient />
-				<div
-					className="signal-grid marketing-hero-atmosphere opacity-70"
-					aria-hidden
-				/>
-				<div className="marketing-container relative z-10">
-					<div className="grid items-center gap-8 rise-in md:gap-14 lg:grid-cols-[0.95fr_1.05fr]">
-						<div>
-							<BannerPill className="mb-6 max-w-full sm:mb-8">
-								Real-time AI insights for enterprise CX teams
-							</BannerPill>
-							<h1 className="mb-6 max-w-4xl text-[2.5rem] font-semibold leading-[0.95] tracking-[-0.06em] text-ink sm:text-[3rem] sm:leading-[0.92] sm:tracking-[-0.08em] md:text-[56px] md:tracking-[-3.4px] lg:text-[84px] lg:tracking-[-5.6px]">
-								Your customers are already telling you{" "}
-								<span
-									className="relative inline-block text-link"
-									key={lineIndex}
-								>
-									{heroRotatingLines[lineIndex]}.
-									<span className="absolute inset-x-0 bottom-1 -z-10 h-3 rounded-full bg-link-bg-soft" />
-								</span>
-							</h1>
-							<p className="text-body-lg mb-8 max-w-xl text-body">
-								The Answer Layer turns messy conversations into governed,
-								board-ready intelligence while the signal is still fresh.
-							</p>
-							<div className="mb-10 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
-								<Button asChild size="lg" className="w-full sm:w-auto">
-									<Link to="/contact">See it in action</Link>
-								</Button>
-								<Button
-									asChild
-									variant="outline"
-									size="lg"
-									className="w-full sm:w-auto"
-								>
-									<Link to="/theanswerlayer">Learn more</Link>
-								</Button>
-							</div>
-							<div className="grid max-w-xl grid-cols-2 gap-px overflow-hidden rounded-[var(--rounded-lg)] bg-hairline elev-4 sm:grid-cols-4">
-								{proofStats.map(([value, label]) => (
-									<div
-										key={value}
-										className="bg-canvas/90 p-3 backdrop-blur sm:p-4"
-									>
-										<p className="text-display-sm text-[1.125rem] sm:text-[1.25rem]">
-											{value}
-										</p>
-										<p className="mt-1.5 text-caption text-body sm:mt-2">
-											{label}
-										</p>
-									</div>
-								))}
-							</div>
+			<MarketingHero
+				variant="split"
+				titleSize="home"
+				atmosphere
+				banner={
+					<BannerPill className="mb-6 max-w-full sm:mb-8">
+						{homePageContent.hero.banner}
+					</BannerPill>
+				}
+				title={
+					<>
+						Your customers are already telling you{" "}
+						<span
+							className="relative inline-block text-link"
+							key={lineIndex}
+						>
+							{heroRotatingLines[lineIndex]}.
+							<span className="absolute inset-x-0 bottom-1 -z-10 h-3 rounded-full bg-link-bg-soft" />
+						</span>
+					</>
+				}
+				lead={homePageContent.hero.lead}
+				actions={
+					<>
+						<div className="mb-10 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+							<Button asChild size="lg" className="w-full sm:w-auto">
+								<Link to={homePageContent.hero.primaryCta.href}>
+									{homePageContent.hero.primaryCta.label}
+								</Link>
+							</Button>
+							<Button
+								asChild
+								variant="outline"
+								size="lg"
+								className="w-full sm:w-auto"
+							>
+								<Link to={homePageContent.hero.secondaryCta.href}>
+									{homePageContent.hero.secondaryCta.label}
+								</Link>
+							</Button>
 						</div>
-						<div>
-							<HeroSignalBoard />
+						<div className="grid max-w-xl grid-cols-2 gap-px overflow-hidden rounded-[var(--rounded-lg)] bg-hairline elev-4 sm:grid-cols-4">
+							{homePageContent.proofStats.map(([value, label]) => (
+								<div
+									key={value}
+									className="bg-canvas/90 p-3 backdrop-blur sm:p-4"
+								>
+									<p className="text-display-sm text-[1.125rem] sm:text-[1.25rem]">
+										{value}
+									</p>
+									<p className="mt-1.5 text-caption text-body sm:mt-2">
+										{label}
+									</p>
+								</div>
+							))}
 						</div>
-					</div>
-				</div>
-			</section>
+					</>
+				}
+				visual={<HeroSignalBoard />}
+			/>
 
 			<SectionBand variant="soft" className="py-12 md:py-16">
 				<LogoStrip />
@@ -390,7 +358,7 @@ function HeroSignalBoard() {
 					</div>
 
 					<div className="grid gap-3">
-						{signalRows.map((row) => (
+						{homePageContent.signalRows.map((row) => (
 							<div
 								key={row.label}
 								className="grid grid-cols-[1fr_auto] gap-4 rounded-[var(--rounded-md)] border border-white/10 bg-black/20 p-4"
@@ -424,7 +392,7 @@ function HeroSignalBoard() {
 							Live workflow
 						</p>
 						<div className="space-y-2">
-							{commandLines.map((line, index) => (
+							{homePageContent.commandLines.map((line, index) => (
 								<p key={line} className="font-mono text-[12px] text-white/70">
 									<span className="text-cyan">0{index + 1}</span> / {line}
 								</p>
@@ -447,13 +415,7 @@ function HeroSignalBoard() {
 }
 
 function SignalTicker() {
-	const items = [
-		"refund pressure rising in EMEA",
-		"checkout confusion clustered by product line",
-		"renewal intent up 18% after guided setup",
-		"translation quality holding across 150+ languages",
-		"policy drift detected before escalation",
-	] as const;
+	const items = homePageContent.signalTickerItems;
 	const tickerItems = [
 		...items.map((item) => ({ id: `first-${item}`, item })),
 		...items.map((item) => ({ id: `second-${item}`, item })),

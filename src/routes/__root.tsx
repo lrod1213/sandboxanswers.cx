@@ -1,7 +1,6 @@
 import { TanStackDevtools } from "@tanstack/react-devtools";
-import type { QueryClient } from "@tanstack/react-query";
 import {
-	createRootRouteWithContext,
+	createRootRoute,
 	HeadContent,
 	Outlet,
 	Scripts,
@@ -17,14 +16,9 @@ import { MarketingLayout } from "#/components/layout/marketing-layout.tsx";
 import { OrganizationJsonLd } from "#/components/seo/organization-json-ld.tsx";
 import { createPageHead } from "#/lib/seo.ts";
 import PostHogProvider from "../integrations/posthog/provider";
-import TanStackQueryDevtools from "../integrations/tanstack-query/devtools";
 import appCss from "../styles.css?url";
 
-interface MyRouterContext {
-	queryClient: QueryClient;
-}
-
-export const Route = createRootRouteWithContext<MyRouterContext>()({
+export const Route = createRootRoute({
 	head: () => {
 		const seo = createPageHead({});
 		return {
@@ -81,7 +75,6 @@ function RootDocument({ children }: { children: React.ReactNode }) {
 								name: "Tanstack Router",
 								render: <TanStackRouterDevtoolsPanel />,
 							},
-							TanStackQueryDevtools,
 						]}
 					/>
 				</PostHogProvider>

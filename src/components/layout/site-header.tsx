@@ -11,6 +11,8 @@ import {
 	SheetTrigger,
 } from "#/components/ui/sheet.tsx";
 import {
+	companyLinks,
+	integrationsLinks,
 	primaryCta,
 	resourcesLinks,
 	siteConfig,
@@ -113,12 +115,15 @@ function DesktopNav() {
 				</ul>
 			</NavDropdown>
 
-			<Link
-				to="/data-connectors"
-				className="rounded-[var(--rounded-sm)] px-3 py-2 text-body-sm text-body transition-colors hover:bg-canvas-soft hover:text-ink"
-			>
-				Integrations
-			</Link>
+			{integrationsLinks.map((link) => (
+				<Link
+					key={link.href}
+					to={link.href}
+					className="rounded-[var(--rounded-sm)] px-3 py-2 text-body-sm text-body transition-colors hover:bg-canvas-soft hover:text-ink"
+				>
+					{link.label}
+				</Link>
+			))}
 
 			<NavDropdown label="Resources">
 				<ul className="flex flex-col gap-2">
@@ -130,12 +135,17 @@ function DesktopNav() {
 				</ul>
 			</NavDropdown>
 
-			<Link
-				to="/about"
-				className="rounded-[var(--rounded-sm)] px-3 py-2 text-body-sm text-body transition-colors hover:bg-canvas-soft hover:text-ink"
-			>
-				About Us
-			</Link>
+			{companyLinks
+				.filter((link) => link.href === "/about")
+				.map((link) => (
+					<Link
+						key={link.href}
+						to={link.href}
+						className="rounded-[var(--rounded-sm)] px-3 py-2 text-body-sm text-body transition-colors hover:bg-canvas-soft hover:text-ink"
+					>
+						{link.label}
+					</Link>
+				))}
 		</nav>
 	);
 }
@@ -167,11 +177,13 @@ function MobileNav() {
 							))}
 						</div>
 					</div>
-					<NavLinkItem
-						href="/data-connectors"
-						label="Integrations"
-						onClick={() => setOpen(false)}
-					/>
+					{integrationsLinks.map((link) => (
+						<NavLinkItem
+							key={link.href}
+							{...link}
+							onClick={() => setOpen(false)}
+						/>
+					))}
 					<div>
 						<p className="section-eyebrow mb-3">Resources</p>
 						<div className="flex flex-col gap-3">
@@ -184,11 +196,15 @@ function MobileNav() {
 							))}
 						</div>
 					</div>
-					<NavLinkItem
-						href="/about"
-						label="About Us"
-						onClick={() => setOpen(false)}
-					/>
+					{companyLinks
+						.filter((link) => link.href === "/about")
+						.map((link) => (
+							<NavLinkItem
+								key={link.href}
+								{...link}
+								onClick={() => setOpen(false)}
+							/>
+						))}
 					<Button asChild onClick={() => setOpen(false)}>
 						<Link to={primaryCta.href}>{primaryCta.label}</Link>
 					</Button>

@@ -1,3 +1,35 @@
+import type { PageSeoContent } from "#/content/types.ts";
+
+export const dataConnectorsPageContent = {
+	seo: {
+		title: "Data Connectors",
+		description:
+			"Connect cxconnect.ai with your existing stack via APIs and native apps.",
+		path: "/data-connectors",
+	} satisfies PageSeoContent,
+	hero: {
+		eyebrow: "Integrations",
+		title: "We connect with your existing stack",
+		lead: "If you don't see what you need, send us a note and we'll look into it.",
+	},
+	featureBand: {
+		title: "We can connect with your data via APIs and apps.",
+		description:
+			"Change your stack at any time. The answer layer keeps your data intact and your context portable.",
+	},
+	apiSection: {
+		eyebrow: "API connectors",
+		title: "Connect via API",
+		notePrefix: "For AI Insights + Talk with your Data. Don't see yours?",
+	},
+	appSection: {
+		eyebrow: "Native apps",
+		title: "Connect via Apps",
+		description:
+			"For real-time multilingual support, improving customer messages, and real-time agent coaching.",
+	},
+} as const;
+
 export type Connector = {
 	slug: string;
 	name: string;

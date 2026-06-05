@@ -1,5 +1,53 @@
 import type { ComparisonRow } from "#/components/marketing/comparison-table.tsx";
 import type { FaqItem } from "#/components/marketing/faq-accordion.tsx";
+import type { PageSeoContent } from "#/content/types.ts";
+
+export const homePageContent = {
+	seo: {
+		title: "The Answer Layer",
+		description:
+			"Real-time AI insights for CX leaders. Unlock the voices of your customers.",
+		path: "/",
+	} satisfies PageSeoContent,
+	hero: {
+		banner: "Real-time AI insights for enterprise CX teams",
+		primaryCta: { label: "See it in action", href: "/contact" },
+		secondaryCta: { label: "Learn more", href: "/theanswerlayer" },
+		lead: "The Answer Layer turns messy conversations into governed, board-ready intelligence while the signal is still fresh.",
+	},
+	proofStats: [
+		["15 min", "typical connector setup"],
+		["150+", "languages supported"],
+		["AES-256", "encrypted in transit and at rest"],
+		["Real time", "answers while the signal is still fresh"],
+	],
+	signalRows: [
+		{ label: "Churn risk", value: "Onboarding friction", heat: "82%" },
+		{ label: "Revenue signal", value: "Renewal intent rising", heat: "64%" },
+		{ label: "Compliance", value: "Policy language drift", heat: "19%" },
+	],
+	commandLines: [
+		"Cluster 18,402 conversations",
+		"Detect emerging product friction",
+		"Rank actions by revenue exposure",
+		"Route answer to CX leadership",
+	],
+	tickerItems: [
+		"Zendesk",
+		"Genesys",
+		"Salesforce",
+		"ServiceNow",
+		"Intercom",
+		"Freshworks",
+	],
+	signalTickerItems: [
+		"refund pressure rising in EMEA",
+		"checkout confusion clustered by product line",
+		"renewal intent up 18% after guided setup",
+		"translation quality holding across 150+ languages",
+		"policy drift detected before escalation",
+	],
+} as const;
 
 export const heroRotatingLines = [
 	"why they are churning",
