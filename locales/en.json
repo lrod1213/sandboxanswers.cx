@@ -1,0 +1,30 @@
+{
+	"meta": {
+		"siteName": "cxconnect.ai",
+		"defaultTitle": "The Answer Layer. Now for CX Leaders",
+		"defaultDescription": "Real-time AI insights for CX leaders. Unlock the voices of your customers across every channel and language.",
+		"home": {
+			"title": "The Answer Layer",
+			"description": "Real-time AI insights for CX leaders. Unlock the voices of your customers."
+		},
+		"hireYourTeam": {
+			"title": "Hire your AI team",
+			"description": "Hire AI assistants to handle tedious CX reporting and monitoring—so your team can focus on revenue, retention, and strategy."
+		},
+		"contact": {
+			"title": "Contact",
+			"description": "Book a demo or send us a message. We'll help you connect your CX data and get answers faster."
+		}
+	},
+	"nav": {
+		"contact": "Contact",
+		"getStarted": "Get Started",
+		"about": "About",
+		"documentation": "Documentation"
+	},
+	"common": {
+		"seeItInAction": "See it in action",
+		"learnMore": "Learn more",
+		"talkToUs": "Talk to us"
+	}
+}

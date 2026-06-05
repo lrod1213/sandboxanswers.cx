@@ -13,6 +13,7 @@
   "scripts": {
     "dev": "vite dev",
     "generate:sitemap": "tsx scripts/generate-sitemap.ts",
+    "translate:sync": "tsx scripts/sync-locale-translations.ts",
     "prebuild": "pnpm generate:sitemap",
     "build": "vite build",
     "preview": "vite preview",
