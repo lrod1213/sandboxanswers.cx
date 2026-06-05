@@ -1,0 +1,17 @@
+# Package manager
+
+This project uses **pnpm** only (`packageManager` in package.json). Do not use npm or yarn for installs or scripts.
+
+```bash
+pnpm install
+pnpm dev
+pnpm run build
+```
+
+# shadcn instructions
+
+Use the latest version of Shadcn to install new components:
+
+```bash
+pnpm dlx shadcn@latest add button
+```

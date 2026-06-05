@@ -1,0 +1,281 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400&display=swap');
+@import 'tailwindcss';
+@plugin '@tailwindcss/typography';
+
+@import 'tw-animate-css';
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  /* DESIGN.md color tokens */
+  --ink: #171717;
+  --on-primary: #ffffff;
+  --body: #4d4d4d;
+  --mute: #888888;
+  --hairline: #ebebeb;
+  --hairline-strong: #a1a1a1;
+  --canvas: #ffffff;
+  --canvas-soft: #fafafa;
+  --canvas-soft-2: #f5f5f5;
+  --link: #0070f3;
+  --link-deep: #0761d1;
+  --link-bg-soft: #d3e5ff;
+  --error: #ee0000;
+  --violet: #7928ca;
+  --cyan: #50e3c2;
+  --highlight-pink: #ff0080;
+  --gradient-develop-start: #007cf0;
+  --gradient-develop-end: #00dfd8;
+  --gradient-preview-start: #7928ca;
+  --gradient-preview-end: #ff0080;
+  --gradient-ship-start: #ff4d4d;
+  --gradient-ship-end: #f9cb28;
+
+  --spacing-xxs: 4px;
+  --spacing-xs: 8px;
+  --spacing-sm: 12px;
+  --spacing-md: 16px;
+  --spacing-lg: 24px;
+  --spacing-xl: 32px;
+  --spacing-2xl: 40px;
+  --spacing-3xl: 48px;
+  --spacing-4xl: 64px;
+  --spacing-5xl: 96px;
+  --spacing-6xl: 128px;
+  --spacing-section: 192px;
+
+  --rounded-xs: 4px;
+  --rounded-sm: 6px;
+  --rounded-md: 8px;
+  --rounded-lg: 12px;
+  --rounded-xl: 16px;
+  --rounded-pill-sm: 64px;
+  --rounded-pill: 100px;
+
+  --shadow-inset: 0 0 0 1px rgba(0, 0, 0, 0.08);
+  --shadow-elev-2: 0 1px 1px rgba(0, 0, 0, 0.02), 0 2px 2px rgba(0, 0, 0, 0.04), var(--shadow-inset);
+  --shadow-elev-3: 0 2px 2px rgba(0, 0, 0, 0.04), 0 8px 8px -8px rgba(0, 0, 0, 0.04), var(--shadow-inset);
+  --shadow-elev-4: 0 2px 2px rgba(0, 0, 0, 0.04), 0 8px 16px -4px rgba(0, 0, 0, 0.04), var(--shadow-inset);
+
+  /* shadcn bridge */
+  --background: var(--canvas-soft);
+  --foreground: var(--ink);
+  --card: var(--canvas);
+  --card-foreground: var(--ink);
+  --popover: var(--canvas);
+  --popover-foreground: var(--ink);
+  --primary: var(--ink);
+  --primary-foreground: var(--on-primary);
+  --secondary: var(--canvas-soft-2);
+  --secondary-foreground: var(--ink);
+  --muted: var(--canvas-soft-2);
+  --muted-foreground: var(--body);
+  --accent: var(--canvas-soft);
+  --accent-foreground: var(--ink);
+  --destructive: var(--error);
+  --destructive-foreground: var(--on-primary);
+  --border: var(--hairline);
+  --input: var(--hairline);
+  --ring: var(--hairline-strong);
+  --radius: var(--rounded-md);
+  --chart-1: var(--gradient-develop-start);
+  --chart-2: var(--cyan);
+  --chart-3: var(--violet);
+  --chart-4: var(--gradient-ship-end);
+  --chart-5: var(--highlight-pink);
+  --sidebar: var(--canvas);
+  --sidebar-foreground: var(--ink);
+  --sidebar-primary: var(--ink);
+  --sidebar-primary-foreground: var(--on-primary);
+  --sidebar-accent: var(--canvas-soft);
+  --sidebar-accent-foreground: var(--ink);
+  --sidebar-border: var(--hairline);
+  --sidebar-ring: var(--hairline-strong);
+}
+
+@theme inline {
+  --font-sans: 'Inter', ui-sans-serif, system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-ink: var(--ink);
+  --color-body: var(--body);
+  --color-mute: var(--mute);
+  --color-canvas: var(--canvas);
+  --color-canvas-soft: var(--canvas-soft);
+  --color-link: var(--link);
+  --color-hairline: var(--hairline);
+  --radius-sm: var(--rounded-sm);
+  --radius-md: var(--rounded-md);
+  --radius-lg: var(--rounded-lg);
+  --radius-xl: var(--rounded-xl);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+html,
+body,
+#app {
+  min-height: 100%;
+}
+
+body {
+  margin: 0;
+  color: var(--ink);
+  font-family: var(--font-sans);
+  background-color: var(--canvas-soft);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::selection {
+  background: var(--ink);
+  color: #f2f2f2;
+}
+
+a {
+  color: var(--link);
+  text-underline-offset: 2px;
+}
+
+a:hover {
+  color: var(--link-deep);
+}
+
+/* Typography utilities (DESIGN.md) */
+.text-display-xl {
+  font-size: 48px;
+  font-weight: 600;
+  line-height: 48px;
+  letter-spacing: -2.4px;
+}
+
+.text-display-lg {
+  font-size: 32px;
+  font-weight: 600;
+  line-height: 40px;
+  letter-spacing: -1.28px;
+}
+
+.text-display-md {
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 32px;
+  letter-spacing: -0.96px;
+}
+
+.text-display-sm {
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 28px;
+  letter-spacing: -0.6px;
+}
+
+.text-body-lg {
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 28px;
+}
+
+.text-body-md {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+}
+
+.text-body-sm {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+  letter-spacing: -0.28px;
+}
+
+.text-caption {
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 16px;
+}
+
+.font-mono-caption {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 16px;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+.elev-2 {
+  box-shadow: var(--shadow-elev-2);
+}
+
+.elev-3 {
+  box-shadow: var(--shadow-elev-3);
+}
+
+.elev-4 {
+  box-shadow: var(--shadow-elev-4);
+}
+
+.marketing-container {
+  width: min(1400px, calc(100% - 2 * var(--spacing-lg)));
+  margin-inline: auto;
+}
+
+.rise-in {
+  animation: rise-in 700ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes rise-in {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rise-in {
+    animation: none;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
