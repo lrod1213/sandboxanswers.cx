@@ -24,42 +24,44 @@
 }
 
 :root {
-  /* DESIGN.md color tokens */
+  /* DESIGN.md color tokens — cxconnect.ai purple palette */
+  --primary: #6b21a8;
   --ink: #171717;
   --on-primary: #ffffff;
-  --body: #4d4d4d;
-  --mute: #888888;
-  --hairline: #ebebeb;
-  --hairline-strong: #a1a1a1;
+  --body: #525252;
+  --mute: #bcbcbc;
+  --hairline: #f5f5f5;
+  --hairline-strong: #d4d4d4;
   --canvas: #ffffff;
   --canvas-soft: #fafafa;
-  --canvas-soft-2: #f5f5f5;
-  --link: #0070f3;
-  --link-deep: #0761d1;
-  --link-bg-soft: #d3e5ff;
-  --success: #0070f3;
-  --error: #ee0000;
-  --error-soft: #f7d4d6;
-  --error-deep: #c50000;
-  --warning: #f5a623;
-  --warning-soft: #ffefcf;
-  --warning-deep: #ab570a;
-  --violet: #7928ca;
-  --violet-soft: #d8ccf1;
-  --violet-deep: #4c2889;
-  --cyan: #50e3c2;
-  --cyan-soft: #aaffec;
-  --cyan-deep: #29bc9b;
-  --highlight-pink: #ff0080;
-  --highlight-magenta: #eb367f;
-  --gradient-develop-start: #007cf0;
-  --gradient-develop-end: #00dfd8;
-  --gradient-preview-start: #7928ca;
-  --gradient-preview-end: #ff0080;
-  --gradient-ship-start: #ff4d4d;
-  --gradient-ship-end: #f9cb28;
-  --selection-bg: #171717;
-  --selection-fg: #f2f2f2;
+  --canvas-soft-2: #f0f0f0;
+  --link: #9333ea;
+  --link-deep: #6b21a8;
+  --link-bg-soft: #faf5ff;
+  --success: #124392;
+  --success-soft: #f0fdfa;
+  --error: #9f31cb;
+  --error-soft: #fff1f2;
+  --error-deep: #be123c;
+  --warning: #ff9e0b;
+  --warning-soft: #fffbeb;
+  --warning-deep: #924e0e;
+  --violet: #a78bfa;
+  --violet-soft: #f5f3ff;
+  --violet-deep: #6d28d9;
+  --cyan: #5eead4;
+  --cyan-soft: #ccfbf1;
+  --cyan-deep: #0d9488;
+  --highlight-pink: #9f31cb;
+  --highlight-magenta: #be123c;
+  --gradient-develop-start: #9333ea;
+  --gradient-develop-end: #5eead4;
+  --gradient-preview-start: #a78bfa;
+  --gradient-preview-end: #9f31cb;
+  --gradient-ship-start: #9f31cb;
+  --gradient-ship-end: #ff9e0b;
+  --selection-bg: #9333ea;
+  --selection-fg: #ffffff;
 
   --spacing-xxs: 4px;
   --spacing-xs: 8px;
@@ -95,7 +97,6 @@
   --card-foreground: var(--ink);
   --popover: var(--canvas);
   --popover-foreground: var(--ink);
-  --primary: var(--ink);
   --primary-foreground: var(--on-primary);
   --secondary: var(--canvas-soft-2);
   --secondary-foreground: var(--ink);
@@ -116,7 +117,7 @@
   --chart-5: var(--highlight-pink);
   --sidebar: var(--canvas);
   --sidebar-foreground: var(--ink);
-  --sidebar-primary: var(--ink);
+  --sidebar-primary: var(--primary);
   --sidebar-primary-foreground: var(--on-primary);
   --sidebar-accent: var(--canvas-soft);
   --sidebar-accent-foreground: var(--ink);
@@ -379,9 +380,9 @@ a:not([data-slot='button']):hover {
 
 .signal-noise {
   background-image:
-    radial-gradient(circle at 24% 18%, rgba(80, 227, 194, 0.18), transparent 24%),
-    radial-gradient(circle at 82% 12%, rgba(255, 0, 128, 0.14), transparent 22%),
-    radial-gradient(circle at 72% 78%, rgba(249, 203, 40, 0.16), transparent 28%);
+    radial-gradient(circle at 24% 18%, rgba(94, 234, 212, 0.18), transparent 24%),
+    radial-gradient(circle at 82% 12%, rgba(159, 49, 203, 0.14), transparent 22%),
+    radial-gradient(circle at 72% 78%, rgba(255, 158, 11, 0.16), transparent 28%);
 }
 
 .signal-scan {

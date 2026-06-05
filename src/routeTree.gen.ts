@@ -13,6 +13,7 @@ import { Route as TranslationsRouteImport } from './routes/translations'
 import { Route as TheanswerlayerRouteImport } from './routes/theanswerlayer'
 import { Route as SuccessRouteImport } from './routes/success'
 import { Route as LanguagesRouteImport } from './routes/languages'
+import { Route as HireYourTeamRouteImport } from './routes/hire-your-team'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as SplatRouteImport } from './routes/$'
@@ -39,6 +40,11 @@ const SuccessRoute = SuccessRouteImport.update({
 const LanguagesRoute = LanguagesRouteImport.update({
   id: '/languages',
   path: '/languages',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const HireYourTeamRoute = HireYourTeamRouteImport.update({
+  id: '/hire-your-team',
+  path: '/hire-your-team',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ContactRoute = ContactRouteImport.update({
@@ -82,6 +88,7 @@ export interface FileRoutesByFullPath {
   '/$': typeof SplatRoute
   '/about': typeof AboutRoute
   '/contact': typeof ContactRoute
+  '/hire-your-team': typeof HireYourTeamRoute
   '/languages': typeof LanguagesRoute
   '/success': typeof SuccessRoute
   '/theanswerlayer': typeof TheanswerlayerRoute
@@ -95,6 +102,7 @@ export interface FileRoutesByTo {
   '/$': typeof SplatRoute
   '/about': typeof AboutRoute
   '/contact': typeof ContactRoute
+  '/hire-your-team': typeof HireYourTeamRoute
   '/languages': typeof LanguagesRoute
   '/success': typeof SuccessRoute
   '/theanswerlayer': typeof TheanswerlayerRoute
@@ -109,6 +117,7 @@ export interface FileRoutesById {
   '/$': typeof SplatRoute
   '/about': typeof AboutRoute
   '/contact': typeof ContactRoute
+  '/hire-your-team': typeof HireYourTeamRoute
   '/languages': typeof LanguagesRoute
   '/success': typeof SuccessRoute
   '/theanswerlayer': typeof TheanswerlayerRoute
@@ -124,6 +133,7 @@ export interface FileRouteTypes {
     | '/$'
     | '/about'
     | '/contact'
+    | '/hire-your-team'
     | '/languages'
     | '/success'
     | '/theanswerlayer'
@@ -137,6 +147,7 @@ export interface FileRouteTypes {
     | '/$'
     | '/about'
     | '/contact'
+    | '/hire-your-team'
     | '/languages'
     | '/success'
     | '/theanswerlayer'
@@ -150,6 +161,7 @@ export interface FileRouteTypes {
     | '/$'
     | '/about'
     | '/contact'
+    | '/hire-your-team'
     | '/languages'
     | '/success'
     | '/theanswerlayer'
@@ -164,6 +176,7 @@ export interface RootRouteChildren {
   SplatRoute: typeof SplatRoute
   AboutRoute: typeof AboutRoute
   ContactRoute: typeof ContactRoute
+  HireYourTeamRoute: typeof HireYourTeamRoute
   LanguagesRoute: typeof LanguagesRoute
   SuccessRoute: typeof SuccessRoute
   TheanswerlayerRoute: typeof TheanswerlayerRoute
@@ -201,6 +214,13 @@ declare module '@tanstack/react-router' {
       path: '/languages'
       fullPath: '/languages'
       preLoaderRoute: typeof LanguagesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/hire-your-team': {
+      id: '/hire-your-team'
+      path: '/hire-your-team'
+      fullPath: '/hire-your-team'
+      preLoaderRoute: typeof HireYourTeamRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/contact': {
@@ -260,6 +280,7 @@ const rootRouteChildren: RootRouteChildren = {
   SplatRoute: SplatRoute,
   AboutRoute: AboutRoute,
   ContactRoute: ContactRoute,
+  HireYourTeamRoute: HireYourTeamRoute,
   LanguagesRoute: LanguagesRoute,
   SuccessRoute: SuccessRoute,
   TheanswerlayerRoute: TheanswerlayerRoute,

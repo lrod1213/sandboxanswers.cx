@@ -24,6 +24,7 @@ export const primaryCta = {
 
 export const solutionsLinks: NavLink[] = [
 	{ label: "The Answer Layer", href: "/theanswerlayer" },
+	{ label: "Hire your AI team", href: "/hire-your-team" },
 	{ label: "Real-time Translations", href: "/translations" },
 	{ label: "Languages", href: "/languages" },
 ];
@@ -36,6 +37,7 @@ export const resourcesLinks: NavLink[] = [
 export const footerColumns = {
 	product: [
 		{ label: "The Answer Layer", href: "/theanswerlayer" },
+		{ label: "Hire your AI team", href: "/hire-your-team" },
 		{ label: "Real-time Translations", href: "/translations" },
 		{ label: "Data Connectors", href: "/data-connectors" },
 	],
@@ -56,6 +58,7 @@ export const footerColumns = {
 
 export const mvpRoutes = [
 	"/",
+	"/hire-your-team",
 	"/theanswerlayer",
 	"/translations",
 	"/languages",
