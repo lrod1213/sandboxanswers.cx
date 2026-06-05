@@ -46,7 +46,7 @@ export function SiteFooter() {
 			<div className="marketing-container">
 				<div className="mb-12 flex flex-col justify-between gap-6 border-b border-hairline pb-12 lg:flex-row lg:items-end">
 					<div>
-						<p className="font-mono-caption mb-3 text-body">cxconnect.ai</p>
+						<p className="section-eyebrow mb-3">cxconnect.ai</p>
 						<p className="max-w-md text-body-lg text-body">
 							The answer layer for customer conversations, data connectors, and
 							real-time multilingual support.
@@ -58,7 +58,7 @@ export function SiteFooter() {
 				</div>
 				<div className="grid gap-12 sm:grid-cols-2 lg:grid-cols-4">
 					<div>
-						<p className="font-mono-caption mb-4 text-body">Product</p>
+						<p className="section-eyebrow mb-4">Product</p>
 						<ul className="flex flex-col gap-3">
 							{footerColumns.product.map((link) => (
 								<li key={link.href}>
@@ -68,7 +68,7 @@ export function SiteFooter() {
 						</ul>
 					</div>
 					<div>
-						<p className="font-mono-caption mb-4 text-body">Company</p>
+						<p className="section-eyebrow mb-4">Company</p>
 						<ul className="flex flex-col gap-3">
 							{footerColumns.company.map((link) => (
 								<li key={link.href}>
@@ -78,7 +78,7 @@ export function SiteFooter() {
 						</ul>
 					</div>
 					<div>
-						<p className="font-mono-caption mb-4 text-body">Resources</p>
+						<p className="section-eyebrow mb-4">Resources</p>
 						<ul className="flex flex-col gap-3">
 							{footerColumns.resources.map((link) => (
 								<li key={link.label}>
@@ -88,7 +88,7 @@ export function SiteFooter() {
 						</ul>
 					</div>
 					<div>
-						<p className="font-mono-caption mb-4 text-body">Legal</p>
+						<p className="section-eyebrow mb-4">Legal</p>
 						<ul className="flex flex-col gap-3">
 							{footerColumns.legal.map((link) => (
 								<li key={link.label}>

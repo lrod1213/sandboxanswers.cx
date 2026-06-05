@@ -25,7 +25,7 @@ function AboutPage() {
 				<MeshGradient />
 				<div className="marketing-container relative z-10">
 					<div className="mx-auto max-w-4xl text-center">
-						<p className="font-mono-caption mb-4 text-body">
+						<p className="section-eyebrow mb-4">
 							{aboutContent.hero.eyebrow}
 						</p>
 						<h1 className="mx-auto mb-6 max-w-3xl text-[2rem] font-semibold leading-[1.05] tracking-[-0.05em] text-ink sm:text-display-xl md:text-[56px] md:leading-[56px] md:tracking-[-3px]">
@@ -54,7 +54,7 @@ function AboutPage() {
 
 			<SectionBand>
 				<div className="mx-auto max-w-3xl">
-					<p className="font-mono-caption mb-4 text-body">Our mission</p>
+					<p className="section-eyebrow mb-4">Our mission</p>
 					<h2 className="text-display-lg mb-4">{aboutContent.mission.title}</h2>
 					<p className="text-body-lg text-body">{aboutContent.mission.body}</p>
 				</div>

@@ -4,43 +4,120 @@ name: cxconnect.ai-design-analysis
 description: An updated interpretation of the cxconnect.ai design language based entirely on cxconnect.ai Color Palette copy.jpg — a professional, highly readable customer-experience platform interface built on soft purple-tinted grayple surfaces, anchored by a deep brand Purple for primary orientation and actions, balanced with distinct semantic indicators for success, caution, and system feedback.
 
 colors:
-  primary: "#6B21A8"
-  on-primary: "#ffffff"
-  ink: "#171717"           # gray-neutral-900 (Deepest Text)
-  body: "#525252"          # gray-neutral-600 (Secondary text)
-  mute: "#BCBCBC"          # gray-neutral-400 (Low-priority text)
-  hairline: "#F5F5F5"      # gray-neutral-100 (Dividers/Borders)
-  hairline-strong: "#D4D4D4" # gray-neutral-300 (Subtle borders/Disabled states)
-  canvas: "#ffffff"
-  canvas-soft: "#FAFAFA"   # gray-neutral-50 (Default page body background)
-  canvas-soft-2: "#F0F0F0" # grayple-100 (Inset backgrounds/Inner surfaces)
-  link: "#9333EA"          # Purple for text links and interaction
-  link-deep: "#6B21A8"     # purple-700 deep variant for pressed/hover states
-  link-bg-soft: "#FAF5FF"  # purple-50 soft pastel purple fill for info/pills
-  success: "#124392"       # green-500 main success token
-  success-soft: "#F0FDFA"  # green-50 soft success accent
-  error: "#9F31CB"         # red-500 destructive status token
-  error-soft: "#FFF1F2"    # red-50 soft error fill
-  error-deep: "#BE123C"    # red-700 deep pressed variant
-  warning: "#FF9E0B"       # amber-500 caution status token
-  warning-soft: "#FFFBEB"  # amber-50 soft caution fill
-  warning-deep: "#924E0E"  # amber-700 deep caution variant
-  violet: "#A78BFA"        # violet-400 structural secondary brand accent
-  violet-soft: "#F5F3FF"   # violet-50 soft accent fill
-  violet-deep: "#6D28D9"   # violet-700 deep accent variant
-  cyan: "#5EEAD4"          # green-300 mint/cyan highlight token
-  cyan-soft: "#CCFBF1"     # green-100 soft highlight accent
-  cyan-deep: "#0D9488"     # green-600 deep mint variant
-  highlight-pink: "#9F31CB" # red-500 map placeholder
-  highlight-magenta: "#BE123C" # red-700 map placeholder
-  gradient-develop-start: "#9333EA" # Brand Purple Start (purple-500)
-  gradient-develop-end: "#5EEAD4"   # Mint/Cyan End (green-300)
-  gradient-preview-start: "#A78BFA" # Violet Start (violet-400)
-  gradient-preview-end: "#9F31CB"   # Highlight Red End (red-500)
-  gradient-ship-start: "#9F31CB"    # Red/Coral Start (red-500)
-  gradient-ship-end: "#FF9E0B"      # Amber End (amber-500)
-  selection-bg: "#9333EA"
-  selection-fg: "#ffffff"
+  primary: "#6B21A8"       # purple-800 (Core Brand Action)
+  on-primary: "#ffffff"      # white
+  ink: "#171717"             # gray-neutral-900 (Deepest Text)
+  body: "#525252"            # gray-neutral-600 (Secondary text)
+  mute: "#BCBCBC"            # gray-neutral-400 (Low-priority text)
+  hairline: "#F5F5F5"        # gray-neutral-100 (Dividers/Borders)
+  hairline-strong: "#D4D4D4"  # gray-neutral-300 (Subtle borders/Disabled states)
+  canvas: "#ffffff"          # white
+  canvas-soft: "#FAFAFA"     # gray-neutral-50 (Default page body background)
+  canvas-soft-2: "#F0F0F0"   # grayple-100 (Inset backgrounds/Inner surfaces)
+  link: "#9333EA"            # purple-600 (Text links and interaction)
+  link-deep: "#7E22CE"       # purple-700 (Pressed/hover link states)
+  link-bg-soft: "#FAF5FF"    # purple-50 (Soft pastel purple fill)
+  cta: "#2DD4BF"             # green-400 (Primary CTA buttons)
+  cta-foreground: "#171717"  # gray-neutral-900 (Text on CTA buttons)
+  success: "#12A392"           # green-500 (Success / positive metrics)
+  success-soft: "#F0FDF4"    # green-50 (Soft success fill)
+  error: "#F43F5E"           # red-500 (Destructive status)
+  error-soft: "#FFF1F2"      # red-50 (Soft error fill)
+  error-deep: "#BE123C"      # red-700 (Deep error / pressed)
+  warning: "#F59E0B"         # amber-500 (Caution status)
+  warning-soft: "#FFFBEB"    # amber-50 (Soft caution fill)
+  warning-deep: "#B45309"    # amber-700 (Deep caution variant)
+  violet: "#A78BFA"          # violet-400 (Secondary brand accent)
+  violet-soft: "#F5F3FF"     # violet-50 (Soft accent fill)
+  violet-deep: "#6D28D9"     # violet-700 (Deep accent variant)
+  green-300: "#5EEAD4"       # green-300 (Mint highlight — use this token name in code)
+  green-400: "#2DD4BF"       # green-400 (CTA buttons, active status labels)
+  cyan: "#5EEAD4"            # alias of green-300 (gradients / legacy token)
+  cyan-soft: "#CCFBF1"       # green-100 (Soft highlight accent)
+  cyan-deep: "#0D9488"       # green-600 (Deep mint variant)
+  highlight-pink: "#F43F5E"    # red-500 (Gradient map)
+  highlight-magenta: "#BE123C" # red-700 (Gradient map)
+  gradient-develop-start: "#9333EA" # purple-600
+  gradient-develop-end: "#5EEAD4"   # green-300
+  gradient-preview-start: "#A78BFA" # violet-400
+  gradient-preview-end: "#F43F5E"   # red-500
+  gradient-ship-start: "#F43F5E"    # red-500
+  gradient-ship-end: "#F59E0B"      # amber-500
+  selection-bg: "#9333EA"    # purple-600
+  selection-fg: "#ffffff"    # white
+
+palette:
+  green:
+    50: "#F0FDF4"
+    100: "#CCFBF1"
+    200: "#99F6E4"
+    300: "#5EEAD4"
+    400: "#2DD4BF"
+    500: "#12A392"
+    600: "#0D9488"
+    700: "#0F7A72"
+    800: "#115E59"
+    900: "#134E4A"
+  red:
+    50: "#FFF1F2"
+    100: "#FFE4E6"
+    200: "#FECDD3"
+    300: "#FDA4AF"
+    400: "#FB7185"
+    500: "#F43F5E"
+    600: "#D91C45"
+    700: "#BE123C"
+    800: "#9F1239"
+    900: "#881337"
+  amber:
+    50: "#FFFBEB"
+    100: "#FEF3C7"
+    200: "#FDE68A"
+    300: "#FCD34D"
+    400: "#FBBF24"
+    500: "#F59E0B"
+    600: "#D97706"
+    700: "#B45309"
+    800: "#92400E"
+    900: "#78350F"
+  purple:
+    50: "#FAF5FF"
+    100: "#F3E8FF"
+    200: "#E9D5FF"
+    300: "#D8B4FE"
+    400: "#C084FC"
+    500: "#A855F7"
+    600: "#9333EA"
+    700: "#7E22CE"
+    800: "#6B21A8"
+    900: "#581C87"
+    1000: "#2E0C59"
+    1100: "#150729"
+  violet:
+    50: "#F5F3FF"
+    100: "#EDE9FE"
+    200: "#DDD6FE"
+    300: "#C4B5FD"
+    400: "#A78BFA"
+    500: "#8B5CF6"
+    600: "#7C3AED"
+    700: "#6D28D9"
+    800: "#5B21B6"
+    900: "#4C1D95"
+  gray-neutral:
+    50: "#FAFAFA"
+    100: "#F5F5F5"
+    200: "#E5E5E5"
+    300: "#D4D4D4"
+    400: "#BCBCBC"
+    500: "#707070"
+    600: "#525252"
+    700: "#404040"
+    800: "#262626"
+    900: "#171717"
+  basics:
+    white: "#FFFFFF"
+    black: "#000000"
 
 typography:
   display-xl:
@@ -407,11 +484,13 @@ Type carries structural narration. The geometric sans family (Geist) anchors dis
 The following token structure adapts the colors explicitly from the specifications detailed within CXConnect Color Palette copy.jpg.
 
 ### Brand & Accent
-- **Brand Purple** (`{colors.primary}` — `#6B21A8`): Core brand action color (purple-700). Used for primary CTAs, active navigation, and conversion targets.
-- **Link Purple** (`{colors.link}` — `#9333EA`): Text links and interactive emphasis (purple-500).
+- **Brand Purple** (`{colors.primary}` — `#6B21A8`): Core brand action color (purple-800). Used for active navigation, toggles, and brand surfaces.
+- **Link Purple** (`{colors.link}` — `#9333EA`): Text links and interactive emphasis (purple-600).
+- **CTA Green** (`{colors.cta}` — `#2DD4BF`): Primary conversion buttons (green-400).
+- **Status Green** (`{colors.green-300}` — `#5EEAD4`): Active status labels and mint highlights (green-300). Always reference `{palette.green.300}` / `{colors.green-300}` — not Tailwind defaults.
 - **Gray-Neutral-900** (`{colors.ink}` — `#171717`): The core typographic text anchor. A deep, high-contrast charcoal that ensures extreme crispness across light surfaces.
 - **Violet** (`{colors.violet}` — `#A78BFA`): Violet-400 from the visual color ramp, utilized for data visualization accent highlights and structural decorative pairings.
-- **Cyan** (`{colors.cyan}` — `#5EEAD4`): Green-300 from the main chart, operating as a bright minty accent within gradients and digital platform labels.
+- **Cyan / Green-300** (`{colors.cyan}` / `{colors.green-300}` — `#5EEAD4`): CXConnect green-300 mint accent within gradients and platform labels.
 
 ### Surface
 - **Canvas** (`{colors.canvas}` — `#ffffff`): Pure-white foundational cards, standard modal layouts, and primary form backgrounds.
@@ -427,15 +506,15 @@ The following token structure adapts the colors explicitly from the specificatio
 - **On Primary** (`{colors.on-primary}` — `#ffffff`): Text color overlay on purple background assets or deep dark layout flips.
 
 ### Semantic
-- **Success Green** (`{colors.success}` — `#124392`): Green-500, utilized explicitly to denote actions successfully finalized, positive system metrics, and completed actions.
-- **Warning Amber** (`{colors.warning}` — `#FF9E0B`): Amber-500, configured to reflect cautionary system notices, pending criteria, and alerts not requiring absolute critical emergencies.
-- **Error Red** (`{colors.error}` — `#9F31CB`): Red-500, managed with high restraint to highlight permanent error actions, structural data errors, or negative trends.
+- **Success Green** (`{colors.success}` — `#12A392`): green-500, utilized for actions successfully finalized, positive system metrics, and completed actions.
+- **Warning Amber** (`{colors.warning}` — `#F59E0B`): amber-500, configured for cautionary system notices and pending criteria.
+- **Error Red** (`{colors.error}` — `#F43F5E`): red-500, managed with high restraint for destructive actions and critical negative trends.
 
 ### Brand Gradient
 The platform uses an atmospheric brand gradient configuration constructed using the primary palette stops inside CXConnect Color Palette copy.jpg:
 - **Develop / Core pair** (`{colors.gradient-develop-start}` `#9333EA` → `{colors.gradient-develop-end}` `#5EEAD4`) — Purple to mint-cyan.
-- **Preview / Structural pair** (`{colors.gradient-preview-start}` `#A78BFA` → `{colors.gradient-preview-end}` `#9F31CB`) — Violet to red/pink.
-- **Ship / Warning pair** (`{colors.gradient-ship-start}` `#9F31CB` → `{colors.gradient-ship-end}` `#FF9E0B`) — Red to amber.
+- **Preview / Structural pair** (`{colors.gradient-preview-start}` `#A78BFA` → `{colors.gradient-preview-end}` `#F43F5E`) — Violet to red.
+- **Ship / Warning pair** (`{colors.gradient-ship-start}` `#F43F5E` → `{colors.gradient-ship-end}` `#F59E0B`) — Red to amber.
 
 ## Typography
 

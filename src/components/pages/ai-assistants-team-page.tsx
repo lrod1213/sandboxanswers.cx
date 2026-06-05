@@ -1,11 +1,16 @@
 import { Link } from "@tanstack/react-router";
-import { useEffect, useState } from "react";
+import { useEffect, useLayoutEffect, useState } from "react";
 import {
+	Award,
+	Ban,
 	Bot,
 	Building2,
 	GraduationCap,
 	HeartHandshake,
+	Lock,
 	MessagesSquare,
+	PlugZap,
+	Shield,
 	ShieldCheck,
 	TrendingUp,
 	UserMinus,
@@ -18,17 +23,21 @@ import { MarketingCard } from "#/components/marketing/marketing-card.tsx";
 import { MeshGradient } from "#/components/marketing/mesh-gradient.tsx";
 import { SectionBand } from "#/components/marketing/section-band.tsx";
 import { Button } from "#/components/ui/button.tsx";
+import { Switch } from "#/components/ui/switch.tsx";
 import {
 	assistants,
 	faqItems,
 	heroRotatingOutcomes,
+	privacySecurityPoints,
 	reassurancePoints,
 	strategicShiftItems,
+	syncEngine,
 	tediousWorkItems,
 	workModes,
 	type AiAssistant,
 } from "#/content/ai-assistants-team.ts";
-import { cn } from "#/lib/utils.ts";
+import { siteConfig } from "#/config/site.ts";
+import { cn, scrollToElement } from "#/lib/utils.ts";
 
 const assistantIcons: Record<AiAssistant["icon"], LucideIcon> = {
 	"trending-up": TrendingUp,
@@ -41,61 +50,186 @@ const assistantIcons: Record<AiAssistant["icon"], LucideIcon> = {
 	"graduation-cap": GraduationCap,
 };
 
+const privacySecurityIcons = {
+	award: Award,
+	shield: Shield,
+	lock: Lock,
+	ban: Ban,
+} as const satisfies Record<
+	(typeof privacySecurityPoints)[number]["icon"],
+	LucideIcon
+>;
+
 const proofStats = [
 	["Seconds", "typical time to a sourced answer"],
 	["24/7", "monitoring when you hire the team"],
-	["8 roles", "ready to deploy on day one"],
-	["You stay", "in the loop on every insight"],
+	["On/off", "scale your team anytime"],
+	["You stay", "in control, always"],
 ] as const;
 
-function AssistantIcon({ icon }: { icon: AiAssistant["icon"] }) {
+function randomTwoDisabled(): Record<string, boolean> {
+	const ids = assistants.map((a) => a.id);
+	const shuffled = [...ids];
+	for (let i = shuffled.length - 1; i > 0; i--) {
+		const j = Math.floor(Math.random() * (i + 1));
+		[shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+	}
+	const off = new Set(shuffled.slice(0, 2));
+	return Object.fromEntries(ids.map((id) => [id, !off.has(id)]));
+}
+
+function AssistantIcon({
+	icon,
+	active,
+}: {
+	icon: AiAssistant["icon"];
+	active: boolean;
+}) {
 	const Icon = assistantIcons[icon];
 	return (
-		<span className="inline-flex size-10 items-center justify-center rounded-[var(--rounded-md)] bg-link-bg-soft text-primary">
+		<span
+			className={cn(
+				"inline-flex size-10 items-center justify-center rounded-[var(--rounded-md)] transition-colors duration-300",
+				active
+					? "bg-primary text-primary-foreground"
+					: "bg-canvas-soft-2 text-mute",
+			)}
+		>
 			<Icon className="size-5" aria-hidden />
 		</span>
 	);
 }
 
-function TeamRosterPreview() {
+function AssistantStatusBadge({ active }: { active: boolean }) {
+	if (active) {
+		return (
+			<span className="status-pill status-pill--monitoring">
+				Monitoring
+				<span className="monitoring-dots" aria-hidden />
+			</span>
+		);
+	}
+
+	return <span className="status-pill status-pill--standby">Standby</span>;
+}
+
+function TeamRosterPreview({
+	enabled,
+	onToggle,
+}: {
+	enabled: Record<string, boolean>;
+	onToggle: (id: string, checked: boolean) => void;
+}) {
 	const featured = assistants.slice(0, 4);
+	const activeCount = assistants.filter((a) => enabled[a.id]).length;
 
 	return (
 		<MarketingCard variant="large" className="overflow-hidden p-0">
 			<div className="border-b border-hairline bg-canvas-soft px-5 py-4">
-				<p className="font-mono-caption text-body">Your team · on duty</p>
-				<p className="text-display-sm mt-1">4 of 8 assistants active</p>
+				<p className="section-eyebrow">Your team · on duty</p>
+				<p className="text-display-sm mt-1">
+					{activeCount} of {assistants.length} assistants active
+				</p>
 			</div>
 			<ul className="divide-y divide-hairline">
-				{featured.map((agent) => (
-					<li
-						key={agent.id}
-						className="flex items-start gap-4 px-5 py-4 transition-colors hover:bg-canvas-soft/80"
-					>
-						<AssistantIcon icon={agent.icon} />
-						<div className="min-w-0 flex-1">
-							<div className="flex flex-wrap items-center gap-2">
-								<p className="text-body-md-strong text-ink">{agent.title}</p>
-								<span className="rounded-full bg-success-soft px-2 py-0.5 text-caption text-success">
-									Monitoring
-								</span>
+				{featured.map((agent) => {
+					const active = enabled[agent.id];
+					return (
+						<li
+							key={agent.id}
+							className={cn(
+								"flex items-center gap-4 px-5 py-4 transition-colors",
+								active ? "bg-link-bg-soft/40" : "opacity-60",
+							)}
+						>
+							<AssistantIcon icon={agent.icon} active={active} />
+							<div className="min-w-0 flex-1">
+								<div className="flex flex-wrap items-center gap-2">
+									<p className="text-body-md-strong text-ink">{agent.title}</p>
+									<AssistantStatusBadge active={active} />
+								</div>
+								<p className="mt-1 text-body-sm text-body">{agent.summary}</p>
 							</div>
-							<p className="mt-1 text-body-sm text-body">{agent.summary}</p>
-						</div>
-					</li>
-				))}
+							<Switch
+								size="sm"
+								checked={active}
+								onCheckedChange={(checked) => onToggle(agent.id, checked)}
+								aria-label={`${active ? "Disable" : "Enable"} ${agent.title}`}
+							/>
+						</li>
+					);
+				})}
 			</ul>
 			<div className="border-t border-hairline bg-canvas-soft px-5 py-3">
 				<p className="font-mono text-[11px] text-body">
-					Latest: Churn Risk Analyst flagged 3 accounts · 2h ago
+					No more surprises. You control who is on and who is off.
 				</p>
 			</div>
 		</MarketingCard>
 	);
 }
 
+function AssistantRosterCard({
+	agent,
+	enabled,
+	onToggle,
+}: {
+	agent: AiAssistant;
+	enabled: boolean;
+	onToggle: (checked: boolean) => void;
+}) {
+	return (
+		<MarketingCard
+			variant="marketing"
+			className={cn(
+				"relative flex h-full flex-col border transition-all duration-300",
+				enabled
+					? "assistant-card-active border-primary/35 bg-gradient-to-br from-link-bg-soft/90 via-canvas to-canvas -translate-y-0.5"
+					: "border-transparent opacity-70 saturate-[0.85]",
+			)}
+		>
+			<div className="absolute top-4 right-4 flex items-center gap-2">
+				<span className="sr-only">
+					{enabled ? "Disable" : "Enable"} {agent.title}
+				</span>
+				<span
+					className={cn(
+						"hidden text-caption sm:inline",
+						enabled ? "text-primary" : "text-mute",
+					)}
+					aria-hidden
+				>
+					{enabled ? "On" : "Off"}
+				</span>
+				<Switch
+					checked={enabled}
+					onCheckedChange={onToggle}
+					aria-label={`${enabled ? "Disable" : "Enable"} ${agent.title}`}
+				/>
+			</div>
+			<div className="mb-4 flex items-start gap-3 pr-16">
+				<AssistantIcon icon={agent.icon} active={enabled} />
+				<span className="text-caption text-mute">{agent.role}</span>
+			</div>
+			<h3 className="text-body-md-strong mb-2 text-ink">{agent.title}</h3>
+			<p className="text-body-sm mb-4 flex-1 text-body">{agent.summary}</p>
+			<p className="border-t border-hairline pt-4 text-caption text-mute">
+				<span className="text-body-sm-strong text-ink">Replaces: </span>
+				{agent.gruntWork}
+			</p>
+		</MarketingCard>
+	);
+}
+
 export function AiAssistantsTeamPage() {
 	const [outcomeIndex, setOutcomeIndex] = useState(0);
+	const [enabled, setEnabled] = useState<Record<string, boolean>>(() =>
+		Object.fromEntries(assistants.map((a) => [a.id, true])),
+	);
+
+	useLayoutEffect(() => {
+		setEnabled(randomTwoDisabled());
+	}, []);
 
 	useEffect(() => {
 		const id = setInterval(() => {
@@ -103,6 +237,8 @@ export function AiAssistantsTeamPage() {
 		}, 3200);
 		return () => clearInterval(id);
 	}, []);
+
+	const activeCount = assistants.filter((a) => enabled[a.id]).length;
 
 	return (
 		<>
@@ -133,20 +269,23 @@ export function AiAssistantsTeamPage() {
 							<p className="text-body-lg mb-8 max-w-xl text-body">
 								Get your own answers in seconds, while your assistants monitor
 								the details 24/7, briefing other human teams and building
-								presentations for leadership. AI handles the tedious digging.
-								You stay strategic.
+								presentations for leadership. No more surprises. No more
+								delegating menial grunt work. Your AI Agents are here to please
+								you. You&apos;re always in control.
 							</p>
 							<div className="mb-10 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
 								<Button asChild size="lg" className="w-full sm:w-auto">
-									<Link to="/contact">Meet your team</Link>
+									<Link to="/contact">See it in action</Link>
 								</Button>
 								<Button
-									asChild
 									variant="outline"
 									size="lg"
 									className="w-full sm:w-auto"
+									onClick={() =>
+										scrollToElement("#team", { offset: 88, duration: 1100 })
+									}
 								>
-									<Link to="/">Compare product view</Link>
+									Meet your team
 								</Button>
 							</div>
 							<div className="grid max-w-xl grid-cols-2 gap-px overflow-hidden rounded-[var(--rounded-lg)] bg-hairline elev-4 sm:grid-cols-4">
@@ -165,36 +304,45 @@ export function AiAssistantsTeamPage() {
 								))}
 							</div>
 						</div>
-						<TeamRosterPreview />
+						<TeamRosterPreview
+							enabled={enabled}
+							onToggle={(id, checked) =>
+								setEnabled((prev) => ({ ...prev, [id]: checked }))
+							}
+						/>
 					</div>
 				</div>
 			</section>
 
 			<SectionBand variant="soft">
 				<div className="mb-12 max-w-3xl">
-					<p className="font-mono-caption mb-4 text-body">Two ways to work</p>
+					<p className="section-eyebrow mb-4">Two ways to work</p>
 					<h2 className="text-display-lg mb-4">
-						Fast answers when you ask. Steady vigilance when you don&apos;t.
+						Fast answers when you ask.
+						<br />
+						Steady vigilance when you don&apos;t.
 					</h2>
 					<p className="text-body-lg text-body">
 						Skeptical of AI? Start with a single question you already chase
-						manually. When you trust the sourcing, add assistants to watch the
-						metrics that keep you up at night.
+						manually. Scale assistants up when you trust the sourcing, scale
+						down anytime. You&apos;re always in control.
 					</p>
 				</div>
-				<div className="grid gap-6 md:grid-cols-2">
+				<div className="grid gap-6 md:grid-cols-2 md:items-stretch">
 					{workModes.map((mode, index) => (
 						<MarketingCard
 							key={mode.title}
-							variant={index === 0 ? "large" : "marketing"}
-							className={cn(index === 0 && "md:-mt-4")}
+							variant="marketing"
+							className="flex h-full flex-col"
 						>
-							<p className="font-mono-caption mb-4 text-body">
+							<p className="section-eyebrow mb-4">
 								0{index + 1} · Mode
 							</p>
 							<h3 className="text-display-sm mb-3">{mode.title}</h3>
-							<p className="text-body-md mb-6 text-body">{mode.description}</p>
-							<p className="rounded-[var(--rounded-sm)] border border-hairline bg-canvas-soft px-4 py-3 font-mono text-[12px] leading-relaxed text-ink">
+							<p className="text-body-md mb-6 flex-1 text-body">
+								{mode.description}
+							</p>
+							<p className="mt-auto rounded-[var(--rounded-sm)] border border-hairline bg-canvas-soft px-4 py-3 font-mono text-[12px] leading-relaxed text-ink">
 								{mode.example}
 							</p>
 						</MarketingCard>
@@ -202,44 +350,93 @@ export function AiAssistantsTeamPage() {
 				</div>
 			</SectionBand>
 
-			<SectionBand id="team">
-				<div className="mb-12 grid items-end gap-6 lg:grid-cols-[0.85fr_1fr]">
+			<SectionBand id="sync-engine">
+				<div className="grid items-center gap-10 lg:grid-cols-2 lg:gap-14">
 					<div>
-						<p className="font-mono-caption mb-4 text-body">Your roster</p>
-						<h2 className="text-display-lg">
-							Eight specialists. Zero late-night spreadsheet surgery.
-						</h2>
+						<p className="section-eyebrow mb-4">
+							{syncEngine.eyebrow}
+						</p>
+						<h2 className="text-display-lg mb-4">{syncEngine.title}</h2>
+						<p className="text-body-lg mb-8 text-body">
+							{syncEngine.description}
+						</p>
+						<div className="space-y-6">
+							{syncEngine.features.map((feature) => (
+								<div key={feature.title}>
+									<h3 className="text-body-md-strong mb-1 text-ink">
+										{feature.title}
+									</h3>
+									<p className="text-body-md text-body">{feature.description}</p>
+								</div>
+							))}
+						</div>
+						<Button asChild className="mt-8" variant="outline">
+							<Link to="/data-connectors">See all connectors</Link>
+						</Button>
 					</div>
+					<MarketingCard variant="large" className="overflow-hidden p-0">
+						<div className="border-b border-hairline bg-gradient-to-r from-link-bg-soft to-canvas px-6 py-5">
+							<div className="flex items-center gap-3">
+								<span className="inline-flex size-11 items-center justify-center rounded-[var(--rounded-md)] bg-primary text-primary-foreground">
+									<PlugZap className="size-5" aria-hidden />
+								</span>
+								<div>
+									<p className="section-eyebrow">Sync Engine</p>
+									<p className="text-display-sm">Messy in. Governed out.</p>
+								</div>
+							</div>
+						</div>
+						<div className="space-y-4 p-6">
+							<p className="text-body-sm text-body">
+								Connect your stack once. Your assistants read from a single,
+								governed layer.
+							</p>
+							<div className="flex flex-wrap gap-2">
+								{syncEngine.connectors.map((name) => (
+									<span
+										key={name}
+										className="rounded-full border border-hairline bg-canvas-soft px-3 py-1 text-caption text-ink"
+									>
+										{name}
+									</span>
+								))}
+							</div>
+							<div className="rounded-[var(--rounded-sm)] border border-primary/20 bg-link-bg-soft/50 px-4 py-3">
+								<p className="font-mono text-[11px] text-primary">
+									Typical setup · ~15 min per connector · AES-256 in transit
+								</p>
+							</div>
+						</div>
+					</MarketingCard>
+				</div>
+			</SectionBand>
+
+			<SectionBand id="team" variant="soft">
+				<div className="mb-12 max-w-3xl">
+					<p className="section-eyebrow mb-4">Your roster</p>
+					<h2 className="text-display-lg mb-4">
+						Eight specialists. Toggle who is on. You&apos;re always in
+						control.
+					</h2>
 					<p className="text-body-lg text-body">
-						Pick the roles you need, or run the full bench. Each assistant is
-						built for a job your team already does manually, just slower and
-						more painfully.
+						Scale your AI team up and down as needed. Turn assistants on when
+						you want coverage, off when you want quiet. No more telling your
+						human team to do menial grunt work.{" "}
+						<span className="text-body-md-strong text-ink">
+							{activeCount} of {assistants.length} active
+						</span>
 					</p>
 				</div>
 				<div className="grid gap-5 sm:grid-cols-2 xl:grid-cols-4">
 					{assistants.map((agent) => (
-						<MarketingCard
+						<AssistantRosterCard
 							key={agent.id}
-							variant="marketing"
-							className="flex h-full flex-col"
-						>
-							<div className="mb-4 flex items-start justify-between gap-3">
-								<AssistantIcon icon={agent.icon} />
-								<span className="text-caption text-mute">{agent.role}</span>
-							</div>
-							<h3 className="text-body-md-strong mb-2 text-ink">
-								{agent.title}
-							</h3>
-							<p className="text-body-sm mb-4 flex-1 text-body">
-								{agent.summary}
-							</p>
-							<p className="border-t border-hairline pt-4 text-caption text-mute">
-								<span className="text-body-sm-strong text-ink">
-									Replaces:{" "}
-								</span>
-								{agent.gruntWork}
-							</p>
-						</MarketingCard>
+							agent={agent}
+							enabled={enabled[agent.id]}
+							onToggle={(checked) =>
+								setEnabled((prev) => ({ ...prev, [agent.id]: checked }))
+							}
+						/>
 					))}
 				</div>
 			</SectionBand>
@@ -247,12 +444,13 @@ export function AiAssistantsTeamPage() {
 			<SectionBand variant="dark">
 				<div className="grid gap-12 lg:grid-cols-2 lg:items-center">
 					<div>
-						<p className="font-mono-caption mb-4 text-white/70">
+						<p className="section-eyebrow mb-4">
 							Ready to upskill?
 						</p>
 						<h2 className="text-display-lg mb-6 text-white">
-							AI isn&apos;t here to take your job. It&apos;s here to take the
-							parts you never wanted anyway.
+							No more surprises. No more menial grunt work for your team. AI
+							isn&apos;t here to take your job. It&apos;s here to take the parts
+							you never wanted anyway.
 						</h2>
 						<ul className="space-y-3">
 							{tediousWorkItems.map((item) => (
@@ -287,9 +485,11 @@ export function AiAssistantsTeamPage() {
 
 			<SectionBand variant="soft">
 				<div className="mb-10 max-w-2xl">
-					<p className="font-mono-caption mb-4 text-body">How we think about it</p>
+					<p className="section-eyebrow mb-4">How we think about it</p>
 					<h2 className="text-display-lg">
-						You remain the strategist. They remain the tireless analysts.
+						Your AI Assistants handle the late-night data wrangling.
+						<br />
+						You remain the strategist.
 					</h2>
 				</div>
 				<div className="grid gap-6 md:grid-cols-3">
@@ -302,10 +502,57 @@ export function AiAssistantsTeamPage() {
 				</div>
 			</SectionBand>
 
+			<SectionBand variant="dark">
+				<div className="mb-12 max-w-3xl">
+					<p className="section-eyebrow mb-4">Privacy &amp; security</p>
+					<h2 className="text-display-lg mb-4 text-white">
+						Safe to bring to your board. Safe to connect your data.
+					</h2>
+					<p className="text-body-lg text-white/80">
+						Your assistants only work with data you connect, under controls your
+						security and legal teams can stand behind.
+					</p>
+				</div>
+				<div className="mb-10 grid gap-px overflow-hidden rounded-[var(--rounded-lg)] bg-white/10 sm:grid-cols-2">
+					{privacySecurityPoints.map((item) => {
+						const Icon = privacySecurityIcons[item.icon];
+						return (
+							<div
+								key={item.title}
+								className="flex gap-4 bg-white/[0.04] p-6"
+							>
+								<span className="inline-flex size-11 shrink-0 items-center justify-center rounded-[var(--rounded-md)] bg-white/10 text-white">
+									<Icon className="size-5" aria-hidden />
+								</span>
+								<div>
+									<h3 className="text-body-md-strong mb-2 text-white">
+										{item.title}
+									</h3>
+									<p className="text-body-sm text-white/70">
+										{item.description}
+									</p>
+								</div>
+							</div>
+						);
+					})}
+				</div>
+				<div className="text-center">
+					<Button asChild variant="outline" size="lg">
+						<a
+							href={siteConfig.trustCenterUrl}
+							target="_blank"
+							rel="noopener noreferrer"
+						>
+							View our Trust Center
+						</a>
+					</Button>
+				</div>
+			</SectionBand>
+
 			<SectionBand>
 				<div className="grid gap-10 lg:grid-cols-[0.45fr_0.55fr] lg:items-start">
 					<div className="lg:sticky lg:top-28">
-						<p className="font-mono-caption mb-4 text-body">FAQ</p>
+						<p className="section-eyebrow mb-4">FAQ</p>
 						<h2 className="text-display-lg mb-4">
 							Questions skeptical teams ask first.
 						</h2>

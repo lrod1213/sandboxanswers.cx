@@ -14,6 +14,38 @@ export const heroRotatingOutcomes = [
 	"which accounts need attention",
 ] as const;
 
+export const syncEngine = {
+	eyebrow: "Messy Data. Easy Button.",
+	title: "Our Sync Engine connects to the systems you already use.",
+	description:
+		"Your data lives in a dozen places. Our Sync Engine pulls it together quickly and securely, so your assistants start working without a six-month integration project.",
+	features: [
+		{
+			title: "Connect in minutes, not months",
+			description:
+				"Pre-built connectors for CRM, support platforms, surveys, and conversation tools. Most teams are live in under 15 minutes per source.",
+		},
+		{
+			title: "Messy data, normalized for AI",
+			description:
+				"Tickets, chats, emails, and spreadsheets arrive in different shapes. Sync Engine harmonizes them into one governed layer your assistants can trust.",
+		},
+		{
+			title: "Always fresh, always yours",
+			description:
+				"Data syncs on your schedule. You choose what connects, what stays out, and when to pause. No black boxes, no surprise exports.",
+		},
+	],
+	connectors: [
+		"Salesforce",
+		"Zendesk",
+		"Genesys",
+		"Intercom",
+		"Dynamics",
+		"Freshworks",
+	],
+} as const;
+
 export const workModes = [
 	{
 		title: "Ask once, get an answer",
@@ -143,18 +175,45 @@ export const strategicShiftItems = [
 	},
 ] as const;
 
+export const privacySecurityPoints = [
+	{
+		title: "ISO 27001 certified",
+		description:
+			"Independent, audited security controls your InfoSec and procurement teams already look for in vendor reviews.",
+		icon: "award" as const,
+	},
+	{
+		title: "GDPR compliant",
+		description:
+			"Privacy practices built for European operations and global customers who expect more than a policy page.",
+		icon: "shield" as const,
+	},
+	{
+		title: "AES-256 encryption",
+		description:
+			"Your data is encrypted in transit and at rest to AES-256 or higher, the bar enterprise buyers set before they connect a single system.",
+		icon: "lock" as const,
+	},
+	{
+		title: "Your data never trains our models",
+		description:
+			"What your assistants learn from stays in your environment. We do not use your data to train language models.",
+		icon: "ban" as const,
+	},
+] as const;
+
 export const reassurancePoints = [
 	{
 		title: "AI does the grunt work. You handle the judgement.",
-		body: "Your assistants handle search, synthesis, and monitoring. You decide what to do with the insight, and who needs to hear it.",
+		body: "Your assistants handle search, synthesis, and monitoring. You decide what to do with the insight, and who needs to hear it. No more surprises, no more delegating menial work to your humans.",
 	},
 	{
-		title: "Your job gets more strategic, not smaller.",
-		body: "Leaders who adopt this shift spend less time producing artifacts and more time influencing outcomes: retention, revenue, and experience.",
+		title: "Scale the team up and down. You're always in control.",
+		body: "Turn assistants on when you need them, off when you don't. Your AI Agents are here to please you, not to run rogue. Every insight stays harnessed in our system.",
 	},
 	{
 		title: "Governed answers, not mystery boxes.",
-		body: "Every insight can be traced to your data and policies, so skeptical teams can validate before they present upstream.",
+		body: "Every insight can be traced to your data and policies, so teams can validate before they present upstream.",
 	},
 ] as const;
 

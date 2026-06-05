@@ -156,7 +156,7 @@ function MobileNav() {
 				</SheetHeader>
 				<nav className="mt-8 flex flex-col gap-6">
 					<div>
-						<p className="font-mono-caption mb-3 text-body">Solutions</p>
+						<p className="section-eyebrow mb-3">Solutions</p>
 						<div className="flex flex-col gap-3">
 							{solutionsLinks.map((link) => (
 								<NavLinkItem
@@ -173,7 +173,7 @@ function MobileNav() {
 						onClick={() => setOpen(false)}
 					/>
 					<div>
-						<p className="font-mono-caption mb-3 text-body">Resources</p>
+						<p className="section-eyebrow mb-3">Resources</p>
 						<div className="flex flex-col gap-3">
 							{resourcesLinks.map((link) => (
 								<NavLinkItem

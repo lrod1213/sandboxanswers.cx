@@ -19,7 +19,7 @@ function SuccessPage() {
 	return (
 		<SectionBand className="pt-[var(--spacing-5xl)]">
 			<div className="mx-auto max-w-xl text-center">
-				<p className="font-mono-caption mb-4 text-body">Success</p>
+				<p className="section-eyebrow mb-4">Success</p>
 				<h1 className="text-display-lg mb-4">Thank you for reaching out.</h1>
 				<p className="text-body-lg mb-8 text-body">
 					We received your message and will get back to you shortly.

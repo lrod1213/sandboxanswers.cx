@@ -21,7 +21,7 @@ function ContactPage() {
 		<SectionBand className="pt-[var(--spacing-5xl)]">
 			<div className="grid gap-12 lg:grid-cols-[0.85fr_1fr] lg:gap-16">
 				<div className="lg:pt-8">
-					<p className="font-mono-caption mb-4 text-body">Contact</p>
+					<p className="section-eyebrow mb-4">Contact</p>
 					<h1 className="text-display-xl mb-6">
 						The Answer Layer. Now for CX Leaders.
 					</h1>

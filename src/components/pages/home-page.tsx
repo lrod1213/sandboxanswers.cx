@@ -138,7 +138,7 @@ export function HomePage() {
 			<SectionBand>
 				<div className="mb-12 grid items-end gap-6 lg:grid-cols-[0.9fr_1fr]">
 					<div>
-						<p className="font-mono-caption mb-4 text-body">Insight system</p>
+						<p className="section-eyebrow mb-4">Insight system</p>
 						<h2 className="text-display-lg">
 							Understand what really matters in your business.
 						</h2>
@@ -189,7 +189,7 @@ export function HomePage() {
 			<SectionBand variant="soft">
 				<div className="grid gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:items-start">
 					<div className="lg:sticky lg:top-28">
-						<p className="font-mono-caption mb-4 text-body">Company-wide</p>
+						<p className="section-eyebrow mb-4">Company-wide</p>
 						<h2 className="text-display-lg mb-4">
 							From contact center to C-suite, everyone gets what they need.
 						</h2>
@@ -217,7 +217,7 @@ export function HomePage() {
 							))}
 						</div>
 						<div className="rounded-[var(--rounded-md)] bg-canvas-soft p-6 shadow-[var(--shadow-inset)] md:p-8">
-							<p className="font-mono-caption mb-4 text-body">
+							<p className="section-eyebrow mb-4">
 								{persona.salutation}
 							</p>
 							<p className="text-body-lg text-body">{persona.body}</p>
@@ -234,7 +234,7 @@ export function HomePage() {
 			<SectionBand>
 				<div className="grid items-center gap-12 lg:grid-cols-[0.9fr_1.1fr]">
 					<div>
-						<p className="font-mono-caption mb-4 text-body">
+						<p className="section-eyebrow mb-4">
 							Talk with your data
 						</p>
 						<h2 className="text-display-lg mb-4">
@@ -270,7 +270,7 @@ export function HomePage() {
 			<SectionBand variant="soft">
 				<div className="grid gap-px overflow-hidden rounded-[var(--rounded-lg)] bg-hairline elev-4 lg:grid-cols-2">
 					<div className="bg-canvas p-8 md:p-10">
-						<p className="font-mono-caption mb-4 text-body">
+						<p className="section-eyebrow mb-4">
 							Decision velocity
 						</p>
 						<h2 className="text-display-lg mb-4">
@@ -282,7 +282,7 @@ export function HomePage() {
 						</p>
 					</div>
 					<div className="bg-canvas p-8 md:p-10">
-						<p className="font-mono-caption mb-4 text-body">
+						<p className="section-eyebrow mb-4">
 							Operational clarity
 						</p>
 						<h2 className="text-display-lg mb-4">
@@ -301,7 +301,7 @@ export function HomePage() {
 			<SectionBand variant="dark">
 				<div className="mb-12 grid gap-6 lg:grid-cols-[0.8fr_1fr] lg:items-end">
 					<div>
-						<p className="font-mono-caption mb-4 text-white/70">
+						<p className="section-eyebrow mb-4">
 							Privacy &amp; Security
 						</p>
 						<h2 className="text-display-lg">
@@ -336,7 +336,7 @@ export function HomePage() {
 
 			<SectionBand>
 				<div className="mx-auto mb-12 max-w-3xl text-center">
-					<p className="font-mono-caption mb-4 text-body">Compare solutions</p>
+					<p className="section-eyebrow mb-4">Compare solutions</p>
 					<h2 className="text-display-lg mb-4">
 						The Answer Layer is built for words and numbers.
 					</h2>
@@ -350,7 +350,7 @@ export function HomePage() {
 
 			<SectionBand variant="soft">
 				<div className="mx-auto max-w-3xl">
-					<p className="font-mono-caption mb-4 text-center text-body">FAQs</p>
+					<p className="section-eyebrow mb-4 text-center">FAQs</p>
 					<h2 className="text-display-lg mb-4 text-center">
 						Frequently asked questions.
 					</h2>

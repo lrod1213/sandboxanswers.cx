@@ -18,7 +18,7 @@ function NotFoundPage() {
 	return (
 		<SectionBand className="pt-[var(--spacing-5xl)]">
 			<div className="mx-auto max-w-xl text-center">
-				<p className="font-mono-caption mb-4 text-body">404</p>
+				<p className="section-eyebrow mb-4">404</p>
 				<h1 className="text-display-lg mb-4">Page not found.</h1>
 				<p className="text-body-lg mb-8 text-body">
 					The page you are looking for does not exist or has moved.

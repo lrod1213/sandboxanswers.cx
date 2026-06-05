@@ -18,7 +18,7 @@ export function CtaBand({
 	return (
 		<SectionBand variant="soft" className="border-t border-hairline">
 			<div className="rounded-[var(--rounded-lg)] bg-canvas p-8 text-center elev-4 md:p-12">
-				<p className="font-mono-caption mb-4 text-body">{subtitle}</p>
+				<p className="section-eyebrow mb-4">{subtitle}</p>
 				<h2 className="text-display-lg mx-auto mb-8 max-w-2xl">{title}</h2>
 				<Button asChild size="lg">
 					<Link to={primaryHref}>{primaryLabel}</Link>

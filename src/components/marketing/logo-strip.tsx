@@ -22,7 +22,7 @@ export function LogoStrip({
 }: LogoStripProps) {
 	return (
 		<div className={cn("mx-auto max-w-5xl text-center", className)}>
-			<p className="font-mono-caption mb-4 text-body">Proof layer</p>
+			<p className="section-eyebrow mb-4">Proof layer</p>
 			<h3 className="text-display-sm mb-8">{title}</h3>
 			<ul className="grid grid-cols-2 gap-px overflow-hidden rounded-[var(--rounded-lg)] bg-hairline shadow-[var(--shadow-inset)] sm:grid-cols-3 lg:grid-cols-6">
 				{brands.map((brand) => (

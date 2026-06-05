@@ -21,7 +21,7 @@ export function ProductPage({ content }: ProductPageProps) {
 				<div className="marketing-container relative z-10">
 					<div className="grid items-center gap-8 rise-in md:gap-14 lg:grid-cols-[0.95fr_1.05fr]">
 						<div>
-							<p className="font-mono-caption mb-4 text-body">
+							<p className="section-eyebrow mb-4">
 								{content.hero.eyebrow}
 							</p>
 							<h1 className="mb-6 max-w-3xl text-[2.375rem] font-semibold leading-[0.95] tracking-[-0.06em] text-ink sm:text-[2.75rem] md:text-[52px] md:leading-[0.94] md:tracking-[-3px] lg:text-[72px] lg:tracking-[-4.8px]">

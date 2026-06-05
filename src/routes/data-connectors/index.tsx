@@ -25,7 +25,7 @@ function DataConnectorsPage() {
 				<MeshGradient />
 				<div className="marketing-container relative z-10">
 					<div className="mx-auto max-w-4xl text-center">
-						<p className="font-mono-caption mb-4 text-body">Integrations</p>
+						<p className="section-eyebrow mb-4">Integrations</p>
 						<h1 className="mx-auto mb-6 max-w-3xl text-[2rem] font-semibold leading-[1.05] tracking-[-0.05em] text-ink sm:text-display-xl md:text-[56px] md:leading-[56px] md:tracking-[-3px]">
 							We connect with your existing stack
 						</h1>
@@ -50,7 +50,7 @@ function DataConnectorsPage() {
 
 				<div className="mb-8 flex flex-col justify-between gap-3 md:flex-row md:items-end">
 					<div>
-						<p className="font-mono-caption mb-3 text-body">API connectors</p>
+						<p className="section-eyebrow mb-4">API connectors</p>
 						<h3 className="text-display-sm">Connect via API</h3>
 					</div>
 					<p className="max-w-xl text-body-sm text-body">
@@ -72,7 +72,7 @@ function DataConnectorsPage() {
 
 				<div className="mb-8 flex flex-col justify-between gap-3 md:flex-row md:items-end">
 					<div>
-						<p className="font-mono-caption mb-3 text-body">Native apps</p>
+						<p className="section-eyebrow mb-4">Native apps</p>
 						<h3 className="text-display-sm">Connect via Apps</h3>
 					</div>
 					<p className="max-w-xl text-body-sm text-body">
