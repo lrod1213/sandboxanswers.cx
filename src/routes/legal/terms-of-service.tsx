@@ -2,15 +2,14 @@ import { createFileRoute } from "@tanstack/react-router";
 
 import { SectionBand } from "#/components/marketing/section-band.tsx";
 import { termsOfService } from "#/content/legal.ts";
-import { createPageMeta } from "#/lib/seo.ts";
+import { createPageHead } from "#/lib/seo.ts";
 
 export const Route = createFileRoute("/legal/terms-of-service")({
-	head: () => ({
-		meta: createPageMeta({
+	head: () =>
+		createPageHead({
 			title: termsOfService.title,
 			path: "/legal/terms-of-service",
 		}),
-	}),
 	component: TermsPage,
 });
 

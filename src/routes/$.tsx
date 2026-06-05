@@ -2,15 +2,14 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 
 import { SectionBand } from "#/components/marketing/section-band.tsx";
 import { Button } from "#/components/ui/button.tsx";
-import { createPageMeta } from "#/lib/seo.ts";
+import { createPageHead } from "#/lib/seo.ts";
 
 export const Route = createFileRoute("/$")({
-	head: () => ({
-		meta: createPageMeta({
+	head: () =>
+		createPageHead({
 			title: "Page not found",
 			path: "",
 		}),
-	}),
 	component: NotFoundPage,
 });
 

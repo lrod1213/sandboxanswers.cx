@@ -2,15 +2,14 @@ import { createFileRoute } from "@tanstack/react-router";
 
 import { SectionBand } from "#/components/marketing/section-band.tsx";
 import { privacyPolicy } from "#/content/legal.ts";
-import { createPageMeta } from "#/lib/seo.ts";
+import { createPageHead } from "#/lib/seo.ts";
 
 export const Route = createFileRoute("/legal/privacy-policy")({
-	head: () => ({
-		meta: createPageMeta({
+	head: () =>
+		createPageHead({
 			title: privacyPolicy.title,
 			path: "/legal/privacy-policy",
 		}),
-	}),
 	component: PrivacyPage,
 });
 

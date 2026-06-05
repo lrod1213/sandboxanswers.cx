@@ -45,6 +45,7 @@ export function ContactForm() {
 			onSubmit: contactSchema,
 		},
 		onSubmit: async ({ value }) => {
+			// TODO: POST to server route → Attio when credentials are available.
 			console.info("[contact]", value);
 			posthog.capture("contact_form_submitted", {
 				company: value.company,
@@ -177,7 +178,7 @@ export function ContactForm() {
 			<form.Subscribe selector={(s) => [s.canSubmit, s.isSubmitting]}>
 				{([canSubmit, isSubmitting]) => (
 					<Button type="submit" size="lg" disabled={!canSubmit || isSubmitting}>
-						{isSubmitting ? "Sending…" : "Get in touch"}
+						{isSubmitting ? "Sending…" : "Send message"}
 					</Button>
 				)}
 			</form.Subscribe>

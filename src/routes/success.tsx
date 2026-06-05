@@ -2,16 +2,16 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 
 import { SectionBand } from "#/components/marketing/section-band.tsx";
 import { Button } from "#/components/ui/button.tsx";
-import { createPageMeta } from "#/lib/seo.ts";
+import { createPageHead } from "#/lib/seo.ts";
 
 export const Route = createFileRoute("/success")({
-	head: () => ({
-		meta: createPageMeta({
+	head: () =>
+		createPageHead({
 			title: "Thank you",
 			description: "We received your message and will be in touch soon.",
 			path: "/success",
+			noIndex: true,
 		}),
-	}),
 	component: SuccessPage,
 });
 

@@ -5,6 +5,8 @@ export const siteConfig = {
 	description:
 		"Real-time AI insights for CX leaders. Unlock the voices of your customers across every channel and language.",
 	url: "https://cxconnect.ai",
+	ogImage:
+		"https://framerusercontent.com/assets/dZMgakQ7KiG0IyISfdhrkTD8f8I.png",
 	docsUrl: "https://docs.cxconnect.ai",
 	statusUrl: "https://status.cxconnect.ai",
 	trustCenterUrl: "https://trust.cxconnect.ai",
@@ -65,7 +67,6 @@ export const mvpRoutes = [
 	"/data-connectors",
 	"/about",
 	"/contact",
-	"/success",
 	"/legal/terms-of-service",
 	"/legal/privacy-policy",
 ] as const;

@@ -5,16 +5,15 @@ import { MeshGradient } from "#/components/marketing/mesh-gradient.tsx";
 import { SectionBand } from "#/components/marketing/section-band.tsx";
 import { Button } from "#/components/ui/button.tsx";
 import { aboutContent } from "#/content/about.ts";
-import { createPageMeta } from "#/lib/seo.ts";
+import { createPageHead } from "#/lib/seo.ts";
 
 export const Route = createFileRoute("/about")({
-	head: () => ({
-		meta: createPageMeta({
+	head: () =>
+		createPageHead({
 			title: "About Us",
 			description: aboutContent.story.body,
 			path: "/about",
 		}),
-	}),
 	component: AboutPage,
 });
 

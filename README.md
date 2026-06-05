@@ -51,9 +51,29 @@ pnpm dlx shadcn@latest add <component>
 
 ## PostHog
 
-1. Create a project at [posthog.com](https://posthog.com)
-2. Set `VITE_POSTHOG_KEY` in `.env.local`
-3. Optionally set `VITE_POSTHOG_HOST` (e.g. `https://eu.i.posthog.com`)
+1. Copy `.env.example` to `.env.local`
+2. Set `VITE_POSTHOG_KEY` (production key is in the PostHog project settings)
+3. Optionally set `VITE_POSTHOG_HOST` (default `https://us.i.posthog.com`)
+
+SPA pageviews are captured on route changes via `PageViewTracker`.
+
+## Google Tag Manager
+
+Set `VITE_GTM_ID` in `.env.local` (production: `GTM-PNWSF845`). GA4 is configured inside GTM on the live site — do not add a separate gtag snippet unless you intentionally want dual loading.
+
+## Cal.com
+
+The `/contact` page embeds `team/cxconnect.ai/book-a-demo` by default. Override with `VITE_CAL_LINK` if needed.
+
+First-touch UTM parameters are stored in `localStorage` and passed into the Cal embed config.
+
+## Contact form → Attio
+
+The contact form UI is wired for a future server-side Attio integration. Submissions currently log locally and fire a PostHog event until `ATTIO_API_TOKEN` is connected.
+
+## SEO
+
+Per-route meta, canonical URLs, Open Graph/Twitter images, and JSON-LD organization markup are generated from `src/lib/seo.ts`. Update `siteConfig.ogImage` when you host a production OG asset on this domain.
 
 ## Routing
 

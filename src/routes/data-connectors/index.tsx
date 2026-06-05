@@ -4,17 +4,16 @@ import { MarketingCard } from "#/components/marketing/marketing-card.tsx";
 import { MeshGradient } from "#/components/marketing/mesh-gradient.tsx";
 import { SectionBand } from "#/components/marketing/section-band.tsx";
 import { apiConnectors, appConnectors } from "#/content/integrations.ts";
-import { createPageMeta } from "#/lib/seo.ts";
+import { createPageHead } from "#/lib/seo.ts";
 
 export const Route = createFileRoute("/data-connectors/")({
-	head: () => ({
-		meta: createPageMeta({
+	head: () =>
+		createPageHead({
 			title: "Data Connectors",
 			description:
 				"Connect cxconnect.ai with your existing stack via APIs and native apps.",
 			path: "/data-connectors",
 		}),
-	}),
 	component: DataConnectorsPage,
 });
 
