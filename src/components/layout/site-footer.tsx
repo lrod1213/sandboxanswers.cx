@@ -1,5 +1,6 @@
-import { Link } from "@tanstack/react-router";
+import { ClientOnly, Link } from "@tanstack/react-router";
 
+import { FooterSystemStatus, SystemStatusIndicator } from "#/components/layout/footer-system-status.tsx";
 import { footerColumns } from "#/config/pages.ts";
 import { siteConfig } from "#/config/site.ts";
 
@@ -45,16 +46,11 @@ export function SiteFooter() {
 	return (
 		<footer className="border-t border-hairline bg-canvas py-[var(--spacing-5xl)]">
 			<div className="marketing-container">
-				<div className="mb-12 flex flex-col justify-between gap-6 border-b border-hairline pb-12 lg:flex-row lg:items-end">
-					<div>
-						<p className="section-eyebrow mb-3">cxconnect.ai</p>
-						<p className="max-w-md text-body-lg text-body">
-							The answer layer for customer conversations, data connectors, and
-							real-time multilingual support.
-						</p>
-					</div>
-					<p className="text-caption text-body">
-						© {new Date().getFullYear()} {siteConfig.legalName}
+				<div className="mb-12 border-b border-hairline pb-12">
+					<p className="section-eyebrow mb-3">cxconnect.ai</p>
+					<p className="max-w-md text-body-lg text-body">
+						The answer layer for customer conversations, data connectors, and
+						real-time multilingual support.
 					</p>
 				</div>
 				<div className="grid gap-12 sm:grid-cols-2 lg:grid-cols-4">
@@ -98,6 +94,26 @@ export function SiteFooter() {
 							))}
 						</ul>
 					</div>
+				</div>
+				<div className="mt-12 flex flex-col gap-4 border-t border-hairline pt-8 sm:flex-row sm:items-center sm:justify-between">
+					<p className="text-caption text-body">
+						© {new Date().getFullYear()} {siteConfig.legalName}
+					</p>
+					<ClientOnly
+						fallback={
+							<a
+								href={siteConfig.statusUrl}
+								target="_blank"
+								rel="noopener noreferrer"
+								className="footer-system-status inline-flex items-center gap-2.5 text-caption text-body"
+							>
+								<SystemStatusIndicator />
+								System Status
+							</a>
+						}
+					>
+						<FooterSystemStatus />
+					</ClientOnly>
 				</div>
 			</div>
 		</footer>

@@ -25,6 +25,8 @@
 
 :root {
   /* DESIGN.md tokens — CXConnect Color Palette */
+  --status-operational: #00c853;
+  --status-operational-soft: rgb(93, 194, 105);
   --primary: #6b21a8;
   --ink: #171717;
   --on-primary: #ffffff;
@@ -728,6 +730,75 @@ a:not([data-slot='button']):hover {
 @media (prefers-reduced-motion: reduce) {
   .work-mode-cursor {
     animation: none;
+  }
+
+  .footer-system-status-dot__ring {
+    animation: none;
+    opacity: 0;
+  }
+}
+
+.footer-system-status-dot {
+  position: relative;
+  display: inline-flex;
+  width: 12px;
+  height: 12px;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+}
+
+.footer-system-status-dot__core {
+  position: relative;
+  z-index: 2;
+  width: 8px;
+  height: 8px;
+  border-radius: 9999px;
+  background: var(--status-operational);
+}
+
+.footer-system-status-dot__ring {
+  position: absolute;
+  inset: 0;
+  border-radius: 9999px;
+  background: color-mix(in srgb, var(--status-operational) 42%, transparent);
+  animation: footer-status-heartbeat 2.4s cubic-bezier(0.22, 1, 0.36, 1) infinite;
+  transform-origin: center;
+}
+
+.footer-system-status-dot__ring--delayed {
+  animation-delay: 1.2s;
+}
+
+.footer-system-status-dot--operational .footer-system-status-dot__core {
+  background: var(--status-operational);
+}
+
+.footer-system-status-dot--minor .footer-system-status-dot__core {
+  background: var(--warning);
+}
+
+.footer-system-status-dot--major .footer-system-status-dot__core,
+.footer-system-status-dot--critical .footer-system-status-dot__core {
+  background: var(--error);
+}
+
+@keyframes footer-status-heartbeat {
+  0% {
+    transform: scale(0.72);
+    opacity: 0.72;
+  }
+  18% {
+    transform: scale(1.05);
+    opacity: 0.48;
+  }
+  36% {
+    transform: scale(1.55);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1.55);
+    opacity: 0;
   }
 }
 
