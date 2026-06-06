@@ -4,21 +4,49 @@ import type * as React from "react";
 
 import { cn } from "#/lib/utils.ts";
 
+const buttonMotion =
+	"select-none transition-[color,background-color,border-color,box-shadow,transform,filter] duration-150 ease-out motion-safe:active:scale-[0.97] motion-reduce:active:scale-100";
+
 const buttonVariants = cva(
-	"inline-flex shrink-0 items-center justify-center gap-2 whitespace-nowrap text-sm font-medium transition-all outline-none focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/30 disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-destructive/20 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
+	cn(
+		"inline-flex shrink-0 items-center justify-center gap-2 whitespace-nowrap text-sm font-medium outline-none focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/30 disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-destructive/20 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
+		buttonMotion,
+	),
 	{
 		variants: {
 			variant: {
-				default:
-					"bg-cta text-cta-foreground hover:bg-cta/90 focus-visible:ring-cta/30",
-				destructive:
-					"bg-destructive text-destructive-foreground hover:bg-destructive/90 focus-visible:ring-destructive/20",
-				outline:
-					"border border-input bg-card text-foreground shadow-[var(--shadow-inset)] hover:bg-accent hover:text-accent-foreground",
-				secondary:
-					"bg-secondary text-secondary-foreground hover:bg-secondary/80",
-				ghost: "text-body hover:bg-accent hover:text-accent-foreground",
-				link: "text-link underline-offset-4 hover:text-link-deep hover:underline",
+				default: cn(
+					"bg-cta text-cta-foreground shadow-[var(--shadow-elev-2)]",
+					"hover:bg-cta/92 hover:shadow-[var(--shadow-elev-3)]",
+					"active:bg-cta/84 active:shadow-[var(--shadow-inset)] active:brightness-[0.98]",
+					"focus-visible:ring-cta/30",
+				),
+				destructive: cn(
+					"bg-destructive text-destructive-foreground shadow-[var(--shadow-elev-2)]",
+					"hover:bg-destructive/92 hover:shadow-[var(--shadow-elev-3)]",
+					"active:bg-destructive/84 active:shadow-[var(--shadow-inset)] active:brightness-[0.98]",
+					"focus-visible:ring-destructive/20",
+				),
+				outline: cn(
+					"border border-input bg-card text-foreground shadow-[var(--shadow-inset)]",
+					"hover:border-hairline-strong hover:bg-canvas-soft hover:text-ink hover:shadow-[var(--shadow-elev-2)]",
+					"active:border-hairline-strong active:bg-canvas-soft-2 active:text-ink active:shadow-[var(--shadow-inset)] active:brightness-[0.99]",
+				),
+				secondary: cn(
+					"bg-secondary text-secondary-foreground shadow-[var(--shadow-inset)]",
+					"hover:bg-secondary/88 hover:shadow-[var(--shadow-elev-2)]",
+					"active:bg-secondary/76 active:shadow-[var(--shadow-inset)] active:brightness-[0.98]",
+				),
+				ghost: cn(
+					"text-body",
+					"hover:bg-accent hover:text-accent-foreground",
+					"active:bg-canvas-soft-2 active:text-ink",
+				),
+				link: cn(
+					"text-link underline-offset-4 motion-safe:active:scale-100",
+					"hover:text-link-deep hover:underline",
+					"active:text-link-deep active:brightness-[0.95]",
+				),
 			},
 			size: {
 				default: "h-10 rounded-[var(--rounded-sm)] px-4 py-2 has-[>svg]:px-3",

@@ -569,6 +569,168 @@ a:not([data-slot='button']):hover {
   color: var(--mute);
 }
 
+.assistant-enable-btn {
+  display: inline-flex;
+  shrink: 0;
+  align-items: center;
+  justify-content: center;
+  height: 1.75rem;
+  border-radius: 9999px;
+  padding-inline: 0.75rem;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: -0.01em;
+  white-space: nowrap;
+  cursor: pointer;
+  outline: none;
+  transition:
+    color,
+    background-color,
+    border-color,
+    box-shadow,
+    transform,
+    filter 150ms ease-out;
+}
+
+.assistant-enable-btn:focus-visible {
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--ring) 30%, transparent);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .assistant-enable-btn:active {
+    transform: scale(0.97);
+  }
+}
+
+.assistant-enable-btn--enabled {
+  border: 1px solid color-mix(in srgb, var(--green-500) 35%, transparent);
+  background: var(--green-800);
+  color: #ffffff;
+}
+
+.assistant-enable-btn--enabled:hover {
+  background: var(--green-700);
+  border-color: color-mix(in srgb, var(--green-400) 45%, transparent);
+}
+
+.assistant-enable-btn--enabled:active {
+  background: var(--green-900);
+}
+
+.assistant-enable-btn--disabled {
+  border: 1px solid var(--hairline-strong);
+  background: var(--canvas-soft-2);
+  color: var(--body);
+}
+
+.assistant-enable-btn--disabled:hover {
+  background: var(--canvas-soft);
+  color: var(--ink);
+}
+
+.assistant-avatar {
+  box-shadow:
+    inset 0 1px 1px rgba(255, 255, 255, 0.28),
+    0 1px 2px rgba(0, 0, 0, 0.12);
+}
+
+.team-roster-scroll {
+  max-height: 22.5rem;
+  overflow-y: auto;
+  overscroll-behavior-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: var(--hairline-strong) transparent;
+}
+
+.team-roster-scroll::-webkit-scrollbar {
+  width: 6px;
+}
+
+.team-roster-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.team-roster-scroll::-webkit-scrollbar-thumb {
+  border-radius: 9999px;
+  background: var(--hairline-strong);
+}
+
+.team-roster-scroll-mask::before,
+.team-roster-scroll-mask::after {
+  content: "";
+  position: absolute;
+  inset-inline: 0;
+  z-index: 1;
+  height: 1.25rem;
+  pointer-events: none;
+}
+
+.team-roster-scroll-mask::before {
+  top: 0;
+  background: linear-gradient(to bottom, var(--canvas) 0%, transparent 100%);
+}
+
+.team-roster-scroll-mask::after {
+  bottom: 0;
+  background: linear-gradient(to top, var(--canvas) 0%, transparent 100%);
+}
+
+.sync-engine-callout p {
+  color: var(--green-700);
+}
+
+.dark .sync-engine-callout p {
+  color: var(--green-300);
+}
+
+.assistant-roster-card {
+  will-change: transform, box-shadow;
+}
+
+.assistant-roster-card:not(:hover).assistant-card-active {
+  transform: translateY(0);
+}
+
+.assistant-card-role,
+.assistant-card-meta {
+  color: color-mix(in srgb, var(--body) 72%, var(--mute));
+}
+
+.assistant-card-summary {
+  color: color-mix(in srgb, var(--body) 88%, var(--ink));
+}
+
+.dark .assistant-card-role,
+.dark .assistant-card-meta {
+  color: color-mix(in srgb, var(--body) 82%, var(--mute));
+}
+
+.dark .assistant-card-summary {
+  color: color-mix(in srgb, var(--body) 92%, var(--ink));
+}
+
+.work-mode-cursor {
+  height: 1em;
+  animation: work-mode-cursor-blink 1s step-end infinite;
+}
+
+@keyframes work-mode-cursor-blink {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .work-mode-cursor {
+    animation: none;
+  }
+}
+
 .status-pill--monitoring {
   border: 1px solid color-mix(in srgb, var(--green-400) 28%, transparent);
   background: var(--green-50);

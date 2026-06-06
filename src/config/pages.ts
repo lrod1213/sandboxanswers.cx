@@ -25,7 +25,6 @@ export type PageDefinition = {
 };
 
 const DOCS_URL = "https://docs.cxconnect.ai";
-const STATUS_URL = "https://status.cxconnect.ai";
 
 export const pages = [
 	{
@@ -61,7 +60,7 @@ export const pages = [
 	},
 	{
 		path: "/data-connectors",
-		label: "Integrations",
+		label: "Connectors",
 		navGroup: "integrations",
 		sitemap: true,
 		contactInterest: "Data Connectors",
@@ -105,12 +104,6 @@ export const pages = [
 		path: DOCS_URL,
 		label: "Documentation",
 		navGroup: "resources",
-		external: true,
-	},
-	{
-		path: STATUS_URL,
-		label: "System Status",
-		navGroup: "legal",
 		external: true,
 	},
 ] as const satisfies readonly PageDefinition[];

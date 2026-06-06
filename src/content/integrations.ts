@@ -8,7 +8,7 @@ export const dataConnectorsPageContent = {
 		path: "/data-connectors",
 	} satisfies PageSeoContent,
 	hero: {
-		eyebrow: "Integrations",
+		eyebrow: "Connectors",
 		title: "We connect with your existing stack",
 		lead: "If you don't see what you need, send us a note and we'll look into it.",
 	},

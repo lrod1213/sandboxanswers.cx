@@ -1,19 +1,11 @@
 import { Link } from "@tanstack/react-router";
-import { useEffect, useLayoutEffect, useState } from "react";
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import {
 	Award,
 	Ban,
-	Bot,
-	Building2,
-	GraduationCap,
-	HeartHandshake,
 	Lock,
-	MessagesSquare,
 	PlugZap,
 	Shield,
-	ShieldCheck,
-	TrendingUp,
-	UserMinus,
 	type LucideIcon,
 } from "lucide-react";
 
@@ -22,8 +14,11 @@ import { FaqAccordion } from "#/components/marketing/faq-accordion.tsx";
 import { MarketingCard } from "#/components/marketing/marketing-card.tsx";
 import { MeshGradient } from "#/components/marketing/mesh-gradient.tsx";
 import { SectionBand } from "#/components/marketing/section-band.tsx";
+import {
+	AskModeDemo,
+	MonitorModeDemo,
+} from "#/components/marketing/work-mode-demos.tsx";
 import { Button } from "#/components/ui/button.tsx";
-import { Switch } from "#/components/ui/switch.tsx";
 import {
 	assistants,
 	faqItems,
@@ -39,15 +34,15 @@ import {
 import { siteConfig } from "#/config/site.ts";
 import { cn, scrollToElement } from "#/lib/utils.ts";
 
-const assistantIcons: Record<AiAssistant["icon"], LucideIcon> = {
-	"trending-up": TrendingUp,
-	"user-minus": UserMinus,
-	"messages-square": MessagesSquare,
-	"building-2": Building2,
-	"shield-check": ShieldCheck,
-	"heart-handshake": HeartHandshake,
-	bot: Bot,
-	"graduation-cap": GraduationCap,
+const assistantAvatarGradients: Record<AiAssistant["id"], string> = {
+	revenue: "bg-gradient-to-br from-pink-400 via-fuchsia-500 to-violet-700",
+	churn: "bg-gradient-to-br from-sky-300 via-teal-400 to-green-600",
+	feedback: "bg-gradient-to-br from-orange-400 via-amber-300 to-yellow-500",
+	accounts: "bg-gradient-to-br from-rose-500 via-fuchsia-600 to-purple-800",
+	compliance: "bg-gradient-to-br from-indigo-400 via-violet-500 to-purple-700",
+	cx: "bg-gradient-to-br from-pink-500 via-rose-400 to-orange-400",
+	bot: "bg-gradient-to-br from-fuchsia-400 via-purple-500 to-violet-700",
+	coach: "bg-gradient-to-br from-amber-400 via-orange-400 to-rose-500",
 };
 
 const privacySecurityIcons = {
@@ -78,25 +73,52 @@ function randomTwoDisabled(): Record<string, boolean> {
 	return Object.fromEntries(ids.map((id) => [id, !off.has(id)]));
 }
 
-function AssistantIcon({
-	icon,
-	active,
+function AssistantAvatar({
+	id,
+	className,
 }: {
-	icon: AiAssistant["icon"];
-	active: boolean;
+	id: AiAssistant["id"];
+	className?: string;
 }) {
-	const Icon = assistantIcons[icon];
 	return (
 		<span
 			className={cn(
-				"inline-flex size-10 items-center justify-center rounded-[var(--rounded-md)] transition-colors duration-300",
-				active
-					? "bg-primary text-primary-foreground"
-					: "bg-canvas-soft-2 text-mute",
+				"assistant-avatar inline-block size-10 shrink-0 rounded-full",
+				assistantAvatarGradients[id],
+				className,
 			)}
+			aria-hidden
+		/>
+	);
+}
+
+function AssistantEnableButton({
+	enabled,
+	onToggle,
+	label,
+	className,
+}: {
+	enabled: boolean;
+	onToggle: () => void;
+	label: string;
+	className?: string;
+}) {
+	return (
+		<button
+			type="button"
+			className={cn(
+				"assistant-enable-btn",
+				enabled
+					? "assistant-enable-btn--enabled"
+					: "assistant-enable-btn--disabled",
+				className,
+			)}
+			onClick={onToggle}
+			aria-pressed={enabled}
+			aria-label={`${enabled ? "Disable" : "Enable"} ${label}`}
 		>
-			<Icon className="size-5" aria-hidden />
-		</span>
+			{enabled ? "Enabled" : "Disabled"}
+		</button>
 	);
 }
 
@@ -122,8 +144,30 @@ function TeamRosterPreview({
 	enabled: Record<string, boolean>;
 	onToggle: (id: string, checked: boolean) => void;
 }) {
-	const featured = assistants.slice(0, 4);
+	const scrollRef = useRef<HTMLUListElement>(null);
 	const activeCount = assistants.filter((a) => enabled[a.id]).length;
+
+	useEffect(() => {
+		const node = scrollRef.current;
+		if (!node) return;
+
+		const handleWheel = (event: WheelEvent) => {
+			if (event.deltaY === 0) return;
+
+			const maxScroll = node.scrollHeight - node.clientHeight;
+			if (maxScroll <= 0) return;
+
+			const atTop = node.scrollTop <= 0;
+			const atBottom = node.scrollTop >= maxScroll - 1;
+
+			if ((event.deltaY < 0 && atTop) || (event.deltaY > 0 && atBottom)) {
+				window.scrollBy({ top: event.deltaY, behavior: "auto" });
+			}
+		};
+
+		node.addEventListener("wheel", handleWheel, { passive: true });
+		return () => node.removeEventListener("wheel", handleWheel);
+	}, []);
 
 	return (
 		<MarketingCard variant="large" className={cn("overflow-hidden p-0", className)}>
@@ -132,9 +176,17 @@ function TeamRosterPreview({
 				<p className="text-display-sm mt-1">
 					{activeCount} of {assistants.length} assistants active
 				</p>
+				<p className="mt-2 text-caption text-body">
+					Scroll to browse all {assistants.length} assistants
+				</p>
 			</div>
-			<ul className="divide-y divide-hairline">
-				{featured.map((agent) => {
+			<div className="team-roster-scroll-mask relative">
+				<ul
+					ref={scrollRef}
+					className="team-roster-scroll divide-y divide-hairline"
+					aria-label="AI assistants roster"
+				>
+					{assistants.map((agent) => {
 					const active = enabled[agent.id];
 					return (
 						<li
@@ -144,7 +196,7 @@ function TeamRosterPreview({
 								active ? "bg-link-bg-soft/40" : "opacity-60",
 							)}
 						>
-							<AssistantIcon icon={agent.icon} active={active} />
+							<AssistantAvatar id={agent.id} />
 							<div className="min-w-0 flex-1">
 								<div className="flex flex-wrap items-center gap-2">
 									<p className="text-body-md-strong text-ink">{agent.title}</p>
@@ -152,19 +204,19 @@ function TeamRosterPreview({
 								</div>
 								<p className="mt-1 text-body-sm text-body">{agent.summary}</p>
 							</div>
-							<Switch
-								size="sm"
-								checked={active}
-								onCheckedChange={(checked) => onToggle(agent.id, checked)}
-								aria-label={`${active ? "Disable" : "Enable"} ${agent.title}`}
+							<AssistantEnableButton
+								enabled={active}
+								label={agent.title}
+								onToggle={() => onToggle(agent.id, !active)}
 							/>
 						</li>
 					);
-				})}
-			</ul>
+					})}
+				</ul>
+			</div>
 			<div className="border-t border-hairline bg-canvas-soft px-5 py-3">
 				<p className="font-mono text-[11px] text-body">
-					No more surprises. You control who is on and who is off.
+					You control who is enabled and who is on standby.
 				</p>
 			</div>
 		</MarketingCard>
@@ -184,38 +236,29 @@ function AssistantRosterCard({
 		<MarketingCard
 			variant="marketing"
 			className={cn(
-				"relative flex h-full flex-col border transition-all duration-300",
+				"assistant-roster-card relative flex h-full flex-col border transition-all duration-300",
 				enabled
-					? "assistant-card-active border-primary/35 bg-gradient-to-br from-link-bg-soft/90 via-canvas to-canvas -translate-y-0.5"
-					: "border-transparent opacity-70 saturate-[0.85]",
+					? "assistant-card-active border-primary/35 bg-gradient-to-br from-link-bg-soft/90 via-canvas to-canvas"
+					: "border-transparent bg-canvas-soft/70 saturate-[0.88]",
 			)}
 		>
-			<div className="absolute top-4 right-4 flex items-center gap-2">
-				<span className="sr-only">
-					{enabled ? "Disable" : "Enable"} {agent.title}
-				</span>
-				<span
-					className={cn(
-						"hidden text-caption sm:inline",
-						enabled ? "text-primary" : "text-mute",
-					)}
-					aria-hidden
-				>
-					{enabled ? "On" : "Off"}
-				</span>
-				<Switch
-					checked={enabled}
-					onCheckedChange={onToggle}
-					aria-label={`${enabled ? "Disable" : "Enable"} ${agent.title}`}
+			<div className="mb-4 flex items-start justify-between gap-3">
+				<div className="flex min-w-0 items-start gap-3">
+					<AssistantAvatar id={agent.id} />
+					<div className="min-w-0">
+						<h3 className="text-body-md-strong text-ink">{agent.title}</h3>
+						<p className="assistant-card-role text-caption">{agent.role}</p>
+					</div>
+				</div>
+				<AssistantEnableButton
+					enabled={enabled}
+					label={agent.title}
+					onToggle={() => onToggle(!enabled)}
+					className="shrink-0"
 				/>
 			</div>
-			<div className="mb-4 flex items-start gap-3 pr-16">
-				<AssistantIcon icon={agent.icon} active={enabled} />
-				<span className="text-caption text-mute">{agent.role}</span>
-			</div>
-			<h3 className="text-body-md-strong mb-2 text-ink">{agent.title}</h3>
-			<p className="text-body-sm mb-4 flex-1 text-body">{agent.summary}</p>
-			<p className="border-t border-hairline pt-4 text-caption text-mute">
+			<p className="assistant-card-summary text-body-sm mb-4 flex-1">{agent.summary}</p>
+			<p className="border-t border-hairline pt-4 text-caption assistant-card-meta">
 				<span className="text-body-sm-strong text-ink">Replaces: </span>
 				{agent.gruntWork}
 			</p>
@@ -289,8 +332,8 @@ export function AiAssistantsTeamPage() {
 								<p className="text-body-lg text-body">
 									Get your own answers in seconds, while your assistants monitor
 									the details 24/7, briefing other human teams and building
-									presentations for leadership. No more surprises. No more
-									delegating menial grunt work. You&apos;re always in control.
+									presentations for leadership. No more surprises. You&apos;re
+									always in control.
 								</p>
 								<div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap">
 									<Button asChild size="lg" className="w-full sm:w-auto">
@@ -363,9 +406,7 @@ export function AiAssistantsTeamPage() {
 							<p className="text-body-md mb-6 flex-1 text-body">
 								{mode.description}
 							</p>
-							<p className="mt-auto rounded-[var(--rounded-sm)] border border-hairline bg-canvas-soft px-4 py-3 font-mono text-[12px] leading-relaxed text-ink">
-								{mode.example}
-							</p>
+							{index === 0 ? <AskModeDemo /> : <MonitorModeDemo />}
 						</MarketingCard>
 					))}
 				</div>
@@ -422,9 +463,10 @@ export function AiAssistantsTeamPage() {
 									</span>
 								))}
 							</div>
-							<div className="rounded-[var(--rounded-sm)] border border-primary/20 bg-link-bg-soft/50 px-4 py-3">
-								<p className="font-mono text-[11px] text-primary">
+							<div className="sync-engine-callout rounded-[var(--rounded-sm)] border border-primary/20 bg-link-bg-soft/50 px-4 py-3">
+								<p className="font-mono text-[11px]">
 									Typical setup · ~15 min per connector · AES-256 in transit
+									and at rest
 								</p>
 							</div>
 						</div>
@@ -469,9 +511,8 @@ export function AiAssistantsTeamPage() {
 							Ready to upskill?
 						</p>
 						<h2 className="text-display-lg mb-6 text-white">
-							No more surprises. No more menial grunt work for your team. AI
-							isn&apos;t here to take your job. It&apos;s here to take the parts
-							you never wanted anyway.
+							AI isn&apos;t here to take your job. It&apos;s here to take the
+							parts you never wanted anyway.
 						</h2>
 						<ul className="space-y-3">
 							{tediousWorkItems.map((item) => (

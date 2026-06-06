@@ -15,7 +15,6 @@ export type AiAssistant = {
 	role: string;
 	summary: string;
 	gruntWork: string;
-	icon: "trending-up" | "user-minus" | "messages-square" | "building-2" | "shield-check" | "heart-handshake" | "bot" | "graduation-cap";
 };
 
 export const heroRotatingOutcomes = [
@@ -23,6 +22,7 @@ export const heroRotatingOutcomes = [
 	"who might churn next",
 	"what customers want built",
 	"which accounts need attention",
+	"compliance risks before they escalate",
 ] as const;
 
 export const syncEngine = {
@@ -59,18 +59,58 @@ export const syncEngine = {
 
 export const workModes = [
 	{
-		title: "Ask once, get an answer",
+		title: "Answers in seconds, not hours or days",
 		description:
 			"Skip the late-night pivot tables. Ask a plain-language question and get a governed answer in seconds, sourced from the systems you already use.",
-		example: "“Which enterprise accounts mentioned billing friction this quarter?”",
 	},
 	{
 		title: "Hire the team to watch 24/7",
 		description:
 			"Your assistants monitor conversations, tickets, surveys, and operational data around the clock, then surface what matters before it becomes a fire drill.",
-		example: "“Churn risk rising in EMEA onboarding. Summary ready for your standup.”",
 	},
 ] as const;
+
+export type WorkModeIssue = {
+	title: string;
+	instances: number;
+	detail: string;
+};
+
+export const askModeDemo = {
+	question: "Which enterprise accounts mentioned billing friction this quarter?",
+	answerLead:
+		"4 enterprise accounts flagged billing friction in Q3 conversation and ticket data:",
+	accounts: [
+		{ name: "Meridian Health", mentions: 5 },
+		{ name: "Acme Corp", mentions: 3 },
+		{ name: "Nordtek AS", mentions: 2 },
+		{ name: "Valterra Group", mentions: 1 },
+	],
+	themes: ["invoice timing", "pro-rated charges", "portal access delays"],
+	sources: ["Zendesk", "Salesforce", "Q3 conversation sync"],
+} as const;
+
+export const monitorModeDemo = {
+	alert: "Churn risk rising in EMEA onboarding since yesterday.",
+	summaryCta: "Summary ready for your standup.",
+	issues: [
+		{
+			title: "Provisioning delays in EMEA onboarding",
+			instances: 47,
+			detail: "Average time-to-first-value exceeded SLA by 2.3 days across new logos.",
+		},
+		{
+			title: "Missing welcome sequence in local language",
+			instances: 31,
+			detail: "German and French accounts flagged incomplete localized onboarding content.",
+		},
+		{
+			title: "CSAT drop during first-week check-in",
+			instances: 22,
+			detail: "Post-onboarding survey scores fell 14 points week-over-week in EMEA.",
+		},
+	],
+} as const satisfies { issues: readonly WorkModeIssue[] };
 
 export const assistants: AiAssistant[] = [
 	{
@@ -81,7 +121,6 @@ export const assistants: AiAssistant[] = [
 			"Finds upsell, cross-sell, and renewal intent buried in conversations and usage, without you mining five dashboards.",
 		gruntWork:
 			"Searching CRM notes, stitching usage exports, and building one-off renewal decks.",
-		icon: "trending-up",
 	},
 	{
 		id: "churn",
@@ -91,7 +130,6 @@ export const assistants: AiAssistant[] = [
 			"Spots frustration patterns and relationship cooling before they show up on a renewal call.",
 		gruntWork:
 			"Manually tagging at-risk accounts and reconciling NPS with support volume.",
-		icon: "user-minus",
 	},
 	{
 		id: "feedback",
@@ -101,7 +139,6 @@ export const assistants: AiAssistant[] = [
 			"Clusters feedback from every channel into clear themes product and engineering can prioritize.",
 		gruntWork:
 			"Copy-pasting quotes into slides and arguing over which spreadsheet is “the source of truth.”",
-		icon: "messages-square",
 	},
 	{
 		id: "accounts",
@@ -111,7 +148,6 @@ export const assistants: AiAssistant[] = [
 			"Keeps a steady pulse on your largest customers: escalations, sentiment shifts, and executive-ready summaries.",
 		gruntWork:
 			"Weekly account reviews built from inbox searches and ad hoc leadership requests.",
-		icon: "building-2",
 	},
 	{
 		id: "compliance",
@@ -121,7 +157,6 @@ export const assistants: AiAssistant[] = [
 			"Detects policy language drift, disclosure gaps, and emerging compliance themes across channels.",
 		gruntWork:
 			"Sampling transcripts and hoping nothing important slipped through QA.",
-		icon: "shield-check",
 	},
 	{
 		id: "cx",
@@ -131,7 +166,6 @@ export const assistants: AiAssistant[] = [
 			"Highlights experience breakdowns and coaching opportunities from real interactions, not random ticket pulls.",
 		gruntWork:
 			"Listening to call samples and building subjective QA scorecards by hand.",
-		icon: "heart-handshake",
 	},
 	{
 		id: "bot",
@@ -141,7 +175,6 @@ export const assistants: AiAssistant[] = [
 			"Shows when bots deflect well, and when they create new work for humans or customers.",
 		gruntWork:
 			"Exporting bot logs and guessing which intents need retraining.",
-		icon: "bot",
 	},
 	{
 		id: "coach",
@@ -151,7 +184,6 @@ export const assistants: AiAssistant[] = [
 			"Surfaces coaching moments from live work so leaders spend time developing people, not hunting examples.",
 		gruntWork:
 			"Shadowing agents and digging through tickets to find one teachable interaction.",
-		icon: "graduation-cap",
 	},
 ];
 

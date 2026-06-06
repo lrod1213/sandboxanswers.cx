@@ -3,6 +3,7 @@ import type { ReactNode } from "react";
 import { SiteFooter } from "#/components/layout/site-footer.tsx";
 import { SiteHeader } from "#/components/layout/site-header.tsx";
 import { CtaBand } from "#/components/marketing/cta-band.tsx";
+import { SystemStatusBand } from "#/components/marketing/system-status-band.tsx";
 
 type MarketingLayoutProps = {
 	children: ReactNode;
@@ -23,6 +24,7 @@ export function MarketingLayout({
 			<SiteHeader />
 			<main className="flex-1">{children}</main>
 			{showCta && !suppressCta ? <CtaBand /> : null}
+			<SystemStatusBand />
 			<SiteFooter />
 		</div>
 	);

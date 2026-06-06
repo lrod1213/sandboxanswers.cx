@@ -11,7 +11,7 @@ type CtaBandProps = {
 
 export function CtaBand({
 	title = "Uncover the answers hidden in your data",
-	subtitle = "Try it today for free",
+	subtitle = "Level up your team today",
 	primaryLabel = "Get in touch",
 	primaryHref = "/contact",
 }: CtaBandProps) {
