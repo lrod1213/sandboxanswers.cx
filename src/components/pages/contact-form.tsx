@@ -4,6 +4,7 @@ import posthog from "posthog-js";
 import { useState } from "react";
 
 import { contactInterestOptions } from "#/config/pages.ts";
+import { siteCtaBandExperiment } from "#/config/experiments.ts";
 import { Button } from "#/components/ui/button.tsx";
 import { Checkbox } from "#/components/ui/checkbox.tsx";
 import { Input } from "#/components/ui/input.tsx";
@@ -47,6 +48,9 @@ export function ContactForm() {
 			posthog.capture("contact_form_submitted", {
 				company: value.company,
 				interests: value.interests,
+				cta_band_variant:
+					posthog.getFeatureFlag(siteCtaBandExperiment.flagKey) ??
+					siteCtaBandExperiment.defaultVariant,
 			});
 			await navigate({ to: "/success" });
 		},

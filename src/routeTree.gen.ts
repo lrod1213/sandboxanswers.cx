@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as TranslationsRouteImport } from './routes/translations'
 import { Route as TheanswerlayerRouteImport } from './routes/theanswerlayer'
 import { Route as SuccessRouteImport } from './routes/success'
+import { Route as PricingRouteImport } from './routes/pricing'
 import { Route as LanguagesRouteImport } from './routes/languages'
 import { Route as HireYourTeamRouteImport } from './routes/hire-your-team'
 import { Route as ContactRouteImport } from './routes/contact'
@@ -19,9 +20,12 @@ import { Route as AboutRouteImport } from './routes/about'
 import { Route as SplatRouteImport } from './routes/$'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as DataConnectorsIndexRouteImport } from './routes/data-connectors/index'
+import { Route as BlogIndexRouteImport } from './routes/blog/index'
 import { Route as LegalTermsOfServiceRouteImport } from './routes/legal/terms-of-service'
 import { Route as LegalPrivacyPolicyRouteImport } from './routes/legal/privacy-policy'
+import { Route as BlogSlugRouteImport } from './routes/blog/$slug'
 import { Route as ApiContactRouteImport } from './routes/api/contact'
+import { Route as ApiBlogRssRouteImport } from './routes/api/blog/rss'
 
 const TranslationsRoute = TranslationsRouteImport.update({
   id: '/translations',
@@ -36,6 +40,11 @@ const TheanswerlayerRoute = TheanswerlayerRouteImport.update({
 const SuccessRoute = SuccessRouteImport.update({
   id: '/success',
   path: '/success',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PricingRoute = PricingRouteImport.update({
+  id: '/pricing',
+  path: '/pricing',
   getParentRoute: () => rootRouteImport,
 } as any)
 const LanguagesRoute = LanguagesRouteImport.update({
@@ -73,6 +82,11 @@ const DataConnectorsIndexRoute = DataConnectorsIndexRouteImport.update({
   path: '/data-connectors/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const BlogIndexRoute = BlogIndexRouteImport.update({
+  id: '/blog/',
+  path: '/blog/',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const LegalTermsOfServiceRoute = LegalTermsOfServiceRouteImport.update({
   id: '/legal/terms-of-service',
   path: '/legal/terms-of-service',
@@ -83,9 +97,19 @@ const LegalPrivacyPolicyRoute = LegalPrivacyPolicyRouteImport.update({
   path: '/legal/privacy-policy',
   getParentRoute: () => rootRouteImport,
 } as any)
+const BlogSlugRoute = BlogSlugRouteImport.update({
+  id: '/blog/$slug',
+  path: '/blog/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ApiContactRoute = ApiContactRouteImport.update({
   id: '/api/contact',
   path: '/api/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiBlogRssRoute = ApiBlogRssRouteImport.update({
+  id: '/api/blog/rss',
+  path: '/api/blog/rss',
   getParentRoute: () => rootRouteImport,
 } as any)
 
@@ -96,13 +120,17 @@ export interface FileRoutesByFullPath {
   '/contact': typeof ContactRoute
   '/hire-your-team': typeof HireYourTeamRoute
   '/languages': typeof LanguagesRoute
+  '/pricing': typeof PricingRoute
   '/success': typeof SuccessRoute
   '/theanswerlayer': typeof TheanswerlayerRoute
   '/translations': typeof TranslationsRoute
   '/api/contact': typeof ApiContactRoute
+  '/blog/$slug': typeof BlogSlugRoute
   '/legal/privacy-policy': typeof LegalPrivacyPolicyRoute
   '/legal/terms-of-service': typeof LegalTermsOfServiceRoute
+  '/blog/': typeof BlogIndexRoute
   '/data-connectors/': typeof DataConnectorsIndexRoute
+  '/api/blog/rss': typeof ApiBlogRssRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -111,13 +139,17 @@ export interface FileRoutesByTo {
   '/contact': typeof ContactRoute
   '/hire-your-team': typeof HireYourTeamRoute
   '/languages': typeof LanguagesRoute
+  '/pricing': typeof PricingRoute
   '/success': typeof SuccessRoute
   '/theanswerlayer': typeof TheanswerlayerRoute
   '/translations': typeof TranslationsRoute
   '/api/contact': typeof ApiContactRoute
+  '/blog/$slug': typeof BlogSlugRoute
   '/legal/privacy-policy': typeof LegalPrivacyPolicyRoute
   '/legal/terms-of-service': typeof LegalTermsOfServiceRoute
+  '/blog': typeof BlogIndexRoute
   '/data-connectors': typeof DataConnectorsIndexRoute
+  '/api/blog/rss': typeof ApiBlogRssRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -127,13 +159,17 @@ export interface FileRoutesById {
   '/contact': typeof ContactRoute
   '/hire-your-team': typeof HireYourTeamRoute
   '/languages': typeof LanguagesRoute
+  '/pricing': typeof PricingRoute
   '/success': typeof SuccessRoute
   '/theanswerlayer': typeof TheanswerlayerRoute
   '/translations': typeof TranslationsRoute
   '/api/contact': typeof ApiContactRoute
+  '/blog/$slug': typeof BlogSlugRoute
   '/legal/privacy-policy': typeof LegalPrivacyPolicyRoute
   '/legal/terms-of-service': typeof LegalTermsOfServiceRoute
+  '/blog/': typeof BlogIndexRoute
   '/data-connectors/': typeof DataConnectorsIndexRoute
+  '/api/blog/rss': typeof ApiBlogRssRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -144,13 +180,17 @@ export interface FileRouteTypes {
     | '/contact'
     | '/hire-your-team'
     | '/languages'
+    | '/pricing'
     | '/success'
     | '/theanswerlayer'
     | '/translations'
     | '/api/contact'
+    | '/blog/$slug'
     | '/legal/privacy-policy'
     | '/legal/terms-of-service'
+    | '/blog/'
     | '/data-connectors/'
+    | '/api/blog/rss'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -159,13 +199,17 @@ export interface FileRouteTypes {
     | '/contact'
     | '/hire-your-team'
     | '/languages'
+    | '/pricing'
     | '/success'
     | '/theanswerlayer'
     | '/translations'
     | '/api/contact'
+    | '/blog/$slug'
     | '/legal/privacy-policy'
     | '/legal/terms-of-service'
+    | '/blog'
     | '/data-connectors'
+    | '/api/blog/rss'
   id:
     | '__root__'
     | '/'
@@ -174,13 +218,17 @@ export interface FileRouteTypes {
     | '/contact'
     | '/hire-your-team'
     | '/languages'
+    | '/pricing'
     | '/success'
     | '/theanswerlayer'
     | '/translations'
     | '/api/contact'
+    | '/blog/$slug'
     | '/legal/privacy-policy'
     | '/legal/terms-of-service'
+    | '/blog/'
     | '/data-connectors/'
+    | '/api/blog/rss'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -190,13 +238,17 @@ export interface RootRouteChildren {
   ContactRoute: typeof ContactRoute
   HireYourTeamRoute: typeof HireYourTeamRoute
   LanguagesRoute: typeof LanguagesRoute
+  PricingRoute: typeof PricingRoute
   SuccessRoute: typeof SuccessRoute
   TheanswerlayerRoute: typeof TheanswerlayerRoute
   TranslationsRoute: typeof TranslationsRoute
   ApiContactRoute: typeof ApiContactRoute
+  BlogSlugRoute: typeof BlogSlugRoute
   LegalPrivacyPolicyRoute: typeof LegalPrivacyPolicyRoute
   LegalTermsOfServiceRoute: typeof LegalTermsOfServiceRoute
+  BlogIndexRoute: typeof BlogIndexRoute
   DataConnectorsIndexRoute: typeof DataConnectorsIndexRoute
+  ApiBlogRssRoute: typeof ApiBlogRssRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -220,6 +272,13 @@ declare module '@tanstack/react-router' {
       path: '/success'
       fullPath: '/success'
       preLoaderRoute: typeof SuccessRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/pricing': {
+      id: '/pricing'
+      path: '/pricing'
+      fullPath: '/pricing'
+      preLoaderRoute: typeof PricingRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/languages': {
@@ -271,6 +330,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof DataConnectorsIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/blog/': {
+      id: '/blog/'
+      path: '/blog'
+      fullPath: '/blog/'
+      preLoaderRoute: typeof BlogIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/legal/terms-of-service': {
       id: '/legal/terms-of-service'
       path: '/legal/terms-of-service'
@@ -285,11 +351,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LegalPrivacyPolicyRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/blog/$slug': {
+      id: '/blog/$slug'
+      path: '/blog/$slug'
+      fullPath: '/blog/$slug'
+      preLoaderRoute: typeof BlogSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/api/contact': {
       id: '/api/contact'
       path: '/api/contact'
       fullPath: '/api/contact'
       preLoaderRoute: typeof ApiContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/blog/rss': {
+      id: '/api/blog/rss'
+      path: '/api/blog/rss'
+      fullPath: '/api/blog/rss'
+      preLoaderRoute: typeof ApiBlogRssRouteImport
       parentRoute: typeof rootRouteImport
     }
   }
@@ -302,13 +382,17 @@ const rootRouteChildren: RootRouteChildren = {
   ContactRoute: ContactRoute,
   HireYourTeamRoute: HireYourTeamRoute,
   LanguagesRoute: LanguagesRoute,
+  PricingRoute: PricingRoute,
   SuccessRoute: SuccessRoute,
   TheanswerlayerRoute: TheanswerlayerRoute,
   TranslationsRoute: TranslationsRoute,
   ApiContactRoute: ApiContactRoute,
+  BlogSlugRoute: BlogSlugRoute,
   LegalPrivacyPolicyRoute: LegalPrivacyPolicyRoute,
   LegalTermsOfServiceRoute: LegalTermsOfServiceRoute,
+  BlogIndexRoute: BlogIndexRoute,
   DataConnectorsIndexRoute: DataConnectorsIndexRoute,
+  ApiBlogRssRoute: ApiBlogRssRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

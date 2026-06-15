@@ -78,6 +78,13 @@ export const pages = [
 		sitemap: true,
 	},
 	{
+		path: "/pricing",
+		label: "Pricing",
+		navGroup: "company",
+		sitemap: true,
+		contactInterest: "Pricing",
+	},
+	{
 		path: "/success",
 		label: "Thank you",
 		noIndex: true,
@@ -99,6 +106,12 @@ export const pages = [
 		label: "Case Studies",
 		navGroup: "resources",
 		disabled: true,
+	},
+	{
+		path: "/blog",
+		label: "Now",
+		navGroup: "resources",
+		sitemap: true,
 	},
 	{
 		path: DOCS_URL,

@@ -4,7 +4,7 @@ export const hireYourTeamPageContent = {
 	seo: {
 		title: "Hire your AI team",
 		description:
-			"Hire AI assistants to handle tedious CX reporting and monitoring—so your team can focus on revenue, retention, and strategy.",
+			"Hire AI Specialists to handle tedious CX reporting and monitoring—so your team can focus on revenue, retention, and strategy.",
 		path: "/hire-your-team",
 	} satisfies PageSeoContent,
 } as const;
@@ -29,7 +29,7 @@ export const syncEngine = {
 	eyebrow: "Messy Data. Easy Button.",
 	title: "Our Sync Engine connects to the systems you already use.",
 	description:
-		"Your data lives in a dozen places. Our Sync Engine pulls it together quickly and securely, so your assistants start working without a six-month integration project.",
+		"Your data lives in a dozen places. Our Sync Engine pulls it together quickly and securely, so your AI Specialists start working without a six-month integration project.",
 	features: [
 		{
 			title: "Connect in minutes, not months",
@@ -39,7 +39,7 @@ export const syncEngine = {
 		{
 			title: "Messy data, normalized for AI",
 			description:
-				"Tickets, chats, emails, and spreadsheets arrive in different shapes. Sync Engine harmonizes them into one governed layer your assistants can trust.",
+				"Tickets, chats, emails, and spreadsheets arrive in different shapes. Sync Engine harmonizes them into one governed layer your AI Specialists can trust.",
 		},
 		{
 			title: "Always fresh, always yours",
@@ -66,7 +66,7 @@ export const workModes = [
 	{
 		title: "Hire the team to watch 24/7",
 		description:
-			"Your assistants monitor conversations, tickets, surveys, and operational data around the clock, then surface what matters before it becomes a fire drill.",
+			"Your AI Specialists monitor conversations, tickets, surveys, and operational data around the clock, then surface what matters before it becomes a fire drill.",
 	},
 ] as const;
 
@@ -240,7 +240,7 @@ export const privacySecurityPoints = [
 	{
 		title: "Your data never trains our models",
 		description:
-			"What your assistants learn from stays in your environment. We do not use your data to train language models.",
+			"What your AI Specialists learn from stays in your environment. We do not use your data to train language models.",
 		icon: "ban" as const,
 	},
 ] as const;
@@ -248,11 +248,11 @@ export const privacySecurityPoints = [
 export const reassurancePoints = [
 	{
 		title: "AI does the grunt work. You handle the judgement.",
-		body: "Your assistants handle search, synthesis, and monitoring. You decide what to do with the insight, and who needs to hear it. No more surprises, no more delegating menial work to your humans.",
+		body: "Your AI Specialists handle search, synthesis, and monitoring. You decide what to do with the insight, and who needs to hear it. No more surprises, no more delegating menial work to your humans.",
 	},
 	{
 		title: "Scale the team up and down. You're always in control.",
-		body: "Turn assistants on when you need them, off when you don't. Your AI Agents are here to please you, not to run rogue. Every insight stays harnessed in our system.",
+		body: "Turn AI Specialists on when you need them, off when you don't. Your AI Agents are here to please you, not to run rogue. Every insight stays harnessed in our system.",
 	},
 	{
 		title: "Governed answers, not mystery boxes.",
@@ -269,17 +269,17 @@ export const faqItems = [
 	{
 		question: "We’re skeptical of AI. Where do we start?",
 		answer:
-			"Start with one assistant and one question you already ask every week. Compare the answer to what it takes today. Most teams begin with churn, revenue, or product feedback, then expand when they trust the sourcing.",
+			"Start with one AI Specialist and one question you already ask every week. Compare the answer to what it takes today. Most teams begin with churn, revenue, or product feedback, then expand when they trust the sourcing.",
 	},
 	{
 		question: "How is this different from another chatbot?",
 		answer:
-			"Not a chatbot at all. Your assistants are specialized roles connected to your operational data. They monitor your data continuously, produce leadership-ready summaries, and stay focused on outcomes. They stay harnessed in our system, and do not communicate with customers. You're always in control.",
+			"Not a chatbot at all. Your AI Specialists are specialized roles connected to your operational data. They monitor your data continuously, produce leadership-ready summaries, and stay focused on outcomes. They stay harnessed in our system, and do not communicate with customers. You're always in control.",
 	},
 	{
 		question: "Can I get answers on demand and monitoring at the same time?",
 		answer:
-			"Yes. Ask ad hoc questions when you need a fast answer, and keep assistants running 24/7 to alert your team when patterns change, before your boss asks why no one saw it coming.",
+			"Yes. Ask ad hoc questions when you need a fast answer, and keep AI Specialists running 24/7 to alert your team when patterns change, before your boss asks why no one saw it coming.",
 	},
 	{
 		question: "Who typically buys this?",

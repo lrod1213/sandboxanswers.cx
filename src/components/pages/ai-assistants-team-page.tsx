@@ -1,5 +1,5 @@
 import { Link } from "@tanstack/react-router";
-import { useEffect, useLayoutEffect, useRef, useState } from "react";
+import { useEffect, useLayoutEffect, useRef, useState, type ReactNode } from "react";
 import {
 	Award,
 	Ban,
@@ -174,17 +174,17 @@ function TeamRosterPreview({
 			<div className="border-b border-hairline bg-canvas-soft px-5 py-4">
 				<p className="section-eyebrow">Your team · on duty</p>
 				<p className="text-display-sm mt-1">
-					{activeCount} of {assistants.length} assistants active
+					{activeCount} of {assistants.length} AI Specialists active
 				</p>
 				<p className="mt-2 text-caption text-body">
-					Scroll to browse all {assistants.length} assistants
+					Scroll to browse all {assistants.length} AI Specialists
 				</p>
 			</div>
 			<div className="team-roster-scroll-mask relative">
 				<ul
 					ref={scrollRef}
 					className="team-roster-scroll divide-y divide-hairline"
-					aria-label="AI assistants roster"
+					aria-label="AI Specialists roster"
 				>
 					{assistants.map((agent) => {
 					const active = enabled[agent.id];
@@ -266,6 +266,15 @@ function AssistantRosterCard({
 	);
 }
 
+function HeroAccentPhrase({ children }: { children: ReactNode }) {
+	return (
+		<span className="hero-accent-phrase relative inline whitespace-nowrap">
+			{children}
+			<span className="hero-accent-phrase__mark" aria-hidden />
+		</span>
+	);
+}
+
 function HeroRotatingOutcome({ activeIndex }: { activeIndex: number }) {
 	return (
 		<span className="relative grid text-link" aria-live="polite">
@@ -322,18 +331,20 @@ export function AiAssistantsTeamPage() {
 						</BannerPill>
 						<div className="grid gap-8 md:gap-14 lg:grid-cols-[0.95fr_1.05fr]">
 							<h1 className="max-w-4xl text-[2.5rem] font-semibold leading-[0.95] tracking-[-0.06em] text-ink sm:text-[3rem] sm:leading-[0.92] sm:tracking-[-0.08em] md:text-[56px] md:tracking-[-3.4px] lg:col-start-1 lg:row-start-1 lg:self-center lg:text-[72px] lg:tracking-[-4px]">
-								You stay strategic.
+								Stay strategic.
 								<br />
-								Your AI Assistants monitor the details 24/7:
+								Your{" "}
+								<HeroAccentPhrase>AI Specialists</HeroAccentPhrase> monitor the
+								details for you 24/7:
 								<br />
 								<HeroRotatingOutcome activeIndex={outcomeIndex} />
 							</h1>
 							<div className="flex flex-col gap-8 lg:col-start-1 lg:row-start-2 lg:max-w-xl">
 								<p className="text-body-lg text-body">
-									Get your own answers in seconds, while your assistants monitor
-									the details 24/7, briefing other human teams and building
-									presentations for leadership. No more surprises. You&apos;re
-									always in control.
+									Get your own answers in seconds, while your AI Specialists
+									monitor the details 24/7, briefing other human teams and
+									building presentations for leadership. No more surprises.
+									You&apos;re always in control.
 								</p>
 								<div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap">
 									<Button asChild size="lg" className="w-full sm:w-auto">
@@ -388,7 +399,7 @@ export function AiAssistantsTeamPage() {
 					</h2>
 					<p className="text-body-lg text-body">
 						Skeptical of AI? Start with a single question you already chase
-						manually. Scale assistants up when you trust the sourcing, scale
+						manually. Scale AI Specialists up when you trust the sourcing, scale
 						down anytime. You&apos;re always in control.
 					</p>
 				</div>
@@ -450,7 +461,7 @@ export function AiAssistantsTeamPage() {
 						</div>
 						<div className="space-y-4 p-6">
 							<p className="text-body-sm text-body">
-								Connect your stack once. Your assistants read from a single,
+								Connect your stack once. Your AI Specialists read from a single,
 								governed layer.
 							</p>
 							<div className="flex flex-wrap gap-2">
@@ -476,13 +487,13 @@ export function AiAssistantsTeamPage() {
 
 			<SectionBand id="team" variant="soft">
 				<div className="mb-12 max-w-3xl">
-					<p className="section-eyebrow mb-4">Your roster</p>
+					<p className="section-eyebrow mb-4">Your AI Specialists</p>
 					<h2 className="text-display-lg mb-4">
-						Eight specialists. Toggle who is on. You&apos;re always in
-						control.
+						Manage your scalable AI workforce. Toggle who is on, and when.
+						You&apos;re always in control.
 					</h2>
 					<p className="text-body-lg text-body">
-						Scale your AI team up and down as needed. Turn assistants on when
+						Scale your AI team up and down as needed. Turn AI Specialists on when
 						you want coverage, off when you want quiet. No more telling your
 						human team to do menial grunt work.{" "}
 						<span className="text-body-md-strong text-ink">
@@ -549,7 +560,7 @@ export function AiAssistantsTeamPage() {
 				<div className="mb-10 max-w-2xl">
 					<p className="section-eyebrow mb-4">How we think about it</p>
 					<h2 className="text-display-lg">
-						Your AI Assistants handle the late-night data wrangling.
+						Your AI Specialists handle the late-night data wrangling.
 						<br />
 						You remain the strategist.
 					</h2>
@@ -571,7 +582,7 @@ export function AiAssistantsTeamPage() {
 						Safe to bring to your board. Safe to connect your data.
 					</h2>
 					<p className="text-body-lg text-white/80">
-						Your assistants only work with data you connect, under controls your
+						Your AI Specialists only work with data you connect, under controls your
 						security and legal teams can stand behind.
 					</p>
 				</div>
@@ -620,7 +631,7 @@ export function AiAssistantsTeamPage() {
 						</h2>
 						<p className="text-body-lg text-body mb-6">
 							If you&apos;re worried about job displacement, start with one
-							assistant and one metric you already report manually. Compare the
+							AI Specialist and one metric you already report manually. Compare the
 							time and credibility side by side.
 						</p>
 						<Button asChild size="lg">

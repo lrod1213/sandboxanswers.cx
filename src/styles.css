@@ -535,6 +535,40 @@ a:not([data-slot='button']):hover {
   }
 }
 
+.hero-accent-phrase {
+  color: color-mix(in srgb, var(--ink) 88%, var(--primary));
+}
+
+.hero-accent-phrase__mark {
+  position: absolute;
+  inset-inline: -0.06em;
+  bottom: 0.06em;
+  z-index: -1;
+  height: 0.34em;
+  border-radius: 9999px;
+  background: linear-gradient(
+    90deg,
+    color-mix(in srgb, var(--link-bg-soft) 88%, var(--status-operational-soft)),
+    color-mix(in srgb, var(--green-100) 72%, var(--link-bg-soft)),
+    color-mix(in srgb, var(--link-bg-soft) 88%, var(--status-operational-soft))
+  );
+  box-shadow: 0 1px 0 color-mix(in srgb, var(--status-operational) 18%, transparent);
+}
+
+.dark .hero-accent-phrase {
+  color: color-mix(in srgb, var(--ink) 94%, var(--green-300));
+}
+
+.dark .hero-accent-phrase__mark {
+  background: linear-gradient(
+    90deg,
+    color-mix(in srgb, var(--primary) 24%, transparent),
+    color-mix(in srgb, var(--status-operational) 22%, transparent),
+    color-mix(in srgb, var(--primary) 24%, transparent)
+  );
+  box-shadow: none;
+}
+
 @keyframes assistant-card-active {
   0%,
   100% {

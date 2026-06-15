@@ -57,6 +57,30 @@ pnpm dlx shadcn@latest add <component>
 
 SPA pageviews are captured on route changes via `PageViewTracker`.
 
+### A/B tests (experiments)
+
+Experiments are configured in code and run through PostHog feature flags:
+
+| Flag key | Location | Variants |
+|----------|----------|----------|
+| `site-cta-band-copy` | Site-wide footer CTA band | `control`, `pilot-first` |
+
+**Dashboard setup**
+
+1. In PostHog, create a **multivariate feature flag** with key `site-cta-band-copy`
+2. Add variants `control` and `pilot-first` (rollout split as needed)
+3. Create an **Experiment** linked to that flag to measure conversions (e.g. `contact_form_submitted`, CTA clicks)
+
+**Local testing**
+
+With the dev server running and `VITE_POSTHOG_KEY` set, override a variant in the browser console:
+
+```js
+posthog.featureFlags.overrideFeatureFlags({ flags: { 'site-cta-band-copy': 'pilot-first' } })
+```
+
+Reload the page to see the alternate CTA copy. Flag definitions live in `src/config/experiments.ts`; UI wiring uses `useSiteCtaBandExperiment()` and `PostHogFeature`.
+
 ## Google Tag Manager
 
 Set `VITE_GTM_ID` in `.env.local` (production: `GTM-PNWSF845`). GA4 is configured inside GTM on the live site — do not add a separate gtag snippet unless you intentionally want dual loading.
@@ -76,7 +100,16 @@ The contact form posts to `POST /api/contact` with first-touch attribution attac
 - **Page registry:** `src/config/pages.ts` drives nav, footer, sitemap paths, and contact-form interests.
 - **Content modules:** Marketing copy and SEO live in `src/content/*`; routes stay thin.
 - **Page components:** Layout lives in `src/components/pages/*`.
-- **Sitemap:** Regenerated on build via `pnpm generate:sitemap`.
+- **Sitemap:** Regenerated on build via `pnpm generate:sitemap` (includes blog posts).
+
+## Blog (`/blog`)
+
+Linear-inspired **Now** blog with featured posts, changelog, press, and archive sections.
+
+- **Content:** `src/content/blog/posts.ts` — add posts with `sections`, `takeaways`, and `faqs` for SEO/AEO
+- **Routes:** `/blog` index and `/blog/$slug` articles
+- **RSS:** `/api/blog/rss`
+- **Structured data:** `BlogPosting` + `FAQPage` JSON-LD on articles; `Blog` schema on index
 
 ## SEO
 

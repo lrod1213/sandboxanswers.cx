@@ -66,3 +66,35 @@ export function createPageHeadFromContent(seo: PageSeoContent) {
 		noIndex: seo.noIndex,
 	});
 }
+
+export function createArticlePageHead({
+	title,
+	description,
+	path,
+	type = "article",
+}: PageSeo & { type?: "website" | "article" }) {
+	const head = createPageHead({ title, description, path });
+	const fullTitle = pageTitle(title);
+
+	return {
+		...head,
+		meta: head.meta.map((entry) => {
+			if ("property" in entry && entry.property === "og:type") {
+				return { property: "og:type", content: type };
+			}
+			if ("property" in entry && entry.property === "og:title") {
+				return { property: "og:title", content: fullTitle };
+			}
+			return entry;
+		}),
+	};
+}
+
+export function createArticleHeadFromPost(seo: PageSeoContent) {
+	return createArticlePageHead({
+		title: seo.title,
+		description: seo.description,
+		path: seo.path,
+		type: "article",
+	});
+}
