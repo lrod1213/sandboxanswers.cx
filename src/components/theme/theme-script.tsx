@@ -1,4 +1,4 @@
-const themeInitScript = `(function(){try{var k="cx-theme";var t=localStorage.getItem(k);var d=t==="dark"||(t!=="light"&&window.matchMedia("(prefers-color-scheme: dark)").matches);var r=d?"dark":"light";document.documentElement.classList.toggle("dark",d);document.documentElement.dataset.theme=r}catch(e){}})();`;
+const themeInitScript = `(function(){try{document.documentElement.classList.add("dark");document.documentElement.dataset.theme="dark";localStorage.setItem("cx-theme","dark")}catch(e){}})();`;
 
 export function ThemeScript() {
 	return (

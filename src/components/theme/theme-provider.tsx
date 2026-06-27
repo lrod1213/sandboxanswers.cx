@@ -31,31 +31,16 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
 	const resolvedTheme = resolveTheme(theme);
 
 	useEffect(() => {
-		applyTheme(theme);
-		localStorage.setItem(THEME_STORAGE_KEY, theme);
+		applyTheme("dark");
+		localStorage.setItem(THEME_STORAGE_KEY, "dark");
 	}, [theme]);
 
-	useEffect(() => {
-		if (theme !== "system") {
-			return;
-		}
-
-		const media = window.matchMedia("(prefers-color-scheme: dark)");
-		const onChange = () => applyTheme("system");
-
-		media.addEventListener("change", onChange);
-		return () => media.removeEventListener("change", onChange);
-	}, [theme]);
-
-	const setTheme = useCallback((next: Theme) => {
-		setThemeState(next);
+	const setTheme = useCallback((_next: Theme) => {
+		setThemeState("dark");
 	}, []);
 
 	const toggleTheme = useCallback(() => {
-		setThemeState((current) => {
-			const resolved = resolveTheme(current);
-			return resolved === "dark" ? "light" : "dark";
-		});
+		setThemeState("dark");
 	}, []);
 
 	const value = useMemo(
