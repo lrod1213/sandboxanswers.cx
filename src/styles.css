@@ -421,19 +421,20 @@ a:not([data-slot='button']):hover {
   position: relative;
   overflow: hidden;
   background-color: var(--canvas);
-  padding-top: calc(4rem + var(--spacing-3xl));
+  padding-top: calc(4rem + var(--spacing-4xl));
   padding-bottom: var(--spacing-4xl);
 }
 
 @media (min-width: 768px) {
   .marketing-hero {
-    padding-top: var(--spacing-5xl);
+    padding-top: calc(4rem + var(--spacing-5xl));
     padding-bottom: var(--spacing-5xl);
   }
 }
 
 @media (min-width: 1024px) {
   .marketing-hero {
+    padding-top: calc(4rem + var(--spacing-6xl));
     padding-bottom: var(--spacing-section);
   }
 }
@@ -494,6 +495,19 @@ a:not([data-slot='button']):hover {
 
 .ticker-track {
   animation: ticker-track 24s linear infinite;
+}
+
+.trusted-by-track {
+  animation: trusted-by-track 32s linear infinite;
+}
+
+@keyframes trusted-by-track {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
 }
 
 @keyframes signal-scan {
@@ -882,12 +896,63 @@ a:not([data-slot='button']):hover {
   }
 }
 
+@keyframes upskill-rise {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.upskill-task-rise,
+.upskill-card-rise {
+  animation: upskill-rise 700ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.showcase-spotlight-content {
+  animation: showcase-spotlight-in 520ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.showcase-spotlight-media {
+  animation: showcase-spotlight-media 640ms cubic-bezier(0.16, 1, 0.3, 1) 80ms both;
+}
+
+@keyframes showcase-spotlight-in {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes showcase-spotlight-media {
+  from {
+    opacity: 0;
+    transform: translateY(16px) scale(0.985);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
+  .upskill-task-rise,
+  .upskill-card-rise,
   .rise-in,
   .signal-scan,
   .float-slow,
   .float-slower,
   .ticker-track,
+  .trusted-by-track,
+  .showcase-spotlight-content,
+  .showcase-spotlight-media,
   .assistant-card-active,
   .status-pill--monitoring,
   .monitoring-dots::after {

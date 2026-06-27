@@ -4,12 +4,15 @@ export type ProductPageContent = {
 	slug: string;
 	seo: PageSeoContent;
 	hero: {
-		eyebrow: string;
+		eyebrow?: string;
+		banner?: string;
+		caption?: string;
 		title: string;
 		lead: string;
 		primaryCta: string;
 		secondaryCta?: string;
 		secondaryHref?: string;
+		layout?: "split" | "centered";
 	};
 	featureBand: {
 		title: string;
@@ -21,18 +24,20 @@ export type ProductPageContent = {
 export const theAnswerLayer: ProductPageContent = {
 	slug: "theanswerlayer",
 	seo: {
-		title: "The Answer Layer",
+		title: "The Answer Layer — Intelligence for every customer conversation",
 		description:
-			"The easiest way to unlock the voices of your customers. Real-time AI insights for CX leaders.",
+			"Turn messy customer data from any system into structured intelligence for AI assistants, dashboards, and coaching.",
 		path: "/theanswerlayer",
 	},
 	hero: {
-		eyebrow: "The Answer Layer",
-		title: "The easiest way to unlock the voices of your customers.",
-		lead: "Answers in seconds. No bottlenecks. Just clarity. Built for words and numbers—the unstructured voices of your customers and the metrics that matter.",
-		primaryCta: "See it in action",
-		secondaryCta: "Learn more",
-		secondaryHref: "/data-connectors",
+		layout: "centered",
+		banner: "Introducing The Answer Layer — now in early access",
+		caption: "Customer intelligence platform",
+		title: "Turn every conversation into an answer.",
+		lead: "Sync messy data from Zendesk, Genesys, Salesforce, and more. Structure it for LLMs. Deliver AI assistants, daily briefs, and coaching — all from one canonical layer.",
+		primaryCta: "Start for free",
+		secondaryCta: "Book a demo",
+		secondaryHref: "/contact",
 	},
 	featureBand: {
 		title: "Designed around the work.",

@@ -16,7 +16,11 @@ export function MarketingLayout({
 	const pathname = useRouterState({
 		select: (state) => state.location.pathname,
 	});
-	const suppressCta = pathname === "/contact" || pathname === "/success";
+	const suppressCta =
+		pathname === "/contact" ||
+		pathname === "/success" ||
+		pathname === "/hire-your-team" ||
+		pathname === "/";
 
 	return (
 		<div className="flex min-h-screen flex-col">

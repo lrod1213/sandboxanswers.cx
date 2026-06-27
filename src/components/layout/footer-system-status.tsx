@@ -67,7 +67,7 @@ export function FooterSystemStatus() {
 			href={siteConfig.statusUrl}
 			target="_blank"
 			rel="noopener noreferrer"
-			className="footer-system-status inline-flex items-center gap-2.5 text-caption text-body transition-colors hover:text-ink"
+			className="footer-system-status inline-flex items-center gap-2.5 text-caption text-white/60 transition-colors hover:text-white"
 		>
 			<SystemStatusIndicator indicator={indicator} />
 			System Status

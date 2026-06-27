@@ -8,6 +8,7 @@ export type NavLink = {
 export type PageNavGroup =
 	| "solutions"
 	| "integrations"
+	| "features"
 	| "resources"
 	| "company"
 	| "legal"
@@ -46,6 +47,13 @@ export const pages = [
 		sitemap: true,
 	},
 	{
+		path: "/daily-signal",
+		label: "The Daily Signal",
+		navGroup: "solutions",
+		sitemap: true,
+		contactInterest: "The Daily Signal",
+	},
+	{
 		path: "/translations",
 		label: "Real-time Translations",
 		navGroup: "solutions",
@@ -64,6 +72,13 @@ export const pages = [
 		navGroup: "integrations",
 		sitemap: true,
 		contactInterest: "Data Connectors",
+	},
+	{
+		path: "/features",
+		label: "Features",
+		navGroup: "features",
+		sitemap: true,
+		contactInterest: "Features",
 	},
 	{
 		path: "/about",
@@ -140,6 +155,10 @@ export const integrationsLinks: NavLink[] = pages
 	.filter((page) => page.navGroup === "integrations")
 	.map(toNavLink);
 
+export const featuresLink: NavLink = toNavLink(
+	pages.find((page) => page.path === "/features") as PageDefinition,
+);
+
 export const resourcesLinks: NavLink[] = pages
 	.filter((page) => page.navGroup === "resources")
 	.map(toNavLink);
@@ -158,6 +177,8 @@ export const footerColumns = {
 			[
 				"/theanswerlayer",
 				"/hire-your-team",
+				"/daily-signal",
+				"/features",
 				"/translations",
 				"/data-connectors",
 			].includes(page.path),
@@ -180,6 +201,6 @@ export const sitemapPaths = pages
 	.map((page) => page.path);
 
 export const primaryCta = {
-	label: "See it in action",
+	label: "Book a Demo",
 	href: "/contact",
 } as const;

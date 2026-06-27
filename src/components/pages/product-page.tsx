@@ -1,27 +1,47 @@
 import { Link } from "@tanstack/react-router";
 
+import { BannerPill } from "#/components/marketing/banner-pill.tsx";
 import { MarketingHero } from "#/components/marketing/marketing-hero.tsx";
 import { MarketingCard } from "#/components/marketing/marketing-card.tsx";
 import { SectionBand } from "#/components/marketing/section-band.tsx";
 import { Button } from "#/components/ui/button.tsx";
 import type { ProductPageContent } from "#/content/products.ts";
+import { cn } from "#/lib/utils.ts";
 
 type ProductPageProps = {
 	content: ProductPageContent;
 };
 
 export function ProductPage({ content }: ProductPageProps) {
+	const isCentered = content.hero.layout === "centered";
+
 	return (
 		<>
 			<MarketingHero
-				variant="split"
-				titleSize="product"
+				variant={isCentered ? "centered" : "split"}
+				titleSize={isCentered ? "default" : "product"}
 				atmosphere
+				banner={
+					content.hero.banner ? (
+						<BannerPill
+							showDot
+							className="mb-6 border-0 bg-canvas-soft shadow-none sm:mb-8"
+						>
+							{content.hero.banner}
+						</BannerPill>
+					) : undefined
+				}
+				caption={content.hero.caption}
 				eyebrow={content.hero.eyebrow}
 				title={content.hero.title}
 				lead={content.hero.lead}
 				actions={
-					<div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+					<div
+						className={cn(
+							"flex flex-col gap-3 sm:flex-row sm:flex-wrap",
+							isCentered && "items-center justify-center",
+						)}
+					>
 						<Button asChild size="lg" className="w-full sm:w-auto">
 							<Link to="/contact">{content.hero.primaryCta}</Link>
 						</Button>
@@ -39,7 +59,11 @@ export function ProductPage({ content }: ProductPageProps) {
 						) : null}
 					</div>
 				}
-				visual={<ProductSignalPanel content={content} />}
+				visual={
+					isCentered ? undefined : (
+						<ProductSignalPanel content={content} />
+					)
+				}
 			/>
 
 			<SectionBand variant="soft">

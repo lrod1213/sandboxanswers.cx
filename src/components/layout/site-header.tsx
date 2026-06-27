@@ -1,8 +1,8 @@
-import { ClientOnly, Link } from "@tanstack/react-router";
+import { ClientOnly, Link, useRouterState } from "@tanstack/react-router";
 import { Menu } from "lucide-react";
 import { type ReactNode, useEffect, useState } from "react";
 
-import { ThemeToggle } from "#/components/theme/theme-toggle.tsx";
+import { SiteLogo } from "#/components/layout/site-logo.tsx";
 import { Button } from "#/components/ui/button.tsx";
 import {
 	Sheet,
@@ -13,6 +13,7 @@ import {
 } from "#/components/ui/sheet.tsx";
 import {
 	companyLinks,
+	featuresLink,
 	integrationsLinks,
 	primaryCta,
 	resourcesLinks,
@@ -126,6 +127,13 @@ function DesktopNav() {
 				</Link>
 			))}
 
+			<Link
+				to={featuresLink.href}
+				className="rounded-[var(--rounded-sm)] px-3 py-2 text-body-sm text-body transition-colors hover:bg-canvas-soft hover:text-ink"
+			>
+				{featuresLink.label}
+			</Link>
+
 			<NavDropdown label="Resources">
 				<ul className="flex flex-col gap-2">
 					{resourcesLinks.map((link) => (
@@ -185,6 +193,10 @@ function MobileNav() {
 							onClick={() => setOpen(false)}
 						/>
 					))}
+					<NavLinkItem
+						{...featuresLink}
+						onClick={() => setOpen(false)}
+					/>
 					<div>
 						<p className="section-eyebrow mb-3">Resources</p>
 						<div className="flex flex-col gap-3">
@@ -207,7 +219,6 @@ function MobileNav() {
 							/>
 						))}
 					<div className="flex items-center gap-3">
-						<ThemeToggle />
 						<Button asChild onClick={() => setOpen(false)}>
 							<Link to={primaryCta.href}>{primaryCta.label}</Link>
 						</Button>
@@ -233,6 +244,8 @@ function MobileNavFallback() {
 
 export function SiteHeader() {
 	const [hasScrolled, setHasScrolled] = useState(false);
+	const pathname = useRouterState({ select: (state) => state.location.pathname });
+	const logoHref = pathname === "/daily-signal" ? "/daily-signal" : "/";
 
 	useEffect(() => {
 		const updateScrolled = () => setHasScrolled(window.scrollY > 12);
@@ -254,19 +267,15 @@ export function SiteHeader() {
 		>
 			<div className="marketing-container flex h-16 items-center justify-between gap-4">
 				<Link
-					to="/"
-					className="inline-flex items-center gap-2 text-body-md-strong text-ink"
+					to={logoHref}
+					className="inline-flex items-center text-ink transition-opacity hover:opacity-90"
 				>
-					<span className="size-5 rounded-[var(--rounded-xs)] bg-ink shadow-[var(--shadow-inset)]" />
-					<span>{siteConfig.name}</span>
+					<SiteLogo />
 				</Link>
 
 				<DesktopNav />
 
 				<div className="hidden items-center gap-3 lg:flex">
-					<ClientOnly fallback={<div className="size-8 shrink-0" aria-hidden />}>
-						<ThemeToggle />
-					</ClientOnly>
 					<Button asChild size="sm">
 						<Link to={primaryCta.href}>{primaryCta.label}</Link>
 					</Button>

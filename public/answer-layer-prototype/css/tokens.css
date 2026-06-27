@@ -1,0 +1,141 @@
+/* Design tokens — sourced from DESIGN.md (CXConnect purple palette) */
+
+:root {
+  /* Colors — Brand & Accent */
+  --color-primary: #6B21A8;
+  --color-on-primary: #ffffff;
+  --color-ink: #171717;
+  --color-body: #525252;
+  --color-mute: #BCBCBC;
+  --color-hairline: #F5F5F5;
+  --color-hairline-strong: #D4D4D4;
+  --color-canvas: #ffffff;
+  --color-canvas-soft: #FAFAFA;
+  --color-canvas-soft-2: #F0F0F0;
+  --color-link: #9333EA;
+  --color-link-deep: #6B21A8;
+  --color-link-bg-soft: #FAF5FF;
+  --color-success: #124392;
+  --color-success-soft: #F0FDFA;
+  --color-error: #9F31CB;
+  --color-error-soft: #FFF1F2;
+  --color-error-deep: #BE123C;
+  --color-warning: #FF9E0B;
+  --color-warning-soft: #FFFBEB;
+  --color-warning-deep: #924E0E;
+  --color-violet: #A78BFA;
+  --color-violet-soft: #F5F3FF;
+  --color-violet-deep: #6D28D9;
+  --color-cyan: #5EEAD4;
+  --color-cyan-soft: #CCFBF1;
+  --color-cyan-deep: #0D9488;
+  --color-highlight-pink: #9F31CB;
+  --color-highlight-magenta: #BE123C;
+  --color-gradient-develop-start: #9333EA;
+  --color-gradient-develop-end: #5EEAD4;
+  --color-gradient-preview-start: #A78BFA;
+  --color-gradient-preview-end: #9F31CB;
+  --color-gradient-ship-start: #9F31CB;
+  --color-gradient-ship-end: #FF9E0B;
+  --color-selection-bg: #9333EA;
+  --color-selection-fg: #ffffff;
+
+  /* Typography — Display */
+  --font-sans: "Geist", "Inter", system-ui, -apple-system, sans-serif;
+  --font-mono: "Geist Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, monospace;
+
+  --text-display-xl-size: 48px;
+  --text-display-xl-weight: 600;
+  --text-display-xl-height: 48px;
+  --text-display-xl-spacing: -2.4px;
+
+  --text-display-lg-size: 32px;
+  --text-display-lg-weight: 600;
+  --text-display-lg-height: 40px;
+  --text-display-lg-spacing: -1.28px;
+
+  --text-display-md-size: 24px;
+  --text-display-md-weight: 600;
+  --text-display-md-height: 32px;
+  --text-display-md-spacing: -0.96px;
+
+  --text-display-sm-size: 20px;
+  --text-display-sm-weight: 600;
+  --text-display-sm-height: 28px;
+  --text-display-sm-spacing: -0.6px;
+
+  /* Typography — Body */
+  --text-body-lg-size: 18px;
+  --text-body-lg-weight: 400;
+  --text-body-lg-height: 28px;
+
+  --text-body-md-size: 16px;
+  --text-body-md-weight: 400;
+  --text-body-md-height: 24px;
+
+  --text-body-md-strong-weight: 500;
+
+  --text-body-sm-size: 14px;
+  --text-body-sm-weight: 400;
+  --text-body-sm-height: 20px;
+  --text-body-sm-spacing: -0.28px;
+
+  --text-body-sm-strong-weight: 500;
+
+  --text-caption-size: 12px;
+  --text-caption-weight: 400;
+  --text-caption-height: 16px;
+
+  --text-code-size: 13px;
+  --text-code-weight: 400;
+  --text-code-height: 20px;
+
+  --text-button-md-size: 14px;
+  --text-button-md-weight: 500;
+  --text-button-md-height: 20px;
+
+  --text-button-lg-size: 16px;
+  --text-button-lg-weight: 500;
+  --text-button-lg-height: 24px;
+
+  /* Border Radius */
+  --rounded-none: 0px;
+  --rounded-xs: 4px;
+  --rounded-sm: 6px;
+  --rounded-md: 8px;
+  --rounded-lg: 12px;
+  --rounded-xl: 16px;
+  --rounded-pill-sm: 64px;
+  --rounded-pill: 100px;
+  --rounded-full: 9999px;
+
+  /* Spacing */
+  --space-xxs: 4px;
+  --space-xs: 8px;
+  --space-sm: 12px;
+  --space-md: 16px;
+  --space-lg: 24px;
+  --space-xl: 32px;
+  --space-2xl: 40px;
+  --space-3xl: 48px;
+  --space-4xl: 64px;
+  --space-5xl: 96px;
+  --space-6xl: 128px;
+  --space-section: 192px;
+
+  /* Layout */
+  --page-width: 1400px;
+  --header-height: 64px;
+
+  /* Elevation */
+  --shadow-inset-hairline: inset 0 0 0 1px rgba(23, 23, 23, 0.04);
+  --shadow-level-2: 0px 1px 1px rgba(23, 23, 23, 0.02), 0px 2px 2px rgba(23, 23, 23, 0.04);
+  --shadow-level-3: 0px 2px 2px rgba(23, 23, 23, 0.04), 0px 8px 8px -8px rgba(23, 23, 23, 0.04);
+  --shadow-level-4: 0px 2px 2px rgba(23, 23, 23, 0.04), 0px 8px 16px -4px rgba(23, 23, 23, 0.04);
+  --shadow-level-5: 0px 1px 1px rgba(23, 23, 23, 0.02), 0px 8px 16px -4px rgba(23, 23, 23, 0.04), 0px 24px 32px -8px rgba(23, 23, 23, 0.06);
+}
+
+::selection {
+  background: var(--color-selection-bg);
+  color: var(--color-selection-fg);
+}

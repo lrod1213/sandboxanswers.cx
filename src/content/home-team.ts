@@ -11,6 +11,8 @@ export const hireYourTeamPageContent = {
 		src: "/videos/hire-your-team-walkthrough.mp4",
 		label: "Product walkthrough",
 		caption: "See The Answer Layer in action",
+		belowCaption:
+			"Watch a question get answered in the time it takes you to sip your coffee.",
 	},
 } as const;
 
@@ -39,18 +41,7 @@ export const explorePlans = {
 		"Annual plans start at $24K and grow with the conversations and integrations you connect. Tell us about your team and we'll size the right fit.",
 	valueLine:
 		"Most teams recoup it within a quarter—reclaiming 12+ hours per leader each week and catching revenue and churn signals before they slip.",
-	segments: [
-		{
-			name: "Mid-market",
-			description:
-				"Growing CX teams that need executive intelligence without standing up a data team.",
-		},
-		{
-			name: "Enterprise",
-			description:
-				"Global organizations with high conversation volume, complex integrations, and strict security and compliance needs.",
-		},
-	],
+	segments: [],
 	featuresLabel: "Every plan includes:",
 	features: [
 		"SSO & Okta",
@@ -65,6 +56,8 @@ export const explorePlans = {
 		"Multilingual support",
 	],
 	cta: { label: "Talk to us about pricing", href: "/contact" },
+	ctaCaption:
+		"we'll size the right fit over one call, not a six-week procurement dance.",
 	footnote:
 		"Usage scales with conversation volume and connectors. You're never charged by seat.",
 } as const satisfies ExplorePlansContent;
@@ -433,82 +426,3 @@ export const faqItems = [
 			"We support over 150 languages. Check out our Languages page for the complete list.",
 	},
 ] as const;
-
-export const specialistsSection = {
-	eyebrow: "Meet your AI Specialists",
-	title: "A specialist for every signal—switch on only what you need.",
-	lead: "Each AI Specialist is a focused role that watches your customer data around the clock and takes over the manual work your team does today. Turn the ones you need on, leave the rest off, and change your mind anytime. You're never charged by seat.",
-	footnote:
-		"Need something the roster doesn't cover? Build your own custom specialist below.",
-} as const;
-
-export type CustomAgentsContent = {
-	eyebrow: string;
-	title: string;
-	lead: string;
-	points: readonly { title: string; description: string }[];
-	video: { label: string; caption: string };
-	cta: { label: string; href: string };
-};
-
-export const customAgents = {
-	eyebrow: "Build your own",
-	title: "Create custom AI Specialists, unique to your company.",
-	lead: "When an off-the-shelf role isn't enough, spin up your own. Custom Specialists learn your products, terminology, customer segments, and the exact questions your leaders ask—so the answers sound like they came from someone on your team.",
-	points: [
-		{
-			title: "Create an unlimited number",
-			description:
-				"Spin up as many custom specialists as you need. No per-agent fees and no seat limits—ever.",
-		},
-		{
-			title: "Trained on your world",
-			description:
-				"Teach them your product names, customer segments, policies, and the priorities that matter to your business.",
-		},
-		{
-			title: "Live in minutes",
-			description:
-				"Describe the role and the questions it should own. Your new specialist starts working right away.",
-		},
-	],
-	video: {
-		label: "Build a specialist",
-		caption: "See how to create a specialist tailored to your company",
-	},
-	cta: { label: "Book a demo", href: "/contact" },
-} as const satisfies CustomAgentsContent;
-
-export type ChatWithAgentsContent = {
-	eyebrow: string;
-	title: string;
-	lead: string;
-	examples: readonly { role: string; question: string }[];
-	video: { label: string; caption: string };
-	cta: { label: string; href: string };
-};
-
-export const chatWithAgents = {
-	eyebrow: "Ask anything",
-	title: "Chat with any Specialist. Get answers through their lens.",
-	lead: "Ask a question and the right Specialist answers from its area of expertise—sourced from your data and framed for the decision in front of you. The Churn Risk Analyst sees risk, the Revenue Opportunity Scout sees upside, and your custom specialists see exactly what you trained them to.",
-	examples: [
-		{
-			role: "Churn Risk Analyst",
-			question: "Which enterprise accounts are cooling off this month?",
-		},
-		{
-			role: "Revenue Opportunity Scout",
-			question: "Where is expansion intent hiding in Q3 conversations?",
-		},
-		{
-			role: "Product Feedback Compiler",
-			question: "What are the top emerging themes from EMEA support?",
-		},
-	],
-	video: {
-		label: "Chat demo",
-		caption: "Watch a question turn into a role-specific answer",
-	},
-	cta: { label: "Book a demo", href: "/contact" },
-} as const satisfies ChatWithAgentsContent;

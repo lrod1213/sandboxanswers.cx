@@ -8,6 +8,7 @@ type MarketingHeroProps = {
 	titleSize?: "default" | "home" | "product";
 	eyebrow?: ReactNode;
 	banner?: ReactNode;
+	caption?: ReactNode;
 	title: ReactNode;
 	lead?: ReactNode;
 	actions?: ReactNode;
@@ -29,6 +30,7 @@ export function MarketingHero({
 	titleSize = "default",
 	eyebrow,
 	banner,
+	caption,
 	title,
 	lead,
 	actions,
@@ -39,6 +41,9 @@ export function MarketingHero({
 	const content = (
 		<>
 			{banner}
+			{caption ? (
+				<p className="font-mono-caption mb-4 text-body">{caption}</p>
+			) : null}
 			{eyebrow ? <p className="section-eyebrow mb-4">{eyebrow}</p> : null}
 			<h1 className={titleClasses[titleSize]}>{title}</h1>
 			{lead ? (
@@ -46,7 +51,7 @@ export function MarketingHero({
 					className={cn(
 						"text-body-lg text-body",
 						variant === "centered"
-							? "mx-auto max-w-2xl"
+							? "mx-auto mb-8 max-w-[600px]"
 							: "mb-8 max-w-xl",
 					)}
 				>

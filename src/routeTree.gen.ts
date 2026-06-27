@@ -15,6 +15,8 @@ import { Route as SuccessRouteImport } from './routes/success'
 import { Route as PricingRouteImport } from './routes/pricing'
 import { Route as LanguagesRouteImport } from './routes/languages'
 import { Route as HireYourTeamRouteImport } from './routes/hire-your-team'
+import { Route as FeaturesRouteImport } from './routes/features'
+import { Route as DailySignalRouteImport } from './routes/daily-signal'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as SplatRouteImport } from './routes/$'
@@ -55,6 +57,16 @@ const LanguagesRoute = LanguagesRouteImport.update({
 const HireYourTeamRoute = HireYourTeamRouteImport.update({
   id: '/hire-your-team',
   path: '/hire-your-team',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FeaturesRoute = FeaturesRouteImport.update({
+  id: '/features',
+  path: '/features',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DailySignalRoute = DailySignalRouteImport.update({
+  id: '/daily-signal',
+  path: '/daily-signal',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ContactRoute = ContactRouteImport.update({
@@ -118,6 +130,8 @@ export interface FileRoutesByFullPath {
   '/$': typeof SplatRoute
   '/about': typeof AboutRoute
   '/contact': typeof ContactRoute
+  '/daily-signal': typeof DailySignalRoute
+  '/features': typeof FeaturesRoute
   '/hire-your-team': typeof HireYourTeamRoute
   '/languages': typeof LanguagesRoute
   '/pricing': typeof PricingRoute
@@ -137,6 +151,8 @@ export interface FileRoutesByTo {
   '/$': typeof SplatRoute
   '/about': typeof AboutRoute
   '/contact': typeof ContactRoute
+  '/daily-signal': typeof DailySignalRoute
+  '/features': typeof FeaturesRoute
   '/hire-your-team': typeof HireYourTeamRoute
   '/languages': typeof LanguagesRoute
   '/pricing': typeof PricingRoute
@@ -157,6 +173,8 @@ export interface FileRoutesById {
   '/$': typeof SplatRoute
   '/about': typeof AboutRoute
   '/contact': typeof ContactRoute
+  '/daily-signal': typeof DailySignalRoute
+  '/features': typeof FeaturesRoute
   '/hire-your-team': typeof HireYourTeamRoute
   '/languages': typeof LanguagesRoute
   '/pricing': typeof PricingRoute
@@ -178,6 +196,8 @@ export interface FileRouteTypes {
     | '/$'
     | '/about'
     | '/contact'
+    | '/daily-signal'
+    | '/features'
     | '/hire-your-team'
     | '/languages'
     | '/pricing'
@@ -197,6 +217,8 @@ export interface FileRouteTypes {
     | '/$'
     | '/about'
     | '/contact'
+    | '/daily-signal'
+    | '/features'
     | '/hire-your-team'
     | '/languages'
     | '/pricing'
@@ -216,6 +238,8 @@ export interface FileRouteTypes {
     | '/$'
     | '/about'
     | '/contact'
+    | '/daily-signal'
+    | '/features'
     | '/hire-your-team'
     | '/languages'
     | '/pricing'
@@ -236,6 +260,8 @@ export interface RootRouteChildren {
   SplatRoute: typeof SplatRoute
   AboutRoute: typeof AboutRoute
   ContactRoute: typeof ContactRoute
+  DailySignalRoute: typeof DailySignalRoute
+  FeaturesRoute: typeof FeaturesRoute
   HireYourTeamRoute: typeof HireYourTeamRoute
   LanguagesRoute: typeof LanguagesRoute
   PricingRoute: typeof PricingRoute
@@ -293,6 +319,20 @@ declare module '@tanstack/react-router' {
       path: '/hire-your-team'
       fullPath: '/hire-your-team'
       preLoaderRoute: typeof HireYourTeamRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/features': {
+      id: '/features'
+      path: '/features'
+      fullPath: '/features'
+      preLoaderRoute: typeof FeaturesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/daily-signal': {
+      id: '/daily-signal'
+      path: '/daily-signal'
+      fullPath: '/daily-signal'
+      preLoaderRoute: typeof DailySignalRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/contact': {
@@ -380,6 +420,8 @@ const rootRouteChildren: RootRouteChildren = {
   SplatRoute: SplatRoute,
   AboutRoute: AboutRoute,
   ContactRoute: ContactRoute,
+  DailySignalRoute: DailySignalRoute,
+  FeaturesRoute: FeaturesRoute,
   HireYourTeamRoute: HireYourTeamRoute,
   LanguagesRoute: LanguagesRoute,
   PricingRoute: PricingRoute,
