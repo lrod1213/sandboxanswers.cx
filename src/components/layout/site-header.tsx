@@ -68,41 +68,75 @@ function NavLinkItem({
 	);
 }
 
-/** SSR-safe dropdown using native details/summary (no Radix hooks). */
+/** Desktop dropdown — opens on hover, closes when pointer leaves the nav. */
 function NavDropdown({
+	menuId,
+	activeMenu,
+	onActivate,
 	label,
 	children,
 }: {
+	menuId: string;
+	activeMenu: string | null;
+	onActivate: (id: string) => void;
 	label: string;
 	children: ReactNode;
 }) {
+	const open = activeMenu === menuId;
+
 	return (
-		<details className="group relative">
-			<summary className="cursor-pointer list-none rounded-[var(--rounded-sm)] px-3 py-2 text-body-sm text-body transition-colors hover:bg-canvas-soft hover:text-ink focus-visible:outline-none focus-visible:ring-[3px] focus-visible:ring-ring/30 [&::-webkit-details-marker]:hidden">
-				<span className="inline-flex items-center gap-1">
-					{label}
-					<span
-						className="text-mute transition-transform group-open:rotate-180"
-						aria-hidden
-					>
-						▾
-					</span>
+		<div className="relative" onMouseEnter={() => onActivate(menuId)}>
+			<button
+				type="button"
+				className="inline-flex cursor-default items-center gap-1 rounded-[var(--rounded-sm)] px-3 py-2 text-body-sm text-body transition-colors hover:bg-canvas-soft hover:text-ink focus-visible:outline-none focus-visible:ring-[3px] focus-visible:ring-ring/30"
+				aria-haspopup="true"
+				aria-expanded={open}
+				tabIndex={-1}
+			>
+				{label}
+				<span
+					className={cn(
+						"text-mute transition-transform duration-200",
+						open && "rotate-180",
+					)}
+					aria-hidden
+				>
+					▾
 				</span>
-			</summary>
-			<div className="absolute left-0 top-full z-50 mt-2 min-w-[240px] rounded-[var(--rounded-md)] bg-canvas p-3 elev-5">
-				{children}
+			</button>
+			{/* pt-2 bridges the gap so hover is not lost moving into the panel */}
+			<div
+				className={cn(
+					"absolute left-0 top-full z-50 pt-2 transition-[opacity,visibility] duration-150",
+					open
+						? "visible opacity-100"
+						: "pointer-events-none invisible opacity-0",
+				)}
+			>
+				<div className="min-w-[240px] rounded-[var(--rounded-md)] bg-canvas p-3 elev-5">
+					{children}
+				</div>
 			</div>
-		</details>
+		</div>
 	);
 }
 
 function DesktopNav() {
+	const [activeMenu, setActiveMenu] = useState<string | null>(null);
+	const closeMenu = () => setActiveMenu(null);
+
 	return (
 		<nav
 			className="hidden items-center gap-1 lg:flex"
 			aria-label="Main navigation"
+			onMouseLeave={closeMenu}
 		>
-			<NavDropdown label="Solutions">
+			<NavDropdown
+				menuId="solutions"
+				activeMenu={activeMenu}
+				onActivate={setActiveMenu}
+				label="Solutions"
+			>
 				<ul className="flex flex-col gap-2">
 					{solutionsLinks.map((link) => (
 						<li key={link.href}>
@@ -122,6 +156,7 @@ function DesktopNav() {
 					key={link.href}
 					to={link.href}
 					className="rounded-[var(--rounded-sm)] px-3 py-2 text-body-sm text-body transition-colors hover:bg-canvas-soft hover:text-ink"
+					onMouseEnter={closeMenu}
 				>
 					{link.label}
 				</Link>
@@ -130,11 +165,17 @@ function DesktopNav() {
 			<Link
 				to={featuresLink.href}
 				className="rounded-[var(--rounded-sm)] px-3 py-2 text-body-sm text-body transition-colors hover:bg-canvas-soft hover:text-ink"
+				onMouseEnter={closeMenu}
 			>
 				{featuresLink.label}
 			</Link>
 
-			<NavDropdown label="Resources">
+			<NavDropdown
+				menuId="resources"
+				activeMenu={activeMenu}
+				onActivate={setActiveMenu}
+				label="Resources"
+			>
 				<ul className="flex flex-col gap-2">
 					{resourcesLinks.map((link) => (
 						<li key={link.label}>
@@ -151,6 +192,7 @@ function DesktopNav() {
 						key={link.href}
 						to={link.href}
 						className="rounded-[var(--rounded-sm)] px-3 py-2 text-body-sm text-body transition-colors hover:bg-canvas-soft hover:text-ink"
+						onMouseEnter={closeMenu}
 					>
 						{link.label}
 					</Link>
