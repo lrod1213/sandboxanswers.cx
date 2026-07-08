@@ -56,14 +56,12 @@ export const pages = [
 	{
 		path: "/translations",
 		label: "Real-time Translations",
-		navGroup: "solutions",
 		sitemap: true,
 		contactInterest: "Real-time Translations",
 	},
 	{
 		path: "/languages",
 		label: "Languages",
-		navGroup: "solutions",
 		sitemap: true,
 	},
 	{
@@ -179,7 +177,6 @@ export const footerColumns = {
 				"/hire-your-team",
 				"/daily-signal",
 				"/features",
-				"/translations",
 				"/data-connectors",
 			].includes(page.path),
 		)
