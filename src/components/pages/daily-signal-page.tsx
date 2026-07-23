@@ -9,9 +9,9 @@ import {
 	TrendingUp,
 } from "lucide-react";
 
+import { DailySignalHeroGraphic } from "#/components/marketing/daily-signal-hero-graphic.tsx";
 import { MarketingCard } from "#/components/marketing/marketing-card.tsx";
 import { MeshGradient } from "#/components/marketing/mesh-gradient.tsx";
-import { ProductVideoPlaceholder } from "#/components/marketing/product-video-placeholder.tsx";
 import { SectionBand } from "#/components/marketing/section-band.tsx";
 import { TrustedByCarousel } from "#/components/marketing/trusted-by-carousel.tsx";
 import { Button } from "#/components/ui/button.tsx";
@@ -63,13 +63,7 @@ export function DailySignalPage() {
 									</div>
 								</div>
 							</div>
-							<ProductVideoPlaceholder
-								src={content.hero.video.src}
-								poster={content.hero.video.poster}
-								label={content.hero.video.label}
-								caption={content.hero.video.caption}
-								className="mx-auto w-full max-w-[560px] lg:max-w-none lg:translate-y-4"
-							/>
+							<DailySignalHeroGraphic className="mx-auto w-full max-w-[560px] lg:max-w-none lg:translate-y-4" />
 						</div>
 						<TrustedByCarousel className="mt-10 lg:mt-12" />
 					</div>
