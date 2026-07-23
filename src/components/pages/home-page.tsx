@@ -8,13 +8,13 @@ import {
 	type LucideIcon,
 } from "lucide-react";
 
+import { DailyBriefHeroGraphic } from "#/components/marketing/daily-brief-hero-graphic.tsx";
 import { ExplorePlansSection } from "#/components/marketing/explore-plans-section.tsx";
 import { FaqAccordion } from "#/components/marketing/faq-accordion.tsx";
 import { HomeAnswerLayerShowcaseSection } from "#/components/marketing/home-answer-layer-showcase-section.tsx";
 import { HomeHeroValueStrip } from "#/components/marketing/home-hero-value-strip.tsx";
 import { MarketingCard } from "#/components/marketing/marketing-card.tsx";
 import { MeshGradient } from "#/components/marketing/mesh-gradient.tsx";
-import { ProductVideoPlaceholder } from "#/components/marketing/product-video-placeholder.tsx";
 import { SectionBand } from "#/components/marketing/section-band.tsx";
 import { SocialProofSection } from "#/components/marketing/social-proof-section.tsx";
 import { StackIntegrationStrip } from "#/components/marketing/stack-integration-strip.tsx";
@@ -83,10 +83,7 @@ export function HomePage() {
 									</div>
 								</div>
 							</div>
-							<ProductVideoPlaceholder
-								src={hireYourTeamPageContent.heroVideo.src}
-								label={hireYourTeamPageContent.heroVideo.label}
-								caption={hireYourTeamPageContent.heroVideo.caption}
+							<DailyBriefHeroGraphic
 								belowCaption={hireYourTeamPageContent.heroVideo.belowCaption}
 								className="mx-auto w-full max-w-[560px] lg:max-w-none lg:translate-y-4"
 							/>
