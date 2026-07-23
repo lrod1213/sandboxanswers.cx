@@ -10,6 +10,7 @@ import {
 	Users,
 } from "lucide-react";
 
+import { AnswerLayerComparisonGraphic } from "#/components/marketing/answer-layer-comparison-graphic.tsx";
 import { AnswerLayerHeroGraphic } from "#/components/marketing/answer-layer-hero-graphic.tsx";
 import { AnswerLayerShowcaseSection } from "#/components/marketing/answer-layer-showcase-section.tsx";
 import { FaqAccordion } from "#/components/marketing/faq-accordion.tsx";
@@ -105,17 +106,7 @@ export function TheAnswerLayerPage() {
 							))}
 						</ul>
 					</div>
-					<div className="relative overflow-hidden rounded-[var(--rounded-md)] border border-hairline bg-ink shadow-[var(--shadow-elev-4)]">
-						<img
-							src={content.problem.image.src}
-							alt={content.problem.image.alt}
-							width={1024}
-							height={518}
-							className="w-full"
-							loading="lazy"
-							decoding="async"
-						/>
-					</div>
+					<AnswerLayerComparisonGraphic />
 				</div>
 			</SectionBand>
 

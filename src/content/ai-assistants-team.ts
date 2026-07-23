@@ -146,7 +146,7 @@ export const socialProof = {
 		text: "The Daily Brief replaced our Monday scramble. We walk into leadership already knowing what changed across our customers—and exactly what to do about it.",
 		name: "Add a customer name",
 		role: "VP of Customer Experience",
-		company: "Customer Company",
+		company: "Fortune 500 Enterprise",
 	},
 } as const satisfies SocialProofContent;
 
