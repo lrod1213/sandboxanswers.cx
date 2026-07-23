@@ -46,17 +46,17 @@ const accentStyles = {
 	pink: {
 		border: "border-highlight-pink/40",
 		glow: "shadow-[inset_3px_0_0_0_var(--highlight-pink)]",
-		title: "text-ink",
+		title: "text-highlight-pink",
 	},
 	amber: {
 		border: "border-warning/45",
 		glow: "shadow-[inset_3px_0_0_0_var(--warning)]",
-		title: "text-ink",
+		title: "text-warning",
 	},
 	violet: {
 		border: "border-link/45",
 		glow: "shadow-[inset_3px_0_0_0_var(--link)]",
-		title: "text-ink",
+		title: "text-link",
 	},
 } as const;
 

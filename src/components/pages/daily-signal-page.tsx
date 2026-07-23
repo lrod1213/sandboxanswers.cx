@@ -9,6 +9,7 @@ import {
 	TrendingUp,
 } from "lucide-react";
 
+import { DailyBriefHeroGraphic } from "#/components/marketing/daily-brief-hero-graphic.tsx";
 import { DailySignalHeroGraphic } from "#/components/marketing/daily-signal-hero-graphic.tsx";
 import { MarketingCard } from "#/components/marketing/marketing-card.tsx";
 import { MeshGradient } from "#/components/marketing/mesh-gradient.tsx";
@@ -96,17 +97,7 @@ export function DailySignalPage() {
 
 			<SectionBand>
 				<div className="grid gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:items-center lg:gap-14">
-					<div className="relative overflow-hidden rounded-[var(--rounded-lg)] border border-hairline bg-ink shadow-[var(--shadow-elev-4)] ring-1 ring-link/10">
-						<img
-							src={content.dailyBrief.image.src}
-							alt={content.dailyBrief.image.alt}
-							width={content.dailyBrief.image.width}
-							height={content.dailyBrief.image.height}
-							className="w-full"
-							loading="lazy"
-							decoding="async"
-						/>
-					</div>
+					<DailyBriefHeroGraphic belowCaption="" />
 					<div>
 						<p className="section-eyebrow mb-4">{content.dailyBrief.eyebrow}</p>
 						<h2 className="text-display-lg mb-5">{content.dailyBrief.title}</h2>
