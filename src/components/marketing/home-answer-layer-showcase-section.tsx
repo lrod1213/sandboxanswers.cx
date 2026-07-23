@@ -11,6 +11,7 @@ import {
 	Users,
 } from "lucide-react";
 
+import { AnswerLayerComparisonGraphic } from "#/components/marketing/answer-layer-comparison-graphic.tsx";
 import { DailyBriefHeroGraphic } from "#/components/marketing/daily-brief-hero-graphic.tsx";
 import { ProductVideoPlaceholder } from "#/components/marketing/product-video-placeholder.tsx";
 import { Button } from "#/components/ui/button.tsx";
@@ -588,7 +589,9 @@ function ShowcaseSpotlightMedia({
 	feature: ShowcaseFeature;
 }) {
 	const media =
-		feature.id === "daily-brief" ? (
+		feature.id === "comparison" ? (
+			<AnswerLayerComparisonGraphic />
+		) : feature.id === "daily-brief" ? (
 			<DailyBriefHeroGraphic belowCaption="" />
 		) : feature.id === "languages" ? (
 			<LanguagesVisual />
@@ -643,6 +646,7 @@ function ShowcaseSpotlightMedia({
 				className={cn(
 					"showcase-spotlight-media relative",
 					feature.id !== "daily-brief" &&
+						feature.id !== "comparison" &&
 						"overflow-hidden rounded-[var(--rounded-md)] border border-white/10 bg-ink shadow-[var(--shadow-elev-5)] ring-1 ring-link/15",
 				)}
 			>
