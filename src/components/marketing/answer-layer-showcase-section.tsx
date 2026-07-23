@@ -15,6 +15,7 @@ import { AnswerLayerComparisonGraphic } from "#/components/marketing/answer-laye
 import { BoardroomLeadersInfographic } from "#/components/marketing/boardroom-leaders-infographic.tsx";
 import { CompanyPulseHeroGraphic } from "#/components/marketing/company-pulse-hero-graphic.tsx";
 import { DailyBriefHeroGraphic } from "#/components/marketing/daily-brief-hero-graphic.tsx";
+import { HireYourTeamHeroGraphic } from "#/components/marketing/hire-your-team-hero-graphic.tsx";
 import { ProductVideoPlaceholder } from "#/components/marketing/product-video-placeholder.tsx";
 import { Button } from "#/components/ui/button.tsx";
 import { cn } from "#/lib/utils.ts";
@@ -132,65 +133,23 @@ const showcaseFeatures: ShowcaseFeature[] = [
 	},
 	{
 		id: "lenses",
-		pillLabel: "Meet Your Support Team",
+		pillLabel: "Hire your AI team",
 		badge: "Your AI team",
-		title: "An agent for every signal.\nAn answer for every blind spot.",
-		plainBodyParagraphs: 3,
+		title: "An agent for every signal—switch on only what you need.",
 		description:
-			"Your AI Chief of Staff keeps your team focused on what matters most. Your AI Agents do the digging—surfacing revenue opportunities, churn risk, product themes, account changes, compliance issues, and coaching moments hidden inside your customer data.\n\nYour team can stop hunting for the signal and start acting on it.\n\nThe Answer Layer gives you a full team of AI Agents built to replace the manual work that slows customer intelligence down: mining dashboards, stitching exports, tagging accounts, sampling calls, searching CRM notes, and rebuilding one-off decks just to explain what changed.",
-		bulletSection: {
-			intro: "Bring in the right agent for the question in front of you.",
-			afterParagraph: 2,
-			items: [
-				{
-					name: "Revenue Opportunity Scout",
-					description:
-						"finds upsell, cross-sell, and renewal intent buried in conversations and usage.",
-				},
-				{
-					name: "Churn Risk Analyst",
-					description:
-						"spots frustration patterns and relationship cooling before they show up on a renewal call.",
-				},
-				{
-					name: "Product Feedback Compiler",
-					description:
-						"turns feedback from every channel into clear themes product and engineering can prioritize.",
-				},
-				{
-					name: "Key Account Watch",
-					description:
-						"keeps a steady pulse on your largest customers, including escalations, sentiment shifts, and executive-ready summaries.",
-				},
-				{
-					name: "Compliance & Policy Monitor",
-					description:
-						"detects policy drift, disclosure gaps, and emerging compliance themes across channels.",
-				},
-				{
-					name: "CX Quality Reviewer",
-					description:
-						"highlights experience breakdowns and coaching opportunities from real interactions.",
-				},
-				{
-					name: "Bot Performance Coach",
-					description:
-						"shows when automation is working—and when it is creating more work for customers or your team.",
-				},
-				{
-					name: "Support Team Coach",
-					description:
-						"surfaces coaching moments from live work so leaders can spend more time developing people and less time hunting for examples.",
-				},
-			],
-		},
-		image: {
-			src: "/images/hire-your-team-ai-specialists.jpg",
-			alt: "An agent for every signal — AI Agents for revenue, churn, product feedback, strategic accounts, compliance, and CX quality.",
-			width: 1024,
-			height: 576,
-			caption:
-				"Available agents can be enabled or disabled at any time. Also create custom AI agents that know what matters most to your company.",
+			"Each AI Agent watches your customer data around the clock and takes over the manual work your team does today—monitoring conversations, surfacing risk and revenue, and turning signals into answers.",
+		highlights: [
+			"Full roster for churn, revenue, product feedback, accounts, compliance, and coaching",
+			"Enable or disable any agent—no seat limits, no surprise customer outreach",
+			"Build custom agents trained on your products, segments, and policies",
+		],
+		cta: {
+			label: "Book a demo",
+			href: "/contact",
+			secondary: {
+				label: "Hire your AI team",
+				href: "/hire-your-team",
+			},
 		},
 		span: "wide",
 		hideFromGrid: true,
@@ -624,6 +583,8 @@ function ShowcaseSpotlightMedia({
 		<AnswerLayerComparisonGraphic />
 	) : feature.id === "daily-brief" ? (
 		<DailyBriefHeroGraphic belowCaption="" />
+	) : feature.id === "lenses" ? (
+		<HireYourTeamHeroGraphic className="w-full" />
 	) : feature.id === "languages" ? (
 		<LanguagesVisual />
 	) : feature.id === "company-pulse" ? (
@@ -679,6 +640,7 @@ function ShowcaseSpotlightMedia({
 					feature.id !== "daily-brief" &&
 						feature.id !== "comparison" &&
 						feature.id !== "company-pulse" &&
+						feature.id !== "lenses" &&
 						"overflow-hidden rounded-[var(--rounded-md)] border border-white/10 bg-ink shadow-[var(--shadow-elev-5)] ring-1 ring-link/15",
 				)}
 			>
@@ -804,7 +766,8 @@ export function AnswerLayerShowcaseSection({
 					key={activeId}
 					className={cn(
 						"showcase-spotlight-content relative grid gap-8 lg:grid-cols-[0.95fr_1.05fr] lg:gap-10",
-						activeFeature.id === "daily-brief"
+						activeFeature.id === "daily-brief" ||
+							activeFeature.id === "lenses"
 							? "lg:items-center"
 							: "lg:items-start",
 					)}
