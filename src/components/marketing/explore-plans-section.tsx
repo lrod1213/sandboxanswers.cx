@@ -40,11 +40,11 @@ export function ExplorePlansSection({
 					/>
 					<div className="grid gap-8 p-6 text-left sm:p-8 lg:grid-cols-[0.9fr_1.1fr] lg:gap-12 lg:p-10">
 						<div className="flex flex-col">
-							<span className="inline-flex w-fit items-center gap-2 rounded-full border border-link/25 bg-link/10 px-3 py-1 text-[11px] font-medium tracking-[0.08em] text-link uppercase">
+							<span className="inline-flex w-fit items-center gap-2 rounded-full border border-link/25 bg-link/10 px-3 py-1 text-caption font-medium tracking-[0.08em] text-link uppercase sm:text-[11px]">
 								<span className="size-1.5 rounded-full bg-link" aria-hidden />
 								{content.planLabel}
 							</span>
-							<p className="mt-5 text-[2rem] font-semibold leading-[1.1] tracking-[-0.03em] text-white sm:text-[2.25rem]">
+							<p className="mt-5 text-[2.375rem] font-semibold leading-[1.1] tracking-[-0.03em] text-white sm:text-[2.5rem]">
 								{content.headline}
 							</p>
 							<p className="mt-3 max-w-md text-body-md leading-relaxed text-white/65">

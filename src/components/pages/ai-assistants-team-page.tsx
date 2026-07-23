@@ -61,7 +61,7 @@ export function AiAssistantsTeamPage() {
 									<Sparkles className="size-3.5 text-link" aria-hidden />
 									Your AI agent team
 								</div>
-								<h1 className="max-w-4xl text-[2rem] font-semibold leading-[0.95] tracking-[-0.06em] text-ink sm:text-[2.5rem] sm:leading-[0.92] sm:tracking-[-0.08em] md:text-[56px] md:tracking-[-3.4px] lg:text-[72px] lg:tracking-[-4px]">
+								<h1 className="max-w-4xl text-[2.375rem] font-semibold leading-[0.95] tracking-[-0.06em] text-ink sm:text-[2.5rem] sm:leading-[0.92] sm:tracking-[-0.08em] md:text-[56px] md:tracking-[-3.4px] lg:text-[72px] lg:tracking-[-4px]">
 									Hire your team of AI Agents.
 								</h1>
 								<div className="mt-8 flex max-w-xl flex-col gap-5">

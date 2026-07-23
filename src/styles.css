@@ -332,37 +332,6 @@ a:not([data-slot='button']):hover {
   letter-spacing: -0.6px;
 }
 
-@media (max-width: 428px) {
-  .text-display-xl {
-    font-size: 2rem;
-    line-height: 2.25rem;
-    letter-spacing: -0.06em;
-  }
-
-  .text-display-lg {
-    font-size: 1.625rem;
-    line-height: 2rem;
-    letter-spacing: -0.05em;
-  }
-
-  .text-display-md {
-    font-size: 1.25rem;
-    line-height: 1.625rem;
-    letter-spacing: -0.04em;
-  }
-
-  .text-display-sm {
-    font-size: 1.125rem;
-    line-height: 1.5rem;
-    letter-spacing: -0.03em;
-  }
-
-  .text-body-lg {
-    font-size: 1rem;
-    line-height: 1.625rem;
-  }
-}
-
 .text-body-lg {
   font-size: 18px;
   font-weight: 400;
@@ -418,6 +387,67 @@ a:not([data-slot='button']):hover {
   letter-spacing: 0.02em;
   text-transform: uppercase;
   color: var(--link);
+}
+
+/* Mobile-first readable typography — body copy and headings scale up on phones */
+@media (max-width: 767px) {
+  html {
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+  }
+
+  .text-body-lg {
+    font-size: 1.1875rem;
+    line-height: 1.75rem;
+  }
+
+  .text-body-md,
+  .text-body-md-strong {
+    font-size: 1.0625rem;
+    line-height: 1.625rem;
+  }
+
+  .text-body-sm,
+  .text-body-sm-strong {
+    font-size: 1rem;
+    line-height: 1.5rem;
+    letter-spacing: -0.01em;
+  }
+
+  .text-caption {
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+  }
+
+  .section-eyebrow,
+  .font-mono-caption {
+    font-size: 0.8125rem;
+    line-height: 1.125rem;
+  }
+
+  .text-display-sm {
+    font-size: 1.375rem;
+    line-height: 1.875rem;
+    letter-spacing: -0.03em;
+  }
+
+  .text-display-md {
+    font-size: 1.5rem;
+    line-height: 2rem;
+    letter-spacing: -0.04em;
+  }
+
+  .text-display-lg {
+    font-size: 1.875rem;
+    line-height: 2.25rem;
+    letter-spacing: -0.05em;
+  }
+
+  .text-display-xl {
+    font-size: 2.25rem;
+    line-height: 2.375rem;
+    letter-spacing: -0.06em;
+  }
 }
 
 .elev-2 {

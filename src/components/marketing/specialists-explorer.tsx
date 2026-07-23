@@ -125,10 +125,10 @@ export function SpecialistsExplorer({
 				<div className="mt-10 grid gap-6 lg:mt-14 lg:grid-cols-[0.92fr_1.08fr] lg:gap-8">
 					<div>
 						<div className="mb-3 flex items-center justify-between px-1">
-							<p className="font-mono text-[11px] tracking-[0.14em] text-white/45 uppercase">
+							<p className="font-mono-caption text-white/45">
 								Your roster
 							</p>
-							<p className="font-mono text-[11px] tracking-[0.14em] text-cyan uppercase">
+							<p className="font-mono-caption text-cyan">
 								{enabledCount} of {specialists.length} enabled
 							</p>
 						</div>
@@ -204,7 +204,7 @@ export function SpecialistsExplorer({
 										<ActiveIcon className="size-7" aria-hidden />
 									</span>
 									<div>
-										<span className="inline-flex items-center gap-1.5 rounded-full border border-link/25 bg-link/10 px-2.5 py-0.5 text-[11px] font-medium tracking-[0.06em] text-link uppercase">
+										<span className="inline-flex items-center gap-1.5 rounded-full border border-link/25 bg-link/10 px-2.5 py-0.5 text-caption font-medium tracking-[0.06em] text-link uppercase sm:text-[11px]">
 											{active.role}
 										</span>
 										<h3 className="text-display-sm mt-2 text-white">
@@ -214,7 +214,7 @@ export function SpecialistsExplorer({
 								</div>
 								<span
 									className={cn(
-										"hidden shrink-0 items-center gap-1.5 rounded-full border px-2.5 py-1 text-[11px] font-medium uppercase sm:inline-flex",
+										"hidden shrink-0 items-center gap-1.5 rounded-full border px-2.5 py-1 text-caption font-medium uppercase sm:inline-flex sm:text-[11px]",
 										enabled[active.id]
 											? "border-cyan/30 bg-cyan/10 text-cyan"
 											: "border-white/15 bg-white/5 text-white/40",
@@ -233,7 +233,7 @@ export function SpecialistsExplorer({
 
 							<div className="mt-6 space-y-5">
 								<div>
-									<p className="mb-2 font-mono text-[11px] tracking-[0.14em] text-white/45 uppercase">
+									<p className="mb-2 font-mono-caption text-white/45">
 										What it does
 									</p>
 									<p className="text-body-lg text-white/85">{active.summary}</p>
@@ -241,7 +241,7 @@ export function SpecialistsExplorer({
 								<div className="rounded-[var(--rounded-md)] border border-white/10 bg-black/20 p-4">
 									<div className="mb-2 flex items-center gap-2">
 										<Clock className="size-3.5 text-cyan" aria-hidden />
-										<p className="font-mono text-[11px] tracking-[0.14em] text-white/45 uppercase">
+										<p className="font-mono-caption text-white/45">
 											Manual work it replaces
 										</p>
 									</div>

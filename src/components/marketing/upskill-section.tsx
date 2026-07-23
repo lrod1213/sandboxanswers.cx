@@ -95,7 +95,7 @@ export function UpskillSection() {
 						className="pointer-events-none absolute -left-8 top-1/2 hidden h-px w-8 -translate-y-1/2 bg-gradient-to-r from-transparent to-cyan/40 lg:block"
 						aria-hidden
 					/>
-					<p className="mb-4 font-mono text-[11px] tracking-[0.12em] text-cyan/80 uppercase">
+					<p className="mb-4 font-mono-caption text-cyan/80">
 						What you get back
 					</p>
 					<div className="grid gap-4 sm:grid-cols-2">

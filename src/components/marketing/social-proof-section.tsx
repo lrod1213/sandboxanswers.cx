@@ -32,7 +32,7 @@ export function SocialProofSection({
 			<dl className="mx-auto mt-8 grid max-w-5xl gap-x-6 gap-y-8 sm:mt-12 sm:grid-cols-2 sm:gap-y-10 lg:grid-cols-4 lg:gap-0 lg:divide-x lg:divide-hairline">
 				{content.stats.map((stat) => (
 					<div key={stat.label} className="text-center lg:px-6">
-						<dd className="bg-[linear-gradient(120deg,var(--cyan),var(--cyan-deep))] bg-clip-text text-[2.25rem] font-semibold leading-none tracking-[-0.04em] text-transparent sm:text-[2.75rem]">
+						<dd className="bg-[linear-gradient(120deg,var(--cyan),var(--cyan-deep))] bg-clip-text text-[2.5rem] font-semibold leading-none tracking-[-0.04em] text-transparent sm:text-[2.75rem]">
 							{stat.value}
 						</dd>
 						<dt className="mx-auto mt-3 max-w-[12rem] text-body-sm text-body">

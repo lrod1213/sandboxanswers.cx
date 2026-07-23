@@ -49,10 +49,10 @@ const buttonVariants = cva(
 				),
 			},
 			size: {
-				default: "h-10 rounded-[var(--rounded-sm)] px-4 py-2 has-[>svg]:px-3",
+				default: "h-11 rounded-[var(--rounded-sm)] px-4 py-2 text-base has-[>svg]:px-3 sm:h-10 sm:text-sm",
 				xs: "h-7 gap-1 rounded-[var(--rounded-sm)] px-2 text-xs has-[>svg]:px-1.5 [&_svg:not([class*='size-'])]:size-3",
 				sm: "h-8 gap-1.5 rounded-[var(--rounded-sm)] px-3 has-[>svg]:px-2.5",
-				lg: "h-12 rounded-[var(--rounded-sm)] px-6 text-base has-[>svg]:px-4",
+				lg: "h-12 rounded-[var(--rounded-sm)] px-6 text-[1.0625rem] has-[>svg]:px-4 sm:text-base",
 				icon: "size-10 rounded-[var(--rounded-sm)]",
 				"icon-xs":
 					"size-7 rounded-[var(--rounded-sm)] [&_svg:not([class*='size-'])]:size-3",

@@ -256,7 +256,7 @@ function ShowcaseCard({
 					{feature.badge ? (
 						<span
 							className={cn(
-								"rounded-full px-2.5 py-0.5 text-[11px] font-medium tracking-[0.04em] uppercase",
+								"rounded-full px-2.5 py-0.5 text-caption font-medium tracking-[0.04em] uppercase sm:text-[11px]",
 								feature.badge === "NEW"
 									? "bg-link text-white"
 									: "border border-hairline bg-canvas-soft text-body",
@@ -724,7 +724,7 @@ export function AnswerLayerShowcaseSection({
 								aria-selected={active}
 								onClick={() => setActiveId(feature.id)}
 								className={cn(
-									"group inline-flex min-h-11 cursor-pointer items-center gap-2 rounded-[var(--rounded-md)] px-3 py-2.5 text-[13px] outline-none transition-[background-color,color,box-shadow,transform] duration-200 focus-visible:ring-2 focus-visible:ring-link/40 sm:px-4 sm:py-2 sm:text-body-sm",
+									"group inline-flex min-h-11 cursor-pointer items-center gap-2 rounded-[var(--rounded-md)] px-3 py-2.5 text-body-md outline-none transition-[background-color,color,box-shadow,transform] duration-200 focus-visible:ring-2 focus-visible:ring-link/40 sm:px-4 sm:py-2 sm:text-body-sm",
 									active
 										? "bg-white text-[#171717] shadow-[var(--shadow-elev-2)]"
 										: "text-white/60 hover:-translate-y-0.5 hover:bg-white/10 hover:text-white",
@@ -776,7 +776,7 @@ export function AnswerLayerShowcaseSection({
 						{activeFeature.badge ? (
 							<span
 								className={cn(
-									"mb-4 inline-flex w-fit items-center gap-2 rounded-full border px-3 py-1 text-[11px] font-medium tracking-[0.08em] uppercase shadow-[var(--shadow-inset)]",
+									"mb-4 inline-flex w-fit items-center gap-2 rounded-full border px-3 py-1 text-caption font-medium tracking-[0.08em] uppercase shadow-[var(--shadow-inset)] sm:text-[11px]",
 									activeFeature.id === "daily-brief"
 										? "border-cyan/25 bg-cyan/10 text-cyan"
 										: "border-link/20 bg-link-bg-soft/80 text-link",

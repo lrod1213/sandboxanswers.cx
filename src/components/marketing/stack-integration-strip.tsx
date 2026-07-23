@@ -80,7 +80,7 @@ export function StackIntegrationStrip({
 									<Icon className="size-5" aria-hidden />
 								</span>
 								<span
-									className="font-mono text-[11px] tracking-[0.14em] text-mute uppercase"
+									className="font-mono-caption text-mute"
 									aria-hidden
 								>
 									{String(index + 1).padStart(2, "0")}
