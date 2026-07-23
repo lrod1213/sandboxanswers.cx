@@ -13,6 +13,7 @@ import {
 
 import { BoardroomLeadersInfographic } from "#/components/marketing/boardroom-leaders-infographic.tsx";
 import { CompanyPulseHeroGraphic } from "#/components/marketing/company-pulse-hero-graphic.tsx";
+import { DailyBriefHeroGraphic } from "#/components/marketing/daily-brief-hero-graphic.tsx";
 import { ProductVideoPlaceholder } from "#/components/marketing/product-video-placeholder.tsx";
 import { Button } from "#/components/ui/button.tsx";
 import { cn } from "#/lib/utils.ts";
@@ -618,7 +619,9 @@ function ShowcaseSpotlightMedia({
 }: {
 	feature: ShowcaseFeature;
 }) {
-	const media = feature.id === "languages" ? (
+	const media = feature.id === "daily-brief" ? (
+		<DailyBriefHeroGraphic belowCaption="" />
+	) : feature.id === "languages" ? (
 		<LanguagesVisual />
 	) : feature.id === "company-pulse" ? (
 		<CompanyPulseHeroGraphic className="w-full" />
@@ -669,10 +672,10 @@ function ShowcaseSpotlightMedia({
 			/>
 			<div
 				className={cn(
-					"showcase-spotlight-media relative overflow-hidden rounded-[var(--rounded-md)] border bg-ink shadow-[var(--shadow-elev-5)]",
-					feature.id === "daily-brief"
-						? "border-white/10 ring-1 ring-cyan/20"
-						: "border-white/10 ring-1 ring-link/15",
+					"showcase-spotlight-media relative",
+					feature.id !== "daily-brief" &&
+						feature.id !== "company-pulse" &&
+						"overflow-hidden rounded-[var(--rounded-md)] border border-white/10 bg-ink shadow-[var(--shadow-elev-5)] ring-1 ring-link/15",
 				)}
 			>
 				{media}
