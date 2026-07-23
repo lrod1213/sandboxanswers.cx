@@ -83,17 +83,9 @@ const showcaseFeatures: ShowcaseFeature[] = [
 		title: "Meet The Answer Layer",
 		description:
 			"Your customer data should not wait for someone to ask the right question.\n\nThe signals are already there—in your support tickets, surveys, reviews, CRM notes, call transcripts, dashboards, and reports. But today, finding the answer still means hunting across platforms, rebuilding the same reports, stitching spreadsheets together, translating metrics, and turning raw data into a story leadership can act on.\n\nThe Answer Layer sits on top of your data and manages your AI team to do the manual work for you. Ask a follow-up on your walk to the breakroom—your Agent answers before you're back.\n\nNo more searching dashboards at 7am.\n\nNo more waiting on reports from someone else's queue.\n\nNo more starting from scratch every Monday.\n\nIntelligence before you ask—and answers when you do.",
-		videoPlaceholder: {
-			label: "Chat demo",
-			caption: "Watch questions turn into actionable answers",
-		},
 		cta: {
 			label: "Book a demo",
 			href: "/contact",
-			secondary: {
-				label: "See how it works",
-				href: "/daily-signal",
-			},
 		},
 		span: "wide",
 		hideTitle: true,
@@ -203,10 +195,6 @@ const showcaseFeatures: ShowcaseFeature[] = [
 		cta: {
 			label: "Book a demo",
 			href: "/contact",
-			secondary: {
-				label: "See how it works",
-				href: "/daily-signal",
-			},
 		},
 		span: "wide",
 		hideFromGrid: true,
@@ -534,55 +522,6 @@ function ShowcaseSpotlightHighlights({
 	);
 }
 
-const languageGreetings = [
-	"Hello",
-	"Hola",
-	"Bonjour",
-	"こんにちは",
-	"你好",
-	"Olá",
-	"Hallo",
-	"नमस्ते",
-	"안녕하세요",
-	"Ciao",
-	"مرحبا",
-	"Привет",
-	"Merhaba",
-	"Xin chào",
-	"สวัสดี",
-	"Sawubona",
-] as const;
-
-function LanguagesVisual() {
-	return (
-		<div className="relative flex aspect-video w-full flex-col items-center justify-center gap-5 overflow-hidden bg-ink px-6 py-8 text-center">
-			<div
-				className="pointer-events-none absolute inset-0 opacity-70 [background:radial-gradient(circle_at_50%_42%,color-mix(in_srgb,var(--link)_26%,transparent),transparent_60%)]"
-				aria-hidden
-			/>
-			<div className="signal-grid pointer-events-none absolute inset-0 opacity-20" aria-hidden />
-			<div className="relative">
-				<p className="bg-[linear-gradient(120deg,var(--link),var(--cyan))] bg-clip-text text-[3.5rem] font-semibold leading-none tracking-[-0.04em] text-transparent">
-					150+
-				</p>
-				<p className="mt-2 font-mono text-[11px] tracking-[0.16em] text-white/55 uppercase">
-					Languages supported
-				</p>
-			</div>
-			<div className="relative flex max-w-md flex-wrap items-center justify-center gap-2">
-				{languageGreetings.map((greeting) => (
-					<span
-						key={greeting}
-						className="rounded-full border border-white/12 bg-white/[0.06] px-3 py-1 text-body-sm text-white/75 backdrop-blur-sm"
-					>
-						{greeting}
-					</span>
-				))}
-			</div>
-		</div>
-	);
-}
-
 function ShowcaseSpotlightMedia({
 	feature,
 }: {
@@ -593,8 +532,6 @@ function ShowcaseSpotlightMedia({
 			<AnswerLayerComparisonGraphic />
 		) : feature.id === "daily-brief" ? (
 			<DailyBriefHeroGraphic belowCaption="" />
-		) : feature.id === "languages" ? (
-			<LanguagesVisual />
 		) : feature.videoPlaceholder ? (
 			<ProductVideoPlaceholder
 				label={feature.videoPlaceholder.label ?? "Chat demo"}
@@ -672,9 +609,7 @@ export function HomeAnswerLayerShowcaseSection({
 		showcaseFeatures.find((feature) => feature.id === activeId) ??
 		defaultFeature;
 	const hasSpotlightMedia =
-		activeFeature.id === "languages" ||
-		!!activeFeature.videoPlaceholder ||
-		!!activeFeature.image;
+		!!activeFeature.videoPlaceholder || !!activeFeature.image;
 
 	return (
 		<section
