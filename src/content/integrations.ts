@@ -12,7 +12,7 @@ export const dataConnectorsPageContent = {
 	hero: {
 		eyebrow: "Connectors",
 		title: "Your stack already has the answers. We connect to it.",
-		lead: "Point us at the CRM, support platform, and conversation tools your team runs every day. Our Sync Engine pulls it together—securely, on your terms—so your AI Specialists can start working before your next team sync.",
+		lead: "Point us at the CRM, support platform, and conversation tools your team runs every day. Our Sync Engine pulls it together—securely, on your terms—so your AI Agents can start working before your next team sync.",
 		primaryCta: "Talk through your stack",
 		secondaryCta: "See how it works",
 		secondaryHref: "/hire-your-team",
@@ -34,9 +34,9 @@ export const dataConnectorsPageContent = {
 					"Your Daily Brief reflects what changed overnight—churn risk, emerging themes, decisions worth your attention—because connectors keep your customer picture current.",
 			},
 			{
-				title: "AI Specialists that never clock out",
+				title: "AI Agents that never clock out",
 				description:
-					"Hire specialists for churn, product feedback, compliance, and more. They monitor the systems you connect and surface what matters before it becomes a fire drill.",
+					"Hire agents for churn, product feedback, compliance, and more. They monitor the systems you connect and surface what matters before it becomes a fire drill.",
 			},
 		],
 	},
@@ -101,7 +101,7 @@ export const connectorsStackIntegration = {
 	eyebrow: "How it works in your stack",
 	title: "Live on your data before your next team sync.",
 	description:
-		"Connect the tools you already use and your AI Specialists start working—no six-month integration project. No weekends lost to data mapping.",
+		"Connect the tools you already use and your AI Agents start working—no six-month integration project. No weekends lost to data mapping.",
 	connectors: [
 		{ name: "Salesforce", logo: "/images/connectors/salesforce.png" },
 		{ name: "Zendesk", logo: "/images/connectors/zendesk.png" },
@@ -249,7 +249,7 @@ export const connectorsFaqItems: FaqItem[] = [
 	{
 		question: "Can we start with one connector and expand later?",
 		answer:
-			"That's how most teams begin—one CRM or support platform, one AI Specialist, one question they already ask every week. Add sources as you trust the answers and want broader coverage across the business.",
+			"That's how most teams begin—one CRM or support platform, one AI Agent, one question they already ask every week. Add sources as you trust the answers and want broader coverage across the business.",
 	},
 	{
 		question: "How do connectors affect pricing?",

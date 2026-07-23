@@ -1,5 +1,6 @@
 import { Play } from "lucide-react";
 
+import { MarketingGraphicFrame } from "#/components/marketing/marketing-graphic-frame.tsx";
 import { cn } from "#/lib/utils.ts";
 
 type DailyBriefSection = {
@@ -70,81 +71,64 @@ export function DailyBriefHeroGraphic({
 }: DailyBriefHeroGraphicProps) {
 	return (
 		<div className={cn("relative w-full", className)}>
-			<div
-				className="relative aspect-video overflow-hidden rounded-[var(--rounded-lg)] p-px elev-4 [background:linear-gradient(135deg,rgba(147,51,234,0.55),rgba(45,212,191,0.25),rgba(244,63,94,0.35))]"
-				role="img"
-				aria-label="Daily Brief email preview showing customer signals and recommended actions"
-			>
-				<div className="relative flex h-full flex-col overflow-hidden rounded-[calc(var(--rounded-lg)-1px)] border border-white/5 bg-[#120818]/95 backdrop-blur-md">
-					<div
-						className="pointer-events-none absolute inset-0 opacity-70 [background:radial-gradient(circle_at_12%_0%,rgba(147,51,234,0.28),transparent_42%),radial-gradient(circle_at_88%_100%,rgba(45,212,191,0.16),transparent_38%)]"
-						aria-hidden
-					/>
-					<div className="signal-grid absolute inset-0 opacity-[0.12]" aria-hidden />
-
-					<div className="relative z-10 flex h-full flex-col gap-2 p-3 sm:gap-2.5 sm:p-4">
-						<div className="flex items-start justify-between gap-2">
-							<div className="min-w-0">
-								<p className="text-[15px] font-semibold tracking-[-0.02em] text-white sm:text-base">
-									{dailyBriefMock.title}
-								</p>
-								<p className="mt-0.5 font-mono text-[9px] text-white/55 sm:text-[10px]">
-									{dailyBriefMock.meta}
-								</p>
-							</div>
-							<div className="inline-flex shrink-0 items-center gap-1.5 rounded-full border border-green-500/30 bg-green-900/50 px-2 py-1 text-[9px] font-medium text-green-200 sm:px-2.5 sm:text-[10px]">
-								<span className="inline-flex size-4 items-center justify-center rounded-full bg-green-500/90 text-[#042f2e]">
-									<Play className="ml-px size-2 fill-current" aria-hidden />
-								</span>
-								Listen
-								<span className="inline-flex items-end gap-px" aria-hidden>
-									<span className="h-2 w-0.5 rounded-full bg-green-300/80" />
-									<span className="h-3 w-0.5 rounded-full bg-green-300/80" />
-									<span className="h-1.5 w-0.5 rounded-full bg-green-300/80" />
-									<span className="h-2.5 w-0.5 rounded-full bg-green-300/80" />
-								</span>
-							</div>
+			<MarketingGraphicFrame ariaLabel="Daily Brief email preview showing customer signals and recommended actions">
+				<div className="flex min-h-0 flex-1 flex-col gap-2 p-3 sm:gap-2.5 sm:p-4">
+					<div className="flex items-start justify-between gap-2">
+						<div className="min-w-0">
+							<p className="text-[15px] font-semibold tracking-[-0.02em] text-white sm:text-base">
+								{dailyBriefMock.title}
+							</p>
+							<p className="mt-0.5 font-mono text-[9px] text-white/55 sm:text-[10px]">
+								{dailyBriefMock.meta}
+							</p>
 						</div>
-
-						<div className="inline-flex w-fit rounded-full border border-cyan/35 bg-cyan/10 px-2 py-0.5 font-mono text-[9px] text-cyan sm:text-[10px]">
-							{dailyBriefMock.priorityBadge}
-						</div>
-
-						<div className="flex min-h-0 flex-1 flex-col gap-1.5 overflow-hidden sm:gap-2">
-							{dailyBriefMock.sections.map((section) => {
-								const styles = accentStyles[section.accent];
-								return (
-									<div
-										key={section.title}
-										className={cn(
-											"rounded-[var(--rounded-sm)] border bg-black/25 px-2.5 py-1.5 sm:px-3 sm:py-2",
-											styles.border,
-											styles.glow,
-										)}
-									>
-										<p
-											className={cn(
-												"text-[10px] font-semibold sm:text-[11px]",
-												styles.title,
-											)}
-										>
-											{section.title}
-										</p>
-										<p className="mt-0.5 line-clamp-2 text-[9px] leading-snug text-white/78 sm:text-[10px] sm:leading-relaxed">
-											{section.body}
-										</p>
-									</div>
-								);
-							})}
+						<div className="inline-flex shrink-0 items-center gap-1.5 rounded-full border border-green-500/30 bg-green-900/50 px-2 py-1 text-[9px] font-medium text-green-200 sm:px-2.5 sm:text-[10px]">
+							<span className="inline-flex size-4 items-center justify-center rounded-full bg-green-500/90 text-[#042f2e]">
+								<Play className="ml-px size-2 fill-current" aria-hidden />
+							</span>
+							Listen
+							<span className="inline-flex items-end gap-px" aria-hidden>
+								<span className="h-2 w-0.5 rounded-full bg-green-300/80" />
+								<span className="h-3 w-0.5 rounded-full bg-green-300/80" />
+								<span className="h-1.5 w-0.5 rounded-full bg-green-300/80" />
+								<span className="h-2.5 w-0.5 rounded-full bg-green-300/80" />
+							</span>
 						</div>
 					</div>
 
-					<div
-						className="pointer-events-none absolute inset-x-0 bottom-0 h-8 bg-gradient-to-t from-[#120818] to-transparent"
-						aria-hidden
-					/>
+					<div className="inline-flex w-fit rounded-full border border-cyan/35 bg-cyan/10 px-2 py-0.5 font-mono text-[9px] text-cyan sm:text-[10px]">
+						{dailyBriefMock.priorityBadge}
+					</div>
+
+					<div className="flex min-h-0 flex-1 flex-col gap-1.5 overflow-hidden sm:gap-2">
+						{dailyBriefMock.sections.map((section) => {
+							const styles = accentStyles[section.accent];
+							return (
+								<div
+									key={section.title}
+									className={cn(
+										"rounded-[var(--rounded-sm)] border bg-black/25 px-2.5 py-1.5 sm:px-3 sm:py-2",
+										styles.border,
+										styles.glow,
+									)}
+								>
+									<p
+										className={cn(
+											"text-[10px] font-semibold sm:text-[11px]",
+											styles.title,
+										)}
+									>
+										{section.title}
+									</p>
+									<p className="mt-0.5 line-clamp-2 text-[9px] leading-snug text-white/78 sm:text-[10px] sm:leading-relaxed">
+										{section.body}
+									</p>
+								</div>
+							);
+						})}
+					</div>
 				</div>
-			</div>
+			</MarketingGraphicFrame>
 
 			{belowCaption ? (
 				<p className="mt-3 text-center text-caption text-body">{belowCaption}</p>

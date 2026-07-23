@@ -85,7 +85,7 @@ export const dailySignalPageContent = {
 			{
 				title: "The Daily Signal watches",
 				description:
-					"AI Specialists and your Chief of Staff monitor overnight activity—surfacing risks, opportunities, and patterns automatically.",
+					"AI Agents and your Chief of Staff monitor overnight activity—surfacing risks, opportunities, and patterns automatically.",
 			},
 			{
 				title: "Your Daily Brief arrives",

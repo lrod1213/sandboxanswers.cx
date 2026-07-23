@@ -131,12 +131,12 @@ const showcaseFeatures: ShowcaseFeature[] = [
 		id: "lenses",
 		pillLabel: "Meet Your Support Team",
 		badge: "Your AI team",
-		title: "A specialist for every signal.\nAn answer for every blind spot.",
+		title: "An agent for every signal.\nAn answer for every blind spot.",
 		plainBodyParagraphs: 3,
 		description:
-			"Your AI Chief of Staff keeps your team focused on what matters most. Your AI Specialists do the digging—surfacing revenue opportunities, churn risk, product themes, account changes, compliance issues, and coaching moments hidden inside your customer data.\n\nYour team can stop hunting for the signal and start acting on it.\n\nThe Answer Layer gives you a full team of AI Specialists built to replace the manual work that slows customer intelligence down: mining dashboards, stitching exports, tagging accounts, sampling calls, searching CRM notes, and rebuilding one-off decks just to explain what changed.",
+			"Your AI Chief of Staff keeps your team focused on what matters most. Your AI Agents do the digging—surfacing revenue opportunities, churn risk, product themes, account changes, compliance issues, and coaching moments hidden inside your customer data.\n\nYour team can stop hunting for the signal and start acting on it.\n\nThe Answer Layer gives you a full team of AI Agents built to replace the manual work that slows customer intelligence down: mining dashboards, stitching exports, tagging accounts, sampling calls, searching CRM notes, and rebuilding one-off decks just to explain what changed.",
 		bulletSection: {
-			intro: "Bring in the right specialist for the question in front of you.",
+			intro: "Bring in the right agent for the question in front of you.",
 			afterParagraph: 2,
 			items: [
 				{
@@ -183,11 +183,11 @@ const showcaseFeatures: ShowcaseFeature[] = [
 		},
 		image: {
 			src: "/images/hire-your-team-ai-specialists.jpg",
-			alt: "A specialist for every signal — AI Specialists for revenue, churn, product feedback, strategic accounts, compliance, and CX quality.",
+			alt: "An agent for every signal — AI Agents for revenue, churn, product feedback, strategic accounts, compliance, and CX quality.",
 			width: 1024,
 			height: 576,
 			caption:
-				"Available specialists can be enabled or disabled at any time. Also create custom AI specialists that know what matters most to your company.",
+				"Available agents can be enabled or disabled at any time. Also create custom AI agents that know what matters most to your company.",
 		},
 		span: "wide",
 		hideFromGrid: true,

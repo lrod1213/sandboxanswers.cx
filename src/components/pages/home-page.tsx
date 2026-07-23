@@ -107,7 +107,7 @@ export function HomePage() {
 						Safe to bring to your board. Safe to connect your data.
 					</h2>
 					<p className="text-body-lg text-body">
-						Your AI Specialists only work with data you connect, under controls
+						Your AI Agents only work with data you connect, under controls
 						your security and legal teams can stand behind.
 					</p>
 				</div>

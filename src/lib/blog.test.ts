@@ -32,9 +32,9 @@ describe("blog helpers", () => {
 	it("finds posts by slug", () => {
 		const post = getBlogPostBySlug(
 			blogPosts,
-			"hire-ai-specialists-not-another-chatbot",
+			"hire-ai-agents-not-another-chatbot",
 		);
-		expect(post?.title).toContain("AI Specialists");
+		expect(post?.title).toContain("AI Agents");
 	});
 
 	it("estimates reading time", () => {

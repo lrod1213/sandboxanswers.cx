@@ -31,7 +31,7 @@ export const pricingContent = {
 		"API access",
 		"Real-time alerts",
 		"Tailored onboarding",
-		"AI Specialist roster",
+		"AI Agent roster",
 		"PII removal",
 		"Multilingual support",
 	],
@@ -45,7 +45,7 @@ export const pricingContent = {
 		{
 			question: "What drives the price of a plan?",
 			answer:
-				"Monthly conversation volume, number of data connectors, and which AI Specialists you enable. We scope packages during onboarding so you pay for the coverage you need—not empty seats.",
+				"Monthly conversation volume, number of data connectors, and which AI Agents you enable. We scope packages during onboarding so you pay for the coverage you need—not empty seats.",
 		},
 		{
 			question: "Is there a free trial?",
@@ -60,7 +60,7 @@ export const pricingContent = {
 		{
 			question: "Can we start small and expand?",
 			answer:
-				"Yes. Most teams begin with one or two AI Specialists and a handful of connectors, then add coverage as they trust the answer layer.",
+				"Yes. Most teams begin with one or two AI Agents and a handful of connectors, then add coverage as they trust the answer layer.",
 		},
 	],
 } as const;

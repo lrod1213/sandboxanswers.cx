@@ -80,7 +80,7 @@ const showcaseFeatures: ShowcaseFeature[] = [
 		badge: "NEW",
 		title: "Meet The Answer Layer",
 		description:
-			"Your customer data should not wait for someone to ask the right question.\n\nThe signals are already there—in your support tickets, surveys, reviews, CRM notes, call transcripts, dashboards, and reports. But today, finding the answer still means hunting across platforms, rebuilding the same reports, stitching spreadsheets together, translating metrics, and turning raw data into a story leadership can act on.\n\nThe Answer Layer sits on top of your data and manages your AI team to do the manual work for you. Ask a follow-up on your walk to the breakroom—your Specialist answers before you're back.\n\nNo more searching dashboards at 7am.\n\nNo more waiting on reports from someone else's queue.\n\nNo more starting from scratch every Monday.\n\nIntelligence before you ask—and answers when you do.",
+			"Your customer data should not wait for someone to ask the right question.\n\nThe signals are already there—in your support tickets, surveys, reviews, CRM notes, call transcripts, dashboards, and reports. But today, finding the answer still means hunting across platforms, rebuilding the same reports, stitching spreadsheets together, translating metrics, and turning raw data into a story leadership can act on.\n\nThe Answer Layer sits on top of your data and manages your AI team to do the manual work for you. Ask a follow-up on your walk to the breakroom—your Agent answers before you're back.\n\nNo more searching dashboards at 7am.\n\nNo more waiting on reports from someone else's queue.\n\nNo more starting from scratch every Monday.\n\nIntelligence before you ask—and answers when you do.",
 		videoPlaceholder: {
 			label: "Chat demo",
 			caption: "Watch questions turn into actionable answers",
@@ -130,12 +130,12 @@ const showcaseFeatures: ShowcaseFeature[] = [
 		id: "lenses",
 		pillLabel: "Meet Your Support Team",
 		badge: "Your AI team",
-		title: "A specialist for every signal.\nAn answer for every blind spot.",
+		title: "An agent for every signal.\nAn answer for every blind spot.",
 		plainBodyParagraphs: 3,
 		description:
-			"Your AI Chief of Staff keeps your team focused on what matters most. Your AI Specialists do the digging—surfacing revenue opportunities, churn risk, product themes, account changes, compliance issues, and coaching moments hidden inside your customer data.\n\nYour team can stop hunting for the signal and start acting on it.\n\nThe Answer Layer gives you a full team of AI Specialists built to replace the manual work that slows customer intelligence down: mining dashboards, stitching exports, tagging accounts, sampling calls, searching CRM notes, and rebuilding one-off decks just to explain what changed.",
+			"Your AI Chief of Staff keeps your team focused on what matters most. Your AI Agents do the digging—surfacing revenue opportunities, churn risk, product themes, account changes, compliance issues, and coaching moments hidden inside your customer data.\n\nYour team can stop hunting for the signal and start acting on it.\n\nThe Answer Layer gives you a full team of AI Agents built to replace the manual work that slows customer intelligence down: mining dashboards, stitching exports, tagging accounts, sampling calls, searching CRM notes, and rebuilding one-off decks just to explain what changed.",
 		bulletSection: {
-			intro: "Bring in the right specialist for the question in front of you.",
+			intro: "Bring in the right agent for the question in front of you.",
 			afterParagraph: 2,
 			items: [
 				{

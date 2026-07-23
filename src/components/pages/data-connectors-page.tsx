@@ -69,7 +69,7 @@ export function DataConnectorsPage() {
 					<p className="text-body-lg text-body">
 						Pre-built connectors for the CRM, support, and contact-center tools
 						most CX teams run. Each one feeds the same governed answer
-						layer—Ask mode, Daily Briefs, and AI Specialists included.
+						layer—Ask mode, Daily Briefs, and AI Agents included.
 					</p>
 				</div>
 

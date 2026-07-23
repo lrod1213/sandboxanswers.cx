@@ -1,7 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import { MessageSquare, Sparkles } from "lucide-react";
 
-import { ProductVideoPlaceholder } from "#/components/marketing/product-video-placeholder.tsx";
+import { ChatWithSpecialistsGraphic } from "#/components/marketing/chat-with-specialists-graphic.tsx";
 import { SectionBand } from "#/components/marketing/section-band.tsx";
 import { Button } from "#/components/ui/button.tsx";
 import type { ChatWithAgentsContent } from "#/content/ai-assistants-team.ts";
@@ -18,11 +18,7 @@ export function ChatWithAgentsSection({
 	return (
 		<SectionBand className={className}>
 			<div className="grid items-center gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:gap-14">
-				<ProductVideoPlaceholder
-					label={content.video.label}
-					caption={content.video.caption}
-					className="order-2 w-full lg:order-1"
-				/>
+				<ChatWithSpecialistsGraphic className="order-2 w-full lg:order-1" />
 				<div className="order-1 lg:order-2">
 					<p className="section-eyebrow mb-4">{content.eyebrow}</p>
 					<h2 className="text-display-lg mb-5">{content.title}</h2>

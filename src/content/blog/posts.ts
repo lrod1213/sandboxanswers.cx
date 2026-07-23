@@ -9,11 +9,11 @@ export const blogIndexContent = {
 	seo: {
 		title: "Now",
 		description:
-			"Product updates, customer stories, and practical guidance on building an answer layer for CX leaders—multilingual support, AI Specialists, and governed insights.",
+			"Product updates, customer stories, and practical guidance on building an answer layer for CX leaders—multilingual support, AI Agents, and governed insights.",
 		path: "/blog",
 	},
 	title: "Now",
-	lead: "Updates from the cxconnect.ai team on the answer layer, AI Specialists, and customer-led growth.",
+	lead: "Updates from the cxconnect.ai team on the answer layer, AI Agents, and customer-led growth.",
 } satisfies BlogIndexContent;
 
 export const blogChangelogEntries = [
@@ -25,10 +25,10 @@ export const blogChangelogEntries = [
 		publishedAt: "2026-05-28",
 	},
 	{
-		slug: "ai-specialist-roster",
-		title: "AI Specialist roster with on/off controls",
+		slug: "ai-agent-roster",
+		title: "AI Agent roster with on/off controls",
 		summary:
-			"Hire your team of AI Specialists with role-based monitoring, governed summaries, and explicit enable/disable controls for every specialist.",
+			"Hire your team of AI Agents with role-based monitoring, governed summaries, and explicit enable/disable controls for every agent.",
 		publishedAt: "2026-05-14",
 	},
 	{
@@ -130,28 +130,28 @@ export const blogPosts = [
 		},
 	},
 	{
-		slug: "hire-ai-specialists-not-another-chatbot",
-		title: "Hire AI Specialists, not another chatbot",
+		slug: "hire-ai-agents-not-another-chatbot",
+		title: "Hire AI Agents, not another chatbot",
 		dek: "Specialized roles connected to your operational data beat generic chat for CX leaders who need monitoring, synthesis, and control—not customer-facing automation.",
 		category: "product",
 		publishedAt: "2026-05-22",
 		authors: [{ name: "Alexandra L.", role: "Customer Experience" }],
-		tags: ["AI Specialists", "product", "governance"],
+		tags: ["AI Agents", "product", "governance"],
 		takeaways: [
-			"AI Specialists are role-based monitors tied to your systems—not customer-facing bots.",
-			"You choose who is on, who is off, and what data each specialist can access.",
+			"AI Agents are role-based monitors tied to your systems—not customer-facing bots.",
+			"You choose who is on, who is off, and what data each agent can access.",
 			"The value is continuous vigilance plus leadership-ready summaries, not open-ended chat.",
 		],
 		faqs: [
 			{
-				question: "Do AI Specialists replace agents?",
+				question: "Do AI Agents replace your team?",
 				answer:
 					"No. They remove repetitive reporting and sampling work so human teams can focus on judgment, relationships, and strategy.",
 			},
 			{
 				question: "Can I run monitoring and ad hoc questions together?",
 				answer:
-					"Yes. Ask questions when you need a fast answer, and keep specialists running 24/7 to alert your team when patterns change.",
+					"Yes. Ask questions when you need a fast answer, and keep agents running 24/7 to alert your team when patterns change.",
 			},
 		],
 		sections: [
@@ -165,7 +165,7 @@ export const blogPosts = [
 			},
 			{
 				type: "paragraph",
-				text: "cxconnect.ai lets you hire a team of AI Specialists: churn analysts, feedback compilers, compliance monitors, and more. Toggle who is on. Scale coverage up and down. Stay in control.",
+				text: "cxconnect.ai lets you hire a team of AI Agents: churn analysts, feedback compilers, compliance monitors, and more. Toggle who is on. Scale coverage up and down. Stay in control.",
 			},
 			{
 				type: "list",
@@ -177,14 +177,14 @@ export const blogPosts = [
 			},
 			{
 				type: "paragraph",
-				text: "Each specialist connects to the same governed Sync Engine layer, so answers stay consistent whether you ask in the moment or review a standing watch summary.",
+				text: "Each agent connects to the same governed Sync Engine layer, so answers stay consistent whether you ask in the moment or review a standing watch summary.",
 			},
 		],
 		seo: {
-			title: "Hire AI Specialists, not another chatbot",
+			title: "Hire AI Agents, not another chatbot",
 			description:
 				"Why specialized AI roles connected to your CX data outperform generic chatbots for monitoring, reporting, and executive-ready insights.",
-			path: "/blog/hire-ai-specialists-not-another-chatbot",
+			path: "/blog/hire-ai-agents-not-another-chatbot",
 		},
 	},
 	{
@@ -241,13 +241,13 @@ export const blogPosts = [
 	{
 		slug: "from-ticket-exports-to-executive-briefings",
 		title: "From ticket exports to executive briefings in one afternoon",
-		dek: "A global SaaS team replaced weekly manual sampling with AI Specialists on governed data—and cut time-to-narrative from days to minutes.",
+		dek: "A global SaaS team replaced weekly manual sampling with AI Agents on governed data—and cut time-to-narrative from days to minutes.",
 		category: "customer-story",
 		publishedAt: "2026-04-24",
 		authors: [{ name: "Kevin H.", role: "Customer Success" }],
-		tags: ["customer story", "AI Specialists", "operations"],
+		tags: ["customer story", "AI Agents", "operations"],
 		takeaways: [
-			"The team started with one specialist and one weekly executive question.",
+			"The team started with one agent and one weekly executive question.",
 			"Governed sourcing earned trust faster than faster charts.",
 			"Expansion followed once product and CS shared the same answer layer.",
 		],
@@ -276,7 +276,7 @@ export const blogPosts = [
 		seo: {
 			title: "From ticket exports to executive briefings",
 			description:
-				"Customer story: how a global SaaS CX team replaced manual reporting with AI Specialists and governed answers from existing systems.",
+				"Customer story: how a global SaaS CX team replaced manual reporting with AI Agents and governed answers from existing systems.",
 			path: "/blog/from-ticket-exports-to-executive-briefings",
 		},
 	},
@@ -300,13 +300,13 @@ export const blogPosts = [
 			{
 				question: "Does cxconnect.ai train models on customer data?",
 				answer:
-					"No. What your AI Specialists learn from stays in your environment; customer data is not used to train language models.",
+					"No. What your AI Agents learn from stays in your environment; customer data is not used to train language models.",
 			},
 		],
 		sections: [
 			{
 				type: "paragraph",
-				text: "Messy data is the default in CX operations. The mistake is asking every leader to clean it anew for each question. Sync Engine harmonizes sources into a governed layer your AI Specialists can trust.",
+				text: "Messy data is the default in CX operations. The mistake is asking every leader to clean it anew for each question. Sync Engine harmonizes sources into a governed layer your AI Agents can trust.",
 			},
 			{
 				type: "heading",
@@ -345,7 +345,7 @@ export const blogPosts = [
 			},
 			{
 				type: "paragraph",
-				text: "Connect once. Your AI Specialists read from a single harmonized layer instead of chasing exports across tools.",
+				text: "Connect once. Your AI Agents read from a single harmonized layer instead of chasing exports across tools.",
 			},
 		],
 		seo: {

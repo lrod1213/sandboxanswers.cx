@@ -1,7 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import { Check, Infinity as InfinityIcon } from "lucide-react";
 
-import { ProductVideoPlaceholder } from "#/components/marketing/product-video-placeholder.tsx";
+import { CustomSpecialistBuilderGraphic } from "#/components/marketing/custom-specialist-builder-graphic.tsx";
 import { SectionBand } from "#/components/marketing/section-band.tsx";
 import { Button } from "#/components/ui/button.tsx";
 import type { CustomAgentsContent } from "#/content/ai-assistants-team.ts";
@@ -45,11 +45,7 @@ export function CustomAgentsSection({
 						<Link to={content.cta.href}>{content.cta.label}</Link>
 					</Button>
 				</div>
-				<ProductVideoPlaceholder
-					label={content.video.label}
-					caption={content.video.caption}
-					className="w-full"
-				/>
+				<CustomSpecialistBuilderGraphic className="w-full" />
 			</div>
 		</SectionBand>
 	);

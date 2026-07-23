@@ -12,13 +12,13 @@ export const featuresPageContent = {
 	seo: {
 		title: "Features",
 		description:
-			"Ask mode, Daily Briefs, AI Specialists, perspective lenses, and governed customer intelligence—everything in The Answer Layer, built for CX leaders who need answers before standup.",
+			"Ask mode, Daily Briefs, AI Agents, perspective lenses, and governed customer intelligence—everything in The Answer Layer, built for CX leaders who need answers before standup.",
 		path: "/features",
 	} satisfies PageSeoContent,
 	hero: {
 		eyebrow: "Platform features",
 		title: "Answers when you ask. Signal when you don't.",
-		lead: "The Answer Layer isn't another dashboard or chatbot—it's how your team gets governed intelligence from the customer data you already own. Ask a question in seconds, wake up to a Daily Brief, or hire AI Specialists to watch while you sleep.",
+		lead: "The Answer Layer isn't another dashboard or chatbot—it's how your team gets governed intelligence from the customer data you already own. Ask a question in seconds, wake up to a Daily Brief, or hire AI Agents to watch while you sleep.",
 		primaryCta: "See it on your data",
 		secondaryCta: "Explore connectors",
 		secondaryHref: "/data-connectors",
@@ -38,7 +38,7 @@ export const featuresPageContent = {
 			{
 				title: "Monitor mode",
 				description:
-					"Hire AI Specialists to watch your customer data around the clock. They surface churn risk, emerging themes, and coaching opportunities before they become fire drills.",
+					"Hire AI Agents to watch your customer data around the clock. They surface churn risk, emerging themes, and coaching opportunities before they become fire drills.",
 				demo: "monitor" as const,
 			},
 		],
@@ -73,12 +73,12 @@ export const featuresPageContent = {
 			href: "/daily-signal",
 		},
 		{
-			title: "AI Specialists",
+			title: "AI Agents",
 			description:
 				"Hire a scalable AI workforce for churn, feedback, compliance, revenue, and more. Turn them on when you need them, off when you don't—you stay in control.",
 			highlights: [
 				"Pre-built roles for common CX and ops workflows",
-				"Custom specialists for your unique business",
+				"Custom agents for your unique business",
 				"24/7 monitoring with human-readable summaries",
 			],
 			href: "/hire-your-team",
@@ -119,7 +119,7 @@ export const featuresPageContent = {
 		eyebrow: "One answer layer",
 		title: "Every feature draws from the same governed customer picture.",
 		description:
-			"Connect your stack once. Ask mode, Daily Briefs, AI Specialists, and lenses all work from the same normalized, policy-aware layer—so you're never reconciling conflicting versions of the truth.",
+			"Connect your stack once. Ask mode, Daily Briefs, AI Agents, and lenses all work from the same normalized, policy-aware layer—so you're never reconciling conflicting versions of the truth.",
 		steps: [
 			{
 				title: "Connect your sources",
@@ -134,7 +134,7 @@ export const featuresPageContent = {
 			{
 				title: "Choose how you work",
 				description:
-					"Ask on demand, subscribe to briefs, hire specialists, or combine all three. Every surface stays in sync as your data updates.",
+					"Ask on demand, subscribe to briefs, hire agents, or combine all three. Every surface stays in sync as your data updates.",
 			},
 		],
 	},
@@ -173,9 +173,9 @@ export const featuresPageContent = {
 			"The Answer Layer is built for skeptical teams who've been burned by black-box AI before. Every feature keeps humans in the loop.",
 		points: [
 			{
-				title: "Specialists you can turn on and off",
+				title: "Agents you can turn on and off",
 				description:
-					"Hire AI Specialists when you need coverage. Pause or remove them when you don't. No rogue agents, no surprise customer outreach.",
+					"Hire AI Agents when you need coverage. Pause or remove them when you don't. No rogue agents, no surprise customer outreach.",
 			},
 			{
 				title: "Governed answers, not mystery boxes",
@@ -196,7 +196,7 @@ export const featuresPageContent = {
 	cta: {
 		title: "See the features on data that looks like yours.",
 		description:
-			"Book a 30-minute walkthrough. We'll connect a sample of your stack, show Ask mode and a Daily Brief, and scope which AI Specialists fit your team first.",
+			"Book a 30-minute walkthrough. We'll connect a sample of your stack, show Ask mode and a Daily Brief, and scope which AI Agents fit your team first.",
 		primaryCta: "Book a demo",
 		secondaryCta: "Hire your AI team",
 		secondaryHref: "/hire-your-team",
@@ -208,12 +208,12 @@ export const featuresFaqItems: FaqItem[] = [
 	{
 		question: "How is this different from another chatbot?",
 		answer:
-			"Not a chatbot at all. The Answer Layer connects to your operational customer data and gives you governed intelligence—briefs, alerts, and on-demand answers sourced from systems you already trust. AI Specialists monitor and synthesize; they don't talk to your customers unless you explicitly build that workflow.",
+			"Not a chatbot at all. The Answer Layer connects to your operational customer data and gives you governed intelligence—briefs, alerts, and on-demand answers sourced from systems you already trust. AI Agents monitor and synthesize; they don't talk to your customers unless you explicitly build that workflow.",
 	},
 	{
 		question: "Can I use Ask mode and monitoring at the same time?",
 		answer:
-			"Yes—and most teams do. Ask ad hoc questions when a leader needs a fast answer, and keep AI Specialists running 24/7 to surface what changed before anyone has to go looking for it.",
+			"Yes—and most teams do. Ask ad hoc questions when a leader needs a fast answer, and keep AI Agents running 24/7 to surface what changed before anyone has to go looking for it.",
 	},
 	{
 		question: "What is the Daily Brief?",
@@ -221,7 +221,7 @@ export const featuresFaqItems: FaqItem[] = [
 			"A personalized morning pulse delivered to your inbox or read aloud on your commute. It ranks overnight signals, emerging themes, and decisions worth your attention—built from your connected data, not a generic industry newsletter.",
 	},
 	{
-		question: "What are AI Specialists?",
+		question: "What are AI Agents?",
 		answer:
 			"Specialized AI roles you hire for specific jobs—churn risk, product feedback, compliance monitoring, revenue scouting, and more. Each one watches the sources you connect and produces summaries your team can act on. You choose who's on and when.",
 	},
@@ -233,7 +233,7 @@ export const featuresFaqItems: FaqItem[] = [
 	{
 		question: "Do I need to be technical to use it?",
 		answer:
-			"No. Ask mode is plain language. Daily Briefs arrive ready to read. AI Specialists produce human-readable summaries. Your admins help with connector permissions; our onboarding team handles the rest.",
+			"No. Ask mode is plain language. Daily Briefs arrive ready to read. AI Agents produce human-readable summaries. Your admins help with connector permissions; our onboarding team handles the rest.",
 	},
 	{
 		question: "Will this replace my team?",
@@ -243,6 +243,6 @@ export const featuresFaqItems: FaqItem[] = [
 	{
 		question: "How fast will we see value?",
 		answer:
-			"Most teams connect their first sources in days and start with one question they already ask every week. Compare the answer to what it takes today—then expand briefs, specialists, and lenses as trust builds.",
+			"Most teams connect their first sources in days and start with one question they already ask every week. Compare the answer to what it takes today—then expand briefs, agents, and lenses as trust builds.",
 	},
 ];

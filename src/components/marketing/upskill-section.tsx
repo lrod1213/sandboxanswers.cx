@@ -62,7 +62,7 @@ export function UpskillSection() {
 					</h2>
 					<p className="mb-6 max-w-xl text-body-md text-white/65">
 						Stop spending leadership hours on repeat reporting. Hand the grind
-						to AI Specialists and reclaim time for the decisions only you can
+						to AI Agents and reclaim time for the decisions only you can
 						make.
 					</p>
 

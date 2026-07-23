@@ -3,37 +3,36 @@ import {
 	Award,
 	Ban,
 	Lock,
+	type LucideIcon,
 	Shield,
 	Sparkles,
-	type LucideIcon,
 } from "lucide-react";
 
 import { ChatWithAgentsSection } from "#/components/marketing/chat-with-agents-section.tsx";
 import { CustomAgentsSection } from "#/components/marketing/custom-agents-section.tsx";
 import { ExplorePlansSection } from "#/components/marketing/explore-plans-section.tsx";
 import { FaqAccordion } from "#/components/marketing/faq-accordion.tsx";
+import { HireYourTeamHeroGraphic } from "#/components/marketing/hire-your-team-hero-graphic.tsx";
 import { MarketingCard } from "#/components/marketing/marketing-card.tsx";
 import { MeshGradient } from "#/components/marketing/mesh-gradient.tsx";
-import { ProductVideoPlaceholder } from "#/components/marketing/product-video-placeholder.tsx";
 import { SectionBand } from "#/components/marketing/section-band.tsx";
 import { SocialProofSection } from "#/components/marketing/social-proof-section.tsx";
 import { SpecialistsExplorer } from "#/components/marketing/specialists-explorer.tsx";
 import { StackIntegrationStrip } from "#/components/marketing/stack-integration-strip.tsx";
 import { TrustedByCarousel } from "#/components/marketing/trusted-by-carousel.tsx";
 import { Button } from "#/components/ui/button.tsx";
+import { siteConfig } from "#/config/site.ts";
 import {
 	assistants,
 	chatWithAgents,
 	customAgents,
 	explorePlans,
 	faqItems,
-	hireYourTeamPageContent,
 	privacySecurityPoints,
 	socialProof,
 	specialistsSection,
 	stackIntegration,
 } from "#/content/ai-assistants-team.ts";
-import { siteConfig } from "#/config/site.ts";
 
 const privacySecurityIcons = {
 	award: Award,
@@ -60,18 +59,18 @@ export function AiAssistantsTeamPage() {
 							<div>
 								<div className="mb-5 inline-flex items-center gap-2 rounded-full border border-hairline bg-canvas/80 px-3 py-1 text-body-sm text-body shadow-[var(--shadow-inset)] backdrop-blur-sm">
 									<Sparkles className="size-3.5 text-link" aria-hidden />
-									Your AI specialist team
+									Your AI agent team
 								</div>
 								<h1 className="max-w-4xl text-[2.5rem] font-semibold leading-[0.95] tracking-[-0.06em] text-ink sm:text-[3rem] sm:leading-[0.92] sm:tracking-[-0.08em] md:text-[56px] md:tracking-[-3.4px] lg:text-[72px] lg:tracking-[-4px]">
-									Hire your team of AI Specialists.
+									Hire your team of AI Agents.
 								</h1>
 								<div className="mt-8 flex max-w-xl flex-col gap-5">
 									<p className="text-body-lg text-body">
-										Each Specialist takes over the manual customer-data work your
-										team does today—monitoring conversations, surfacing risk and
-										revenue, and turning signals into answers. Enable the ones you
-										need, switch them off when you don&apos;t, and build your own
-										for anything unique to your business.
+										Each Agent takes over the manual customer-data work
+										your team does today—monitoring conversations, surfacing
+										risk and revenue, and turning signals into answers. Enable
+										the ones you need, switch them off when you don&apos;t, and
+										build your own for anything unique to your business.
 									</p>
 									<div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap">
 										<Button asChild size="lg" className="w-full sm:w-auto">
@@ -88,12 +87,7 @@ export function AiAssistantsTeamPage() {
 									</div>
 								</div>
 							</div>
-							<ProductVideoPlaceholder
-								src={hireYourTeamPageContent.heroVideo.src}
-								label={hireYourTeamPageContent.heroVideo.label}
-								caption={hireYourTeamPageContent.heroVideo.caption}
-								className="mx-auto w-full max-w-[560px] lg:max-w-none lg:translate-y-4"
-							/>
+							<HireYourTeamHeroGraphic className="mx-auto w-full max-w-[560px] lg:max-w-none lg:translate-y-4" />
 						</div>
 						<TrustedByCarousel className="mt-10 lg:mt-12" />
 					</div>
@@ -122,7 +116,7 @@ export function AiAssistantsTeamPage() {
 						Safe to bring to your board. Safe to connect your data.
 					</h2>
 					<p className="text-body-lg text-body">
-						Your AI Specialists only work with data you connect, under controls
+						Your AI Agents only work with data you connect, under controls
 						your security and legal teams can stand behind.
 					</p>
 				</div>
