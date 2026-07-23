@@ -679,7 +679,7 @@ export function AnswerLayerShowcaseSection({
 	return (
 		<section
 			className={cn(
-				"relative overflow-hidden rounded-[var(--rounded-xl)] bg-[var(--surface-inverse)] px-5 py-14 text-[var(--on-inverse)] shadow-[0_40px_90px_-60px_rgba(0,0,0,0.6)] sm:px-8 sm:py-16 md:px-12 md:py-20 lg:px-16",
+				"relative overflow-hidden rounded-[var(--rounded-xl)] bg-[var(--surface-inverse)] px-4 py-10 text-[var(--on-inverse)] shadow-[0_40px_90px_-60px_rgba(0,0,0,0.6)] sm:px-8 sm:py-16 md:px-12 md:py-20 lg:px-16",
 				className,
 			)}
 		>
@@ -724,7 +724,7 @@ export function AnswerLayerShowcaseSection({
 								aria-selected={active}
 								onClick={() => setActiveId(feature.id)}
 								className={cn(
-									"group inline-flex cursor-pointer items-center gap-2 rounded-[var(--rounded-md)] px-4 py-2 text-body-sm outline-none transition-[background-color,color,box-shadow,transform] duration-200 focus-visible:ring-2 focus-visible:ring-link/40",
+									"group inline-flex min-h-11 cursor-pointer items-center gap-2 rounded-[var(--rounded-md)] px-3 py-2.5 text-[13px] outline-none transition-[background-color,color,box-shadow,transform] duration-200 focus-visible:ring-2 focus-visible:ring-link/40 sm:px-4 sm:py-2 sm:text-body-sm",
 									active
 										? "bg-white text-[#171717] shadow-[var(--shadow-elev-2)]"
 										: "text-white/60 hover:-translate-y-0.5 hover:bg-white/10 hover:text-white",
@@ -744,7 +744,7 @@ export function AnswerLayerShowcaseSection({
 				</div>
 			</div>
 
-			<div className="showcase-spotlight relative overflow-hidden rounded-[var(--rounded-lg)] border border-primary/25 bg-[linear-gradient(145deg,color-mix(in_srgb,var(--link-bg-soft)_92%,var(--canvas)),color-mix(in_srgb,var(--canvas-soft)_88%,var(--canvas)))] p-6 shadow-[var(--shadow-elev-5)] sm:p-8 lg:p-10">
+			<div className="showcase-spotlight relative overflow-hidden rounded-[var(--rounded-lg)] border border-primary/25 bg-[linear-gradient(145deg,color-mix(in_srgb,var(--link-bg-soft)_92%,var(--canvas)),color-mix(in_srgb,var(--canvas-soft)_88%,var(--canvas)))] p-4 shadow-[var(--shadow-elev-5)] sm:p-8 lg:p-10">
 				<div
 					className="pointer-events-none absolute inset-0 opacity-[0.07] [background:radial-gradient(circle_at_12%_18%,var(--link),transparent_34%),radial-gradient(circle_at_88%_82%,var(--cyan),transparent_30%)]"
 					aria-hidden

@@ -54,7 +54,7 @@ export function TheAnswerLayerPage() {
 									<Layers className="size-3.5 text-link" aria-hidden />
 									{content.hero.eyebrow}
 								</div>
-								<h1 className="max-w-4xl text-[2.5rem] font-semibold leading-[0.95] tracking-[-0.06em] text-ink sm:text-[3rem] sm:leading-[0.92] sm:tracking-[-0.08em] md:text-[56px] md:tracking-[-3.4px] lg:text-[64px] lg:tracking-[-3.6px]">
+								<h1 className="max-w-4xl text-[2rem] font-semibold leading-[0.95] tracking-[-0.06em] text-ink sm:text-[2.5rem] sm:leading-[0.92] sm:tracking-[-0.08em] md:text-[56px] md:tracking-[-3.4px] lg:text-[64px] lg:tracking-[-3.6px]">
 									{content.hero.title}
 								</h1>
 								<div className="mt-8 flex max-w-xl flex-col gap-5">
@@ -200,7 +200,7 @@ export function TheAnswerLayerPage() {
 						<MarketingCard
 							key={mode.title}
 							variant="marketing"
-							className="flex min-h-[420px] flex-col"
+							className="flex min-h-0 flex-col sm:min-h-[420px]"
 						>
 							<h3 className="text-display-sm mb-3">{mode.title}</h3>
 							<p className="mb-6 text-body-md text-body">{mode.description}</p>

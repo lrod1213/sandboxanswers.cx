@@ -57,7 +57,7 @@ export function HomePage() {
 									<Sparkles className="size-3.5 text-link" aria-hidden />
 									Executive customer intelligence
 								</div>
-								<h1 className="max-w-4xl text-[2.5rem] font-semibold leading-[0.95] tracking-[-0.06em] text-ink sm:text-[3rem] sm:leading-[0.92] sm:tracking-[-0.08em] md:text-[56px] md:tracking-[-3.4px] lg:text-[72px] lg:tracking-[-4px]">
+								<h1 className="max-w-4xl text-[2rem] font-semibold leading-[0.95] tracking-[-0.06em] text-ink sm:text-[2.5rem] sm:leading-[0.92] sm:tracking-[-0.08em] md:text-[56px] md:tracking-[-3.4px] lg:text-[72px] lg:tracking-[-4px]">
 									Know what matters before you ask.
 								</h1>
 								<div className="mt-8 flex max-w-xl flex-col gap-5">
@@ -89,10 +89,13 @@ export function HomePage() {
 							/>
 						</div>
 						<TrustedByCarousel className="mt-10 lg:mt-12" />
-						<HomeAnswerLayerShowcaseSection className="mt-16 md:mt-24 lg:mt-28" />
 					</div>
 				</div>
 			</section>
+
+			<SectionBand className="!py-0 sm:!py-0 md:!py-0 lg:!py-0">
+				<HomeAnswerLayerShowcaseSection className="rounded-none sm:rounded-[var(--rounded-xl)]" />
+			</SectionBand>
 
 			<StackIntegrationStrip content={stackIntegration} />
 

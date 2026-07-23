@@ -60,7 +60,7 @@ function NavLinkItem({
 	return (
 		<Link
 			to={href}
-			className="text-body-sm text-body transition-colors hover:text-ink"
+			className="inline-flex min-h-11 items-center text-body-sm text-body transition-colors hover:text-ink"
 			onClick={onClick}
 		>
 			{label}
@@ -207,7 +207,12 @@ function MobileNav() {
 	return (
 		<Sheet open={open} onOpenChange={setOpen}>
 			<SheetTrigger asChild className="lg:hidden">
-				<Button variant="outline" size="icon" aria-label="Open menu">
+				<Button
+					variant="outline"
+					size="icon"
+					className="size-11"
+					aria-label="Open menu"
+				>
 					<Menu className="size-5" />
 				</Button>
 			</SheetTrigger>

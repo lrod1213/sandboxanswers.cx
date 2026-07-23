@@ -94,7 +94,7 @@ export function FeaturesPage() {
 						<MarketingCard
 							key={mode.title}
 							variant="marketing"
-							className="flex min-h-[420px] flex-col"
+							className="flex min-h-0 flex-col sm:min-h-[420px]"
 						>
 							<h3 className="text-display-sm mb-3">{mode.title}</h3>
 							<p className="mb-6 text-body-md text-body">{mode.description}</p>

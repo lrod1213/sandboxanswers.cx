@@ -29,10 +29,10 @@ export function SocialProofSection({
 				<h2 className="text-display-lg">{content.title}</h2>
 			</div>
 
-			<dl className="mx-auto mt-12 grid max-w-5xl gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 lg:gap-0 lg:divide-x lg:divide-hairline">
+			<dl className="mx-auto mt-8 grid max-w-5xl gap-x-6 gap-y-8 sm:mt-12 sm:grid-cols-2 sm:gap-y-10 lg:grid-cols-4 lg:gap-0 lg:divide-x lg:divide-hairline">
 				{content.stats.map((stat) => (
 					<div key={stat.label} className="text-center lg:px-6">
-						<dd className="bg-[linear-gradient(120deg,var(--cyan),var(--cyan-deep))] bg-clip-text text-[2.75rem] font-semibold leading-none tracking-[-0.04em] text-transparent">
+						<dd className="bg-[linear-gradient(120deg,var(--cyan),var(--cyan-deep))] bg-clip-text text-[2.25rem] font-semibold leading-none tracking-[-0.04em] text-transparent sm:text-[2.75rem]">
 							{stat.value}
 						</dd>
 						<dt className="mx-auto mt-3 max-w-[12rem] text-body-sm text-body">
@@ -42,7 +42,7 @@ export function SocialProofSection({
 				))}
 			</dl>
 
-			<figure className="mx-auto mt-14 max-w-3xl rounded-[var(--rounded-lg)] border border-hairline bg-canvas p-8 text-center shadow-[var(--shadow-elev-3)] md:p-10">
+			<figure className="mx-auto mt-10 max-w-3xl rounded-[var(--rounded-lg)] border border-hairline bg-canvas p-6 text-center shadow-[var(--shadow-elev-3)] sm:mt-14 sm:p-8 md:p-10">
 				<Quote
 					className="mx-auto mb-5 size-8 text-link/55"
 					aria-hidden

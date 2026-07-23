@@ -39,7 +39,7 @@ export function DailySignalPage() {
 									<Radio className="size-3.5 text-link" aria-hidden />
 									{content.hero.eyebrow}
 								</div>
-								<h1 className="max-w-4xl text-[2.5rem] font-semibold leading-[0.95] tracking-[-0.06em] text-ink sm:text-[3rem] sm:leading-[0.92] sm:tracking-[-0.08em] md:text-[56px] md:tracking-[-3.4px] lg:text-[64px] lg:tracking-[-3.6px]">
+								<h1 className="max-w-4xl text-[2rem] font-semibold leading-[0.95] tracking-[-0.06em] text-ink sm:text-[2.5rem] sm:leading-[0.92] sm:tracking-[-0.08em] md:text-[56px] md:tracking-[-3.4px] lg:text-[64px] lg:tracking-[-3.6px]">
 									{content.hero.title}
 								</h1>
 								<div className="mt-8 flex max-w-xl flex-col gap-5">

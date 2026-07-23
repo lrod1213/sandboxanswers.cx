@@ -20,7 +20,7 @@ function FooterLink({
 	}
 
 	const className =
-		"inline-flex w-fit text-body-sm text-white/60 transition-[color,transform] duration-200 hover:translate-x-0.5 hover:text-white";
+		"inline-flex min-h-11 w-fit items-center py-1 text-body-sm text-white/60 transition-[color,transform] duration-200 hover:translate-x-0.5 hover:text-white";
 
 	if (external) {
 		return (
@@ -51,7 +51,7 @@ const footerSections = [
 
 export function SiteFooter() {
 	return (
-		<footer className="relative overflow-hidden bg-[var(--surface-inverse)] py-[var(--spacing-5xl)] text-[var(--on-inverse)]">
+		<footer className="relative overflow-hidden bg-[var(--surface-inverse)] py-12 text-[var(--on-inverse)] md:py-[var(--spacing-5xl)]">
 			<div
 				className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-link/50 to-transparent"
 				aria-hidden

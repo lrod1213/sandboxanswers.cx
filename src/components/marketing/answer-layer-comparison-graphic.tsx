@@ -46,7 +46,7 @@ export function AnswerLayerComparisonGraphic({
 				ariaLabel="Comparison showing the old way takes weeks across many handoffs while The Answer Layer way delivers decisions in minutes from one layer"
 			>
 				<div className="flex h-full min-h-0 flex-col gap-2 p-3 sm:gap-2.5 sm:p-4">
-					<div className="grid min-h-0 flex-1 grid-cols-[1fr_auto_1fr] gap-2 sm:gap-3">
+					<div className="grid min-h-0 flex-1 grid-cols-1 gap-3 sm:grid-cols-[1fr_auto_1fr] sm:gap-3">
 						<div className="flex min-h-0 flex-col rounded-[var(--rounded-sm)] border border-highlight-pink/25 bg-black/20 p-2 sm:p-2.5">
 							<p className="font-mono text-[8px] tracking-[0.12em] text-highlight-pink uppercase sm:text-[9px]">
 								The old way
@@ -120,14 +120,15 @@ export function AnswerLayerComparisonGraphic({
 							</div>
 						</div>
 
-						<div className="flex flex-col items-center justify-center gap-1 px-0.5">
-							<p className="hidden text-center font-mono text-[7px] tracking-[0.08em] text-cyan uppercase sm:block sm:text-[8px]">
+						<div className="flex flex-col items-center justify-center gap-1 py-1 sm:px-0.5 sm:py-0">
+							<p className="text-center font-mono text-[7px] tracking-[0.08em] text-cyan uppercase sm:text-[8px]">
 								Remove
-								<br />
+								<br className="hidden sm:block" />
+								<span className="sm:hidden"> </span>
 								the layers
 							</p>
 							<ArrowRight
-								className="size-4 text-link sm:size-5"
+								className="size-4 rotate-90 text-link sm:size-5 sm:rotate-0"
 								aria-hidden
 							/>
 						</div>

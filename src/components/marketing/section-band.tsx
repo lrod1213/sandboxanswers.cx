@@ -30,7 +30,7 @@ export function SectionBand({
 		<section
 			id={id}
 			className={cn(
-				"py-[var(--spacing-3xl)] md:py-[var(--spacing-4xl)] lg:py-[var(--spacing-5xl)]",
+				"py-10 sm:py-[var(--spacing-3xl)] md:py-[var(--spacing-4xl)] lg:py-[var(--spacing-5xl)]",
 				variant === "hero" && "lg:py-[var(--spacing-section)]",
 				variantClasses[variant],
 				className,

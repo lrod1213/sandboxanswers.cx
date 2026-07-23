@@ -17,7 +17,7 @@ export function ExplorePlansSection({
 	return (
 		<section
 			className={cn(
-				"relative left-1/2 w-screen max-w-[100vw] -translate-x-1/2 overflow-hidden bg-[var(--surface-inverse)] px-[var(--spacing-lg)] py-16 text-[var(--on-inverse)] md:py-20",
+				"relative left-1/2 w-screen max-w-[100vw] -translate-x-1/2 overflow-hidden bg-[var(--surface-inverse)] px-4 py-12 text-[var(--on-inverse)] sm:px-[var(--spacing-lg)] md:py-20",
 				className,
 			)}
 		>

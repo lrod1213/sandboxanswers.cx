@@ -20,7 +20,7 @@ type MarketingHeroProps = {
 const titleClasses = {
 	default:
 		"mx-auto mb-6 max-w-3xl text-[2rem] font-semibold leading-[1.05] tracking-[-0.05em] text-ink sm:text-display-xl md:text-[56px] md:leading-[56px] md:tracking-[-3px]",
-	home: "mb-6 max-w-4xl text-[2.5rem] font-semibold leading-[0.95] tracking-[-0.06em] text-ink sm:text-[3rem] sm:leading-[0.92] sm:tracking-[-0.08em] md:text-[56px] md:tracking-[-3.4px] lg:text-[84px] lg:tracking-[-5.6px]",
+	home: "mb-6 max-w-4xl text-[2rem] font-semibold leading-[0.95] tracking-[-0.06em] text-ink sm:text-[2.5rem] sm:leading-[0.92] sm:tracking-[-0.08em] md:text-[56px] md:tracking-[-3.4px] lg:text-[84px] lg:tracking-[-5.6px]",
 	product:
 		"mb-6 max-w-3xl text-[2.375rem] font-semibold leading-[0.95] tracking-[-0.06em] text-ink sm:text-[2.75rem] md:text-[52px] md:leading-[0.94] md:tracking-[-3px] lg:text-[72px] lg:tracking-[-4.8px]",
 } as const;

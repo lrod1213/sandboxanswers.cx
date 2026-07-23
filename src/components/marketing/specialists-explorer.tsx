@@ -57,14 +57,14 @@ function ToggleSwitch({
 			aria-label={label}
 			onClick={onClick}
 			className={cn(
-				"relative inline-flex h-5 w-9 shrink-0 cursor-pointer items-center rounded-full border outline-none transition-colors duration-200 focus-visible:ring-2 focus-visible:ring-link/40",
+				"relative inline-flex h-6 w-11 shrink-0 cursor-pointer items-center rounded-full border outline-none transition-colors duration-200 focus-visible:ring-2 focus-visible:ring-link/40",
 				on ? "border-cyan/40 bg-cyan/30" : "border-white/15 bg-white/10",
 			)}
 		>
 			<span
 				className={cn(
 					"inline-block size-3.5 rounded-full bg-white shadow transition-transform duration-200",
-					on ? "translate-x-[18px]" : "translate-x-[3px]",
+					on ? "translate-x-[22px]" : "translate-x-[3px]",
 				)}
 				aria-hidden
 			/>
@@ -96,7 +96,7 @@ export function SpecialistsExplorer({
 	return (
 		<section
 			className={cn(
-				"relative left-1/2 w-screen max-w-[100vw] -translate-x-1/2 overflow-hidden bg-[var(--surface-inverse)] px-[var(--spacing-lg)] py-16 text-[var(--on-inverse)] md:py-20",
+				"relative left-1/2 w-screen max-w-[100vw] -translate-x-1/2 overflow-hidden bg-[var(--surface-inverse)] px-4 py-12 text-[var(--on-inverse)] sm:px-[var(--spacing-lg)] md:py-20",
 				className,
 			)}
 		>
@@ -141,7 +141,7 @@ export function SpecialistsExplorer({
 									<li key={specialist.id}>
 										<div
 											className={cn(
-												"group flex items-center gap-3 rounded-[var(--rounded-md)] border p-3 transition-colors duration-200",
+												"group flex min-h-11 items-center gap-3 rounded-[var(--rounded-md)] border p-3 transition-colors duration-200",
 												isActive
 													? "border-link/40 bg-white/[0.07]"
 													: "border-white/10 bg-white/[0.03] hover:border-white/20 hover:bg-white/[0.05]",
@@ -150,7 +150,7 @@ export function SpecialistsExplorer({
 											<button
 												type="button"
 												onClick={() => setActiveId(specialist.id)}
-												className="flex min-w-0 flex-1 items-center gap-3 text-left outline-none"
+												className="flex min-h-11 min-w-0 flex-1 items-center gap-3 text-left outline-none"
 												aria-pressed={isActive}
 											>
 												<span
