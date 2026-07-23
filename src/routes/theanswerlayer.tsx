@@ -1,10 +1,10 @@
 import { createFileRoute } from "@tanstack/react-router";
 
-import { ProductPage } from "#/components/pages/product-page.tsx";
-import { theAnswerLayer } from "#/content/products.ts";
-import { createProductRouteOptions } from "#/lib/product-route.ts";
+import { TheAnswerLayerPage } from "#/components/pages/the-answer-layer-page.tsx";
+import { theAnswerLayerPageContent } from "#/content/the-answer-layer.ts";
+import { createPageHeadFromContent } from "#/lib/seo.ts";
 
 export const Route = createFileRoute("/theanswerlayer")({
-	...createProductRouteOptions(theAnswerLayer),
-	component: () => <ProductPage content={theAnswerLayer} />,
+	head: () => createPageHeadFromContent(theAnswerLayerPageContent.seo),
+	component: TheAnswerLayerPage,
 });

@@ -12,6 +12,7 @@ import {
 } from "lucide-react";
 
 import { BoardroomLeadersInfographic } from "#/components/marketing/boardroom-leaders-infographic.tsx";
+import { CompanyPulseHeroGraphic } from "#/components/marketing/company-pulse-hero-graphic.tsx";
 import { ProductVideoPlaceholder } from "#/components/marketing/product-video-placeholder.tsx";
 import { Button } from "#/components/ui/button.tsx";
 import { cn } from "#/lib/utils.ts";
@@ -193,6 +194,29 @@ const showcaseFeatures: ShowcaseFeature[] = [
 		hideFromGrid: true,
 	},
 	{
+		id: "company-pulse",
+		pillLabel: "The Company Pulse",
+		badge: "Live",
+		title: "The Company Pulse",
+		description:
+			"Your customer data never stops talking. The Company Pulse turns it into a single executive view of business health—so you know what is rising, what is cooling, and what needs a decision before it hits the board deck.",
+		highlights: [
+			"Churn risk, revenue motion, and product themes ranked by business impact",
+			"Continuous read across every connected source—no manual reconciliation",
+			"A shared pulse for CX, product, and revenue leaders",
+		],
+		cta: {
+			label: "Book a demo",
+			href: "/contact",
+			secondary: {
+				label: "Explore The Company Pulse",
+				href: "/company-pulse",
+			},
+		},
+		span: "wide",
+		hideFromGrid: true,
+	},
+	{
 		id: "languages",
 		pillLabel: "Insights in Any Language",
 		badge: "150+ languages",
@@ -225,6 +249,12 @@ const spanClasses: Record<NonNullable<ShowcaseFeature["span"]>, string> = {
 
 type AnswerLayerShowcaseSectionProps = {
 	className?: string;
+	eyebrow?: string;
+	title?: string;
+	description?: string;
+	tabPrompt?: string;
+	featureIds?: readonly string[];
+	defaultFeatureId?: string;
 };
 
 function ShowcaseCard({
@@ -590,6 +620,8 @@ function ShowcaseSpotlightMedia({
 }) {
 	const media = feature.id === "languages" ? (
 		<LanguagesVisual />
+	) : feature.id === "company-pulse" ? (
+		<CompanyPulseHeroGraphic className="w-full" />
 	) : feature.videoPlaceholder ? (
 		<ProductVideoPlaceholder
 			label={feature.videoPlaceholder.label ?? "Chat demo"}
@@ -656,14 +688,24 @@ function ShowcaseSpotlightMedia({
 
 export function AnswerLayerShowcaseSection({
 	className,
+	eyebrow = "Inside the Answer Layer",
+	title = "The insight your team needs is already there. The Answer Layer surfaces it.",
+	description = "Daily signals before you ask. Instant answers when you do. The Answer Layer turns the customer data you already own into intelligence your team can act on.",
+	tabPrompt = "Select a topic to explore",
+	featureIds,
+	defaultFeatureId,
 }: AnswerLayerShowcaseSectionProps) {
-	const defaultFeature =
-		showcaseFeatures.find((feature) => feature.id === "daily-brief") ??
-		showcaseFeatures[0];
-	const [activeId, setActiveId] = useState(defaultFeature.id);
+	const visibleFeatures = featureIds?.length
+		? showcaseFeatures.filter((feature) => featureIds.includes(feature.id))
+		: showcaseFeatures;
+	const initialFeature =
+		visibleFeatures.find((feature) => feature.id === defaultFeatureId) ??
+		visibleFeatures.find((feature) => feature.id === "daily-brief") ??
+		visibleFeatures[0];
+	const [activeId, setActiveId] = useState(initialFeature.id);
 	const activeFeature =
-		showcaseFeatures.find((feature) => feature.id === activeId) ??
-		defaultFeature;
+		visibleFeatures.find((feature) => feature.id === activeId) ??
+		initialFeature;
 
 	return (
 		<section
@@ -686,29 +728,24 @@ export function AnswerLayerShowcaseSection({
 			/>
 
 			<div className="relative mx-auto mb-10 max-w-4xl text-center md:mb-14">
-				<p className="section-eyebrow mb-4">Inside the Answer Layer</p>
-				<h2 className="text-display-lg mx-auto max-w-4xl text-white">
-					The insight your team needs is already there. The Answer Layer
-					surfaces it.
-				</h2>
+				<p className="section-eyebrow mb-4">{eyebrow}</p>
+				<h2 className="text-display-lg mx-auto max-w-4xl text-white">{title}</h2>
 				<p className="mx-auto mt-6 max-w-3xl text-body-lg text-white/65">
-					Daily signals before you ask. Instant answers when you do. The Answer
-					Layer turns the customer data you already own into intelligence your
-					team can act on.
+					{description}
 				</p>
 			</div>
 
 			<div className="relative mb-8 flex flex-col items-center md:mb-10">
 				<p className="mb-3 inline-flex items-center gap-1.5 text-caption text-white/55">
 					<MousePointerClick className="size-3.5 text-link" aria-hidden />
-					Select a topic to explore
+					{tabPrompt}
 				</p>
 				<div
 					role="tablist"
 					aria-label="Platform capabilities"
 					className="inline-flex max-w-full flex-wrap justify-center gap-1.5 rounded-[var(--rounded-lg)] border border-white/10 bg-white/[0.05] p-1.5 shadow-[var(--shadow-inset)] backdrop-blur-sm"
 				>
-					{showcaseFeatures.map((feature) => {
+					{visibleFeatures.map((feature) => {
 						const active = activeId === feature.id;
 						return (
 							<button
@@ -851,9 +888,9 @@ export function AnswerLayerShowcaseSection({
 				</div>
 			</div>
 
-			{showcaseFeatures.some((feature) => !feature.hideFromGrid) ? (
+			{visibleFeatures.some((feature) => !feature.hideFromGrid) ? (
 				<div className="grid gap-4 md:grid-cols-12 md:gap-5 lg:gap-6">
-					{showcaseFeatures
+					{visibleFeatures
 						.filter((feature) => !feature.hideFromGrid)
 						.map((feature) => (
 							<ShowcaseCard
