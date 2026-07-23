@@ -201,8 +201,112 @@ function DesktopNav() {
 	);
 }
 
+function MobileNavLink({
+	href,
+	label,
+	external,
+	disabled,
+	active,
+	onClick,
+	className,
+}: {
+	href: string;
+	label: string;
+	external?: boolean;
+	disabled?: boolean;
+	active?: boolean;
+	onClick?: () => void;
+	className?: string;
+}) {
+	const linkClassName = cn(
+		"flex min-h-11 w-full items-center gap-2 rounded-[var(--rounded-sm)] px-3 py-2.5 text-left text-body-md-strong transition-[color,background-color,transform] duration-200",
+		active
+			? "bg-link-bg-soft text-link"
+			: "text-ink hover:bg-canvas-soft hover:text-link",
+		disabled && "cursor-not-allowed text-body/45 hover:bg-transparent hover:text-body/45",
+		className,
+	);
+
+	if (disabled) {
+		return <span className={linkClassName}>{label}</span>;
+	}
+
+	if (external) {
+		return (
+			<a
+				href={href}
+				target="_blank"
+				rel="noopener noreferrer"
+				className={linkClassName}
+				onClick={onClick}
+			>
+				{label}
+			</a>
+		);
+	}
+
+	return (
+		<Link to={href} className={linkClassName} onClick={onClick}>
+			{label}
+		</Link>
+	);
+}
+
+function MobileNavSection({
+	label,
+	children,
+}: {
+	label: string;
+	children: ReactNode;
+}) {
+	return (
+		<div>
+			<p className="section-eyebrow mb-3">{label}</p>
+			<div className="overflow-hidden rounded-[var(--rounded-md)] border border-hairline bg-canvas-soft/70 shadow-[var(--shadow-inset)]">
+				{children}
+			</div>
+		</div>
+	);
+}
+
+function MobileNavLinkList({
+	links,
+	pathname,
+	onNavigate,
+}: {
+	links: typeof solutionsLinks;
+	pathname: string;
+	onNavigate: () => void;
+}) {
+	return (
+		<ul className="divide-y divide-hairline">
+			{links.map((link) => {
+				const active =
+					!link.external &&
+					!link.disabled &&
+					(pathname === link.href ||
+						(link.href !== "/" && pathname.startsWith(`${link.href}/`)));
+
+				return (
+					<li key={link.href ?? link.label}>
+						<MobileNavLink
+							{...link}
+							active={active}
+							onClick={onNavigate}
+							className="rounded-none"
+						/>
+					</li>
+				);
+			})}
+		</ul>
+	);
+}
+
 function MobileNav() {
 	const [open, setOpen] = useState(false);
+	const pathname = useRouterState({ select: (state) => state.location.pathname });
+	const closeMenu = () => setOpen(false);
+	const platformLinks = [...integrationsLinks, featuresLink];
 
 	return (
 		<Sheet open={open} onOpenChange={setOpen}>
@@ -210,67 +314,80 @@ function MobileNav() {
 				<Button
 					variant="outline"
 					size="icon"
-					className="size-11"
+					className="size-11 border-hairline-strong/80 bg-canvas/80 shadow-[var(--shadow-inset)] backdrop-blur-sm"
 					aria-label="Open menu"
 				>
 					<Menu className="size-5" />
 				</Button>
 			</SheetTrigger>
-			<SheetContent side="right" className="w-[300px]">
-				<SheetHeader>
-					<SheetTitle>{siteConfig.name}</SheetTitle>
+			<SheetContent
+				side="right"
+				className="flex w-full max-w-[min(100vw,360px)] flex-col gap-0 overflow-hidden border-l border-hairline bg-canvas p-0 shadow-[var(--shadow-elev-5)] sm:max-w-sm [&>button]:top-5 [&>button]:right-5 [&>button]:flex [&>button]:size-10 [&>button]:items-center [&>button]:justify-center [&>button]:rounded-[var(--rounded-sm)] [&>button]:border [&>button]:border-hairline [&>button]:bg-canvas-soft [&>button]:opacity-100 [&>button]:shadow-[var(--shadow-inset)] [&>button]:transition-colors [&>button]:hover:bg-canvas-soft-2"
+			>
+				<div
+					className="pointer-events-none absolute inset-0 opacity-70 [background:radial-gradient(circle_at_100%_0%,rgba(147,51,234,0.08),transparent_42%),radial-gradient(circle_at_0%_100%,rgba(94,234,212,0.06),transparent_38%)]"
+					aria-hidden
+				/>
+				<div
+					className="signal-grid pointer-events-none absolute inset-0 opacity-[0.05]"
+					aria-hidden
+				/>
+
+				<SheetHeader className="relative shrink-0 space-y-0 border-b border-hairline px-5 py-4 pr-16">
+					<SheetTitle className="sr-only">{siteConfig.name} navigation</SheetTitle>
+					<SiteLogo />
+					<p className="mt-2 text-body-sm text-body">{siteConfig.tagline}</p>
 				</SheetHeader>
-				<nav className="mt-8 flex flex-col gap-6">
-					<div>
-						<p className="section-eyebrow mb-3">Solutions</p>
-						<div className="flex flex-col gap-3">
-							{solutionsLinks.map((link) => (
-								<NavLinkItem
-									key={link.href}
-									{...link}
-									onClick={() => setOpen(false)}
-								/>
-							))}
-						</div>
-					</div>
-					{integrationsLinks.map((link) => (
-						<NavLinkItem
-							key={link.href}
-							{...link}
-							onClick={() => setOpen(false)}
-						/>
-					))}
-					<NavLinkItem
-						{...featuresLink}
-						onClick={() => setOpen(false)}
-					/>
-					<div>
-						<p className="section-eyebrow mb-3">Resources</p>
-						<div className="flex flex-col gap-3">
-							{resourcesLinks.map((link) => (
-								<NavLinkItem
-									key={link.label}
-									{...link}
-									onClick={() => setOpen(false)}
-								/>
-							))}
-						</div>
-					</div>
-					{companyLinks
-						.filter((link) => link.href === "/about")
-						.map((link) => (
-							<NavLinkItem
-								key={link.href}
-								{...link}
-								onClick={() => setOpen(false)}
+
+				<nav
+					className="relative flex-1 overflow-y-auto px-5 py-6"
+					aria-label="Main navigation"
+				>
+					<div className="flex flex-col gap-8">
+						<MobileNavSection label="Solutions">
+							<MobileNavLinkList
+								links={solutionsLinks}
+								pathname={pathname}
+								onNavigate={closeMenu}
 							/>
-						))}
-					<div className="flex items-center gap-3">
-						<Button asChild onClick={() => setOpen(false)}>
-							<Link to={primaryCta.href}>{primaryCta.label}</Link>
-						</Button>
+						</MobileNavSection>
+
+						<MobileNavSection label="Platform">
+							<MobileNavLinkList
+								links={platformLinks}
+								pathname={pathname}
+								onNavigate={closeMenu}
+							/>
+						</MobileNavSection>
+
+						<MobileNavSection label="Resources">
+							<MobileNavLinkList
+								links={resourcesLinks}
+								pathname={pathname}
+								onNavigate={closeMenu}
+							/>
+						</MobileNavSection>
+
+						<MobileNavSection label="Company">
+							<MobileNavLinkList
+								links={companyLinks.filter((link) => link.href === "/about")}
+								pathname={pathname}
+								onNavigate={closeMenu}
+							/>
+						</MobileNavSection>
 					</div>
 				</nav>
+
+				<div className="relative shrink-0 border-t border-hairline bg-canvas-soft/90 px-5 py-5 backdrop-blur-sm">
+					<Button asChild size="lg" className="w-full">
+						<Link to={primaryCta.href} onClick={closeMenu}>
+							{primaryCta.label}
+						</Link>
+					</Button>
+					<p className="mt-3 text-center text-caption text-body">
+						Executive customer intelligence for CX leaders
+					</p>
+				</div>
 			</SheetContent>
 		</Sheet>
 	);
