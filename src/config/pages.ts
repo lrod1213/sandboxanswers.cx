@@ -54,6 +54,13 @@ export const pages = [
 		contactInterest: "The Daily Signal",
 	},
 	{
+		path: "/company-pulse",
+		label: "The Company Pulse",
+		navGroup: "solutions",
+		sitemap: true,
+		contactInterest: "The Company Pulse",
+	},
+	{
 		path: "/translations",
 		label: "Real-time Translations",
 		sitemap: true,
@@ -176,6 +183,7 @@ export const footerColumns = {
 				"/theanswerlayer",
 				"/hire-your-team",
 				"/daily-signal",
+				"/company-pulse",
 				"/features",
 				"/data-connectors",
 			].includes(page.path),

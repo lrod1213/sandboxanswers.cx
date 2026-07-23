@@ -1,5 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import {
+	Activity,
 	ArrowRight,
 	AudioLines,
 	Ban,
@@ -16,6 +17,7 @@ import {
 	Users,
 } from "lucide-react";
 
+import { CompanyPulseHeroGraphic } from "#/components/marketing/company-pulse-hero-graphic.tsx";
 import { FaqAccordion } from "#/components/marketing/faq-accordion.tsx";
 import { MarketingCard } from "#/components/marketing/marketing-card.tsx";
 import { MarketingHero } from "#/components/marketing/marketing-hero.tsx";
@@ -33,6 +35,7 @@ import { cn } from "#/lib/utils.ts";
 const featureIcons = [
 	MessageSquare,
 	Sun,
+	Activity,
 	Users,
 	Eye,
 	AudioLines,
@@ -102,6 +105,44 @@ export function FeaturesPage() {
 			</SectionBand>
 
 			<SectionBand variant="soft">
+				<div className="grid items-center gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:gap-14">
+					<div>
+						<p className="section-eyebrow mb-4">
+							{content.companyPulseSpotlight.eyebrow}
+						</p>
+						<h2 className="text-display-lg mb-5">
+							{content.companyPulseSpotlight.title}
+						</h2>
+						<p className="mb-6 text-body-lg text-body">
+							{content.companyPulseSpotlight.lead}
+						</p>
+						<ul className="mb-8 space-y-3">
+							{content.companyPulseSpotlight.highlights.map((highlight) => (
+								<li
+									key={highlight}
+									className="flex items-start gap-3 text-body-md text-body"
+								>
+									<span
+										className="mt-2 size-1.5 shrink-0 rounded-full bg-cyan"
+										aria-hidden
+									/>
+									{highlight}
+								</li>
+							))}
+						</ul>
+						<Link
+							to={content.companyPulseSpotlight.href}
+							className="inline-flex items-center gap-1 text-body-sm font-medium text-link hover:underline"
+						>
+							{content.companyPulseSpotlight.cta}
+							<ArrowRight className="size-3.5" aria-hidden />
+						</Link>
+					</div>
+					<CompanyPulseHeroGraphic className="w-full" />
+				</div>
+			</SectionBand>
+
+			<SectionBand>
 				<div className="mb-12 grid items-end gap-6 lg:grid-cols-[0.85fr_1fr]">
 					<div>
 						<p className="section-eyebrow mb-4">{content.featureBand.eyebrow}</p>

@@ -12,13 +12,13 @@ export const featuresPageContent = {
 	seo: {
 		title: "Features",
 		description:
-			"Ask mode, Daily Briefs, AI Agents, perspective lenses, and governed customer intelligence—everything in The Answer Layer, built for CX leaders who need answers before standup.",
+			"Ask mode, Daily Briefs, The Company Pulse, AI Agents, perspective lenses, and governed customer intelligence—everything in The Answer Layer, built for CX leaders who need answers before standup.",
 		path: "/features",
 	} satisfies PageSeoContent,
 	hero: {
 		eyebrow: "Platform features",
 		title: "Answers when you ask. Signal when you don't.",
-		lead: "The Answer Layer isn't another dashboard or chatbot—it's how your team gets governed intelligence from the customer data you already own. Ask a question in seconds, wake up to a Daily Brief, or hire AI Agents to watch while you sleep.",
+		lead: "The Answer Layer isn't another dashboard or chatbot—it's how your team gets governed intelligence from the customer data you already own. Ask a question in seconds, wake up to a Daily Brief, watch The Company Pulse in real time, or hire AI Agents to monitor while you sleep.",
 		primaryCta: "See it on your data",
 		secondaryCta: "Explore connectors",
 		secondaryHref: "/data-connectors",
@@ -42,6 +42,18 @@ export const featuresPageContent = {
 				demo: "monitor" as const,
 			},
 		],
+	},
+	companyPulseSpotlight: {
+		eyebrow: "The Company Pulse",
+		title: "A living view of company health.",
+		lead: "The Company Pulse gives leadership one always-on read on customer health—churn risk, revenue signals, sentiment shifts, and operational friction—updated continuously from the data you already connect.",
+		highlights: [
+			"Company health score and ranked signals in one executive view",
+			"Movement across segments before it hits a renewal deck or board slide",
+			"Pairs with your Daily Brief and Ask mode on the same governed layer",
+		],
+		href: "/company-pulse",
+		cta: "Explore The Company Pulse",
 	},
 	featureBand: {
 		eyebrow: "The platform",
@@ -71,6 +83,17 @@ export const featuresPageContent = {
 				"Unique to your role, domain, and connected data",
 			],
 			href: "/daily-signal",
+		},
+		{
+			title: "The Company Pulse",
+			description:
+				"See how the company is feeling in real time—a single executive view of customer health, ranked signals, and what needs a decision before standup or the board meeting.",
+			highlights: [
+				"Live read on churn, revenue, and operational friction",
+				"Signals ranked by business impact, not ticket volume",
+				"One shared pulse for CX, product, and revenue leaders",
+			],
+			href: "/company-pulse",
 		},
 		{
 			title: "AI Agents",
@@ -119,7 +142,7 @@ export const featuresPageContent = {
 		eyebrow: "One answer layer",
 		title: "Every feature draws from the same governed customer picture.",
 		description:
-			"Connect your stack once. Ask mode, Daily Briefs, AI Agents, and lenses all work from the same normalized, policy-aware layer—so you're never reconciling conflicting versions of the truth.",
+			"Connect your stack once. Ask mode, Daily Briefs, The Company Pulse, AI Agents, and lenses all work from the same normalized, policy-aware layer—so you're never reconciling conflicting versions of the truth.",
 		steps: [
 			{
 				title: "Connect your sources",
@@ -134,7 +157,7 @@ export const featuresPageContent = {
 			{
 				title: "Choose how you work",
 				description:
-					"Ask on demand, subscribe to briefs, hire agents, or combine all three. Every surface stays in sync as your data updates.",
+					"Ask on demand, subscribe to briefs, watch the pulse, hire agents, or combine all four. Every surface stays in sync as your data updates.",
 			},
 		],
 	},
@@ -196,7 +219,7 @@ export const featuresPageContent = {
 	cta: {
 		title: "See the features on data that looks like yours.",
 		description:
-			"Book a 30-minute walkthrough. We'll connect a sample of your stack, show Ask mode and a Daily Brief, and scope which AI Agents fit your team first.",
+			"Book a 30-minute walkthrough. We'll connect a sample of your stack, show Ask mode, The Company Pulse, and a Daily Brief—and scope which AI Agents fit your team first.",
 		primaryCta: "Book a demo",
 		secondaryCta: "Hire your AI team",
 		secondaryHref: "/hire-your-team",
@@ -219,6 +242,11 @@ export const featuresFaqItems: FaqItem[] = [
 		question: "What is the Daily Brief?",
 		answer:
 			"A personalized morning pulse delivered to your inbox or read aloud on your commute. It ranks overnight signals, emerging themes, and decisions worth your attention—built from your connected data, not a generic industry newsletter.",
+	},
+	{
+		question: "What is The Company Pulse?",
+		answer:
+			"An always-on executive view of customer health—ranking churn risk, revenue signals, product themes, and operational friction as your connected data updates. It's the live pulse of the business, alongside your morning Daily Brief and on-demand Ask mode.",
 	},
 	{
 		question: "What are AI Agents?",

@@ -18,6 +18,7 @@ import { Route as HireYourTeamRouteImport } from './routes/hire-your-team'
 import { Route as FeaturesRouteImport } from './routes/features'
 import { Route as DailySignalRouteImport } from './routes/daily-signal'
 import { Route as ContactRouteImport } from './routes/contact'
+import { Route as CompanyPulseRouteImport } from './routes/company-pulse'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as SplatRouteImport } from './routes/$'
 import { Route as IndexRouteImport } from './routes/index'
@@ -72,6 +73,11 @@ const DailySignalRoute = DailySignalRouteImport.update({
 const ContactRoute = ContactRouteImport.update({
   id: '/contact',
   path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CompanyPulseRoute = CompanyPulseRouteImport.update({
+  id: '/company-pulse',
+  path: '/company-pulse',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AboutRoute = AboutRouteImport.update({
@@ -129,6 +135,7 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/$': typeof SplatRoute
   '/about': typeof AboutRoute
+  '/company-pulse': typeof CompanyPulseRoute
   '/contact': typeof ContactRoute
   '/daily-signal': typeof DailySignalRoute
   '/features': typeof FeaturesRoute
@@ -150,6 +157,7 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/$': typeof SplatRoute
   '/about': typeof AboutRoute
+  '/company-pulse': typeof CompanyPulseRoute
   '/contact': typeof ContactRoute
   '/daily-signal': typeof DailySignalRoute
   '/features': typeof FeaturesRoute
@@ -172,6 +180,7 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/$': typeof SplatRoute
   '/about': typeof AboutRoute
+  '/company-pulse': typeof CompanyPulseRoute
   '/contact': typeof ContactRoute
   '/daily-signal': typeof DailySignalRoute
   '/features': typeof FeaturesRoute
@@ -195,6 +204,7 @@ export interface FileRouteTypes {
     | '/'
     | '/$'
     | '/about'
+    | '/company-pulse'
     | '/contact'
     | '/daily-signal'
     | '/features'
@@ -216,6 +226,7 @@ export interface FileRouteTypes {
     | '/'
     | '/$'
     | '/about'
+    | '/company-pulse'
     | '/contact'
     | '/daily-signal'
     | '/features'
@@ -237,6 +248,7 @@ export interface FileRouteTypes {
     | '/'
     | '/$'
     | '/about'
+    | '/company-pulse'
     | '/contact'
     | '/daily-signal'
     | '/features'
@@ -259,6 +271,7 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   SplatRoute: typeof SplatRoute
   AboutRoute: typeof AboutRoute
+  CompanyPulseRoute: typeof CompanyPulseRoute
   ContactRoute: typeof ContactRoute
   DailySignalRoute: typeof DailySignalRoute
   FeaturesRoute: typeof FeaturesRoute
@@ -342,6 +355,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ContactRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/company-pulse': {
+      id: '/company-pulse'
+      path: '/company-pulse'
+      fullPath: '/company-pulse'
+      preLoaderRoute: typeof CompanyPulseRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/about': {
       id: '/about'
       path: '/about'
@@ -419,6 +439,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   SplatRoute: SplatRoute,
   AboutRoute: AboutRoute,
+  CompanyPulseRoute: CompanyPulseRoute,
   ContactRoute: ContactRoute,
   DailySignalRoute: DailySignalRoute,
   FeaturesRoute: FeaturesRoute,
