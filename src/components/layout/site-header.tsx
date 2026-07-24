@@ -408,8 +408,6 @@ function MobileNavFallback() {
 
 export function SiteHeader() {
 	const [hasScrolled, setHasScrolled] = useState(false);
-	const pathname = useRouterState({ select: (state) => state.location.pathname });
-	const logoHref = pathname === "/daily-signal" ? "/daily-signal" : "/";
 
 	useEffect(() => {
 		const updateScrolled = () => setHasScrolled(window.scrollY > 12);
@@ -431,7 +429,7 @@ export function SiteHeader() {
 		>
 			<div className="marketing-container flex h-16 items-center justify-between gap-4">
 				<Link
-					to={logoHref}
+					to="/"
 					className="inline-flex items-center text-ink transition-opacity hover:opacity-90"
 				>
 					<SiteLogo />
